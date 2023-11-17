@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import OpenTechLogo from "../../img/key-icon.png";
 import "../../styles/navbar.css";
 
 export const Navbar = () => {
@@ -8,11 +7,11 @@ export const Navbar = () => {
 		<nav className="navbar navbar-light bg-light">
 			<div className="container">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1"><img className="openTech-Logo" src={OpenTechLogo}/>OpenTech Insights</span>
+					<span className="navbar-brand mb-0 h1">Icono de Sobre OpenTech Insights</span>
 				</Link>
 				<div className="ml-auto">
 					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
+						<button className="btn btn-primary">Subir informacion</button>
 					</Link>
 				</div>
 			</div>
