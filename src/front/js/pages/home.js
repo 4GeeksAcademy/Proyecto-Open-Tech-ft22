@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import { Register } from "./register";
+import { Login } from "./login";
 import "../../styles/home.css";
+import card1 from "../../img/card1.png";
+import card2 from "../../img/card2.png";
+import card3 from "../../img/card3.png";
+import card4 from "../../img/card4.png";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -9,21 +14,58 @@ export const Home = () => {
 	return (
 		<div className="text-center">
 			<div className="pseudo-navbar">
-				<h1>Unlocking IT salaries, Embracing Transparency in Tech Careers.</h1>
-				<p>
-					<img src={rigoImageUrl} />
-				</p>
+				<h1 style={{ background: '-webkit-linear-gradient(left, blue, white)', WebkitBackgroundClip: 'text', color: 'transparent', paddingTop: '20px' }}>
+					Unlocking IT salaries, Embracing Transparency in Tech Careers.
+				</h1>
+				<Login />
 			</div>
 
 			<div className="alert alert-info">
 				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
 			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://start.4geeksacademy.com/starters/react-flask">
-					Read documentation
-				</a>
-			</p>
+
+
+
+
+
+			{/*CARDS*/}
+			<div className="d-flex justify-content-around flex-wrap mb-5 mt-5">
+				<div className="card custom-card" style={{ width: '19rem', margin: '10px 5px' }}>
+					<img src={card1} className="card-img-top" alt="..." style={{ objectFit: 'cover', height: '12rem', border: '4px solid white' }} />
+					<div className="card-body">
+						<p className="card-text text-justify">Providing transparency in IT salaries empowers professionals to make informed decisions about their career paths. Users can compare their salaries with industry standards, helping them negotiate better compensation packages and make strategic career choices.</p>
+					</div>
+				</div>
+
+				<div className="card custom-card" style={{ width: '19rem', margin: '10px 5px' }}>
+					<img src={card2} className="card-img-top" alt="..." style={{ objectFit: 'cover', height: '12rem', border: '4px solid white' }} />
+					<div className="card-body">
+						<p className="card-text">The platform allows users to benchmark their salaries against others in the same industry or role. This valuable data enables individuals to gauge their position in the job market, understand salary trends, and identify opportunities for career growth.</p>
+					</div>
+				</div>
+
+				<div className="card custom-card" style={{ width: '19rem', margin: '10px 5px' }}>
+					<img src={card3} className="card-img-top" alt="..." style={{ objectFit: 'cover', height: '12rem', border: '4px solid white' }} />
+					<div className="card-body">
+						<p className="card-text">By openly sharing salary information, the platform contributes to fostering fair compensation practices. It helps highlight discrepancies and encourages employers to maintain competitive salary structures, creating a more equitable and just work environment for IT professionals..</p>
+					</div>
+				</div>
+
+				<div className="card custom-card" style={{ width: '19rem', margin: '10px 5px' }}>
+					<img src={card4} className="card-img-top" alt="..." style={{ objectFit: 'cover', height: '12rem', border: '4px solid white' }} />
+					<div className="card-body">
+						<p className="card-text">The platform fosters a sense of community among IT professionals by providing a space for open dialogue about compensation. Users can connect with others in similar roles, share experiences, and gain insights into various career paths. This networking opportunity can lead to a stronger professional community.</p>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+
 		</div>
 	);
 };
+

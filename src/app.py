@@ -31,6 +31,7 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
+CORS(app, resources={r"/api/*": {"origins": "https://literate-fishstick-pxgqx4jv67vh6rx6-3000.app.github.dev"}})
 
 mail_settings = {
     "MAIL_SERVER": 'smtp.gmail.com',
@@ -47,7 +48,7 @@ mail = Mail(app)
 app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
 # Allow CORS requests to this API
-CORS(app, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # add the admin
 setup_admin(app)
@@ -79,30 +80,27 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
-@app.route('/api/sendemail', methods=['POST'])
-def send_email():
-    email = request.json.get("email", None)
-    print(email, app.config.get("MAIL_USERNAME"))
+# Handle CORS for the specific route
+@app.route('/api/admin/user', methods=['POST', 'OPTIONS'])
+@cross_origin(origin='https://literate-fishstick-pxgqx4jv67vh6rx6-3000.app.github.dev', headers=['Content-Type', 'Authorization'])
+def admin_user_route():
+    if request.method == 'OPTIONS':
+        return jsonify({"message": "CORS preflight request successful"}), 200
 
-    user = User.query.filter_by(email=email).first()
-    if user is None:
-        return jsonify({"msg": "User with this email doesn't exist."}), 401
+    # Your route logic goes here
+    # ...
 
-    token = create_access_token(identity=user.email)
-    link = "https://fuzzy-eureka-gwq77j979pfvrvr-3000.app.github.dev/set_newpassword?token=" + token
+    response = jsonify({"message": "Your response message"})
+    
+    # Add the necessary CORS headers
+    response.headers.add('Access-Control-Allow-Origin', 'https://literate-fishstick-pxgqx4jv67vh6rx6-3000.app.github.dev')
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 
-    message = Message(
-        subject="Worst Movies Website - Reset your Password",
-        sender=app.config.get("MAIL_USERNAME"),
-        recipients=[email],
-        html="<img src='https://i.postimg.cc/RVH9yJfR/movie-resized-logo.png' height='200' /><br><br>This is an automatic message from the Worst Movies Website registration system.<br><br><br> We received a request to reset the password for the Worst Movies Website account associated with this email address. If you made this request, please follow the instructions below. <br><br> Click the following link to reset your password:<br><a href='" + link + "'> Reset Password </a> <br><br> If you did not make this request, please ignore this email. <br><br> Regards, <br> Worst Movies Website help"
-    )
-
-    mail.send(message)
-
-    return jsonify({"msg": "success"}), 200
+    return response
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3001))
     app.run(host='0.0.0.0', port=PORT, debug=True)
+

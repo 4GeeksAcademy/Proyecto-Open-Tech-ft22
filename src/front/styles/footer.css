@@ -1,0 +1,24 @@
+.footer-img{
+    height: 200px;
+    background-image: url('https://w0.peakpx.com/wallpaper/296/16/HD-wallpaper-black-concrete-texture-black-concrete-abstract-texture.jpg');
+}
+.footer {
+    display: flex;
+    justify-content: space-between; /* Distribute columns evenly */
+    align-items: center; /* Center content vertically */
+  }
+  
+  .column {
+    flex: 1; /* Each column takes equal width */
+  }
+  
+  /* Add a white border on the right side of each column */
+  .column:not(:last-child) {
+    border-right: 1px solid white;
+  }
+  
+  /* Style for the content inside each column */
+  .column p {
+    margin: 0; /* Remove default margin */
+    color: white; /* Text color */
+  }

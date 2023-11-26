@@ -1,19 +1,11 @@
+import { toast } from 'react-toastify';
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			username: '',
+			password: '',
+			apiURL: 'https://literate-fishstick-pxgqx4jv67vh6rx6-3001.app.github.dev'
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -21,34 +13,72 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			getMessage: async () => {
-				try{
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-					const data = await resp.json()
-					setStore({ message: data.message })
-					// don't forget to return something, that is how the async resolves
-					return data;
-				}catch(error){
-					console.log("Error loading message from backend", error)
-				}
+
+
+			handleSubmitRegister: e => {
+				e.preventDefault()
+				const { username, password } = getStore()
+				const { register } = getActions()
+				register({ username, password }) // { username: username, password: password }
+				console.log("Enviando Formulario")
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
+
+
+			register: (credentials) => {
+				const { apiURL } = getStore();
+				//console.log(credentials)
+				const url = `${apiURL}/admin/user`;
+				const options = {
+					method: 'POST',
+					body: JSON.stringify(credentials), //  { username: 'lili.aqueveque@gmail.com', password: '123456' }
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				}
+				fetch(url, options)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data)
+
+						if (data.msg) {
+							toast.error(data.msg)
+						} else {
+							setStore({
+								currentUser: data
+							})
+							toast.success(data.success)
+						}
+
+					})
+					.catch(error => console.error('Error during fetch:', error));
+			},
+
+
+
+			handleSubmitLogin: e => {
+				e.preventDefault()
+				const { username, password } = getStore()
+				const { login } = getActions()
+				login({ username, password }) // { username: username, password: password }
+				console.log("Enviando Formulario")
+			},
+
+
+
+
+
+
+			handleChange: e => {
+				const { name, value } = e.target;
+				setStore({
+					[name]: value
+				})
+			},
+
 		}
-	};
+	}
 };
 
 export default getState;
