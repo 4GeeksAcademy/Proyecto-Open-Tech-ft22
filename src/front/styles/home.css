@@ -5,7 +5,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     color: #7A26C1;
-    height: 450px;
+    height: 490px;
     font-family: 'Righteous', sans-serif;
 }
 
@@ -17,3 +17,14 @@ body {
     background-color: #15171a; /* Change this to your desired dark color */
     color: #ffffffb4;
 }
+
+.formManual {
+    background-color: #7A26C1;
+    background: linear-gradient(to right, rgb(32, 32, 252), rgb(125, 38, 165));
+    background-image: url('https://cdn.dribbble.com/users/1770290/screenshots/6183149/bg_79.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-family: 'Righteous', sans-serif;
+}
+

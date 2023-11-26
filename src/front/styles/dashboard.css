@@ -1,0 +1,13 @@
+.buttonStyle {
+    display: inline-block;
+    padding: 25px;
+    margin: 12px;
+    background: black;
+    background-image: url('https://w0.peakpx.com/wallpaper/296/16/HD-wallpaper-black-concrete-texture-black-concrete-abstract-texture.jpg');
+    color: white;
+    text-decoration: none;
+}
+
+.dashboardBg {
+    height: 330px;
+}

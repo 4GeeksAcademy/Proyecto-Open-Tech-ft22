@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			username: '',
 			password: '',
+			name: '',
 			apiURL: 'https://literate-fishstick-pxgqx4jv67vh6rx6-3001.app.github.dev'
 		},
 		actions: {
@@ -32,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const url = `${apiURL}/admin/user`;
 				const options = {
 					method: 'POST',
-					body: JSON.stringify(credentials), //  { username: 'lili.aqueveque@gmail.com', password: '123456' }
+					body: JSON.stringify(credentials), //  { username: 'lili.aqueveque', password: '123456' }
 					headers: {
 						'Content-Type': 'application/json'
 					}
