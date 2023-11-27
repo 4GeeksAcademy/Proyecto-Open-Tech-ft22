@@ -31,7 +31,7 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
-CORS(app, resources={r"/api/*": {"origins": "https://literate-fishstick-pxgqx4jv67vh6rx6-3000.app.github.dev"}})
+CORS(app, resources={r"/api/*": {"origins": "https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3000.app.github.dev"}})
 
 mail_settings = {
     "MAIL_SERVER": 'smtp.gmail.com',
@@ -82,7 +82,7 @@ def serve_any_other_file(path):
 
 # Handle CORS for the specific route
 @app.route('/api/admin/user', methods=['POST', 'OPTIONS'])
-@cross_origin(origin='https://literate-fishstick-pxgqx4jv67vh6rx6-3000.app.github.dev', headers=['Content-Type', 'Authorization'])
+@cross_origin(origin='https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3000.app.github.dev', headers=['Content-Type', 'Authorization'])
 def admin_user_route():
     if request.method == 'OPTIONS':
         return jsonify({"message": "CORS preflight request successful"}), 200
@@ -93,7 +93,7 @@ def admin_user_route():
     response = jsonify({"message": "Your response message"})
     
     # Add the necessary CORS headers
-    response.headers.add('Access-Control-Allow-Origin', 'https://literate-fishstick-pxgqx4jv67vh6rx6-3000.app.github.dev')
+    response.headers.add('Access-Control-Allow-Origin', 'https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3000.app.github.dev')
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 

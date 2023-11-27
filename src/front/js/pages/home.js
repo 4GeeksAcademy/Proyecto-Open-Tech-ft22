@@ -54,7 +54,7 @@ export const Home = () => {
 				<div className="card custom-card" style={{ width: '19rem', margin: '10px 5px' }}>
 					<img src={card4} className="card-img-top" alt="..." style={{ objectFit: 'cover', height: '12rem', border: '4px solid white' }} />
 					<div className="card-body">
-						<p className="card-text">The platform fosters a sense of community among IT professionals by providing a space for open dialogue about compensation. Users can connect with others in similar roles, share experiences, and gain insights into various career paths. This networking opportunity can lead to a stronger professional community.</p>
+						<p className="card-text">The platform cultivates a sense of community among IT professionals by providing a space for users to anonymously share their compensation details. This one-way sharing of salary data allows users to gain insights into industry compensation trends and make informed decisions about their careers.</p>
 					</div>
 				</div>
 			</div>

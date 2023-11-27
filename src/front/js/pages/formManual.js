@@ -10,33 +10,33 @@ export const FormManual = () => {
 
             <form className='mx-auto p-3 border-1 w-25' style={{ boxShadow: '0 5px 9px rgba(0, 0, 0, 0.5)', marginTop: '20px' }}>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label" style={{ color: 'white' }}>Specific role</label>
-                    <input type="text" className="form-control" id="exampleInputPassword1" />
+                    <label htmlFor="roleInput" className="form-label" style={{ color: 'white' }}>Specific role</label>
+                    <input type="text" className="form-control" id="roleInput" />
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label" style={{ color: 'white' }}>IT category</label>
-                    <input type="text" className="form-control" id="exampleInputPassword1" />
+                    <label htmlFor="categoryInput" className="form-label" style={{ color: 'white' }}>IT category</label>
+                    <input type="text" className="form-control" id="categoryInput" />
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label" style={{ color: 'white' }}>Years of experience</label>
-                    <input type="text" className="form-control" id="exampleInputPassword1" />
+                    <label htmlFor="yearsInput" className="form-label" style={{ color: 'white' }}>Years of experience</label>
+                    <input type="text" className="form-control" id="yearsInput" />
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label" style={{ color: 'white' }}>City</label>
-                    <input type="text" className="form-control" id="exampleInputPassword1" />
+                    <label htmlFor="cityInput" className="form-label" style={{ color: 'white' }}>City</label>
+                    <input type="text" className="form-control" id="cityInput" />
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label" style={{ color: 'white' }}>Country</label>
-                    <input type="text" className="form-control" id="exampleInputPassword1" />
+                    <label htmlFor="countryInput" className="form-label" style={{ color: 'white' }}>Country</label>
+                    <input type="text" className="form-control" id="countryInput" />
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label" style={{ color: 'white' }}>Monthly salary</label>
-                    <input type="text" className="form-control" id="exampleInputPassword1" />
+                    <label htmlFor="salaryInput" className="form-label" style={{ color: 'white' }}>Monthly salary</label>
+                    <input type="text" className="form-control" id="salaryInput" />
                 </div>
 
 
