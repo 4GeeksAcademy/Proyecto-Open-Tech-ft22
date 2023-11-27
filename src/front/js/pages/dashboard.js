@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../../styles/dashboard.css";
 
+import { BasicTabs } from "./basicTabs";
+
 export const Dashboard = () => {
+    const [activeComponent, setActiveComponent] = useState('BasicTabs');  // Initial active component
+
+    const handleButtonClick = (componentName) => {
+        setActiveComponent(componentName);
+    };
+
+
     return (
         <div className="text-center">
             <div className="pseudo-navbar dashboardBg">
@@ -11,13 +20,17 @@ export const Dashboard = () => {
                 </h1>
 
                 <div className="button-container mt-5">
-                    <Link to="#" className="buttonStyle">Button 1</Link>
-                    <Link to="#" className="buttonStyle">Button 2</Link>
+                    <Link to="#" className="buttonStyle" onClick={() => handleButtonClick('BasicTabs')}>Summary</Link>
+                    <Link to="#" className="buttonStyle" onClick={() => handleButtonClick('Charts')}>Charts</Link>
                     <Link to="#" className="buttonStyle">Button 3</Link>
                     <Link to="#" className="buttonStyle">Button 4</Link>
                 </div>
 
             </div>
+
+            {activeComponent === 'BasicTabs' && <BasicTabs />}
+            {/* Add more conditions for other components */}
+
         </div>
     );
 };
