@@ -31,7 +31,6 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
-CORS(app, resources={r"/api/*": {"origins": "https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3000.app.github.dev"}})
 
 mail_settings = {
     "MAIL_SERVER": 'smtp.gmail.com',
@@ -98,6 +97,44 @@ def admin_user_route():
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 
     return response
+
+@app.route('/api/category', methods=['POST', 'OPTIONS'])
+def handle_category():
+    if request.method == 'OPTIONS':
+        # Pre-flight request. Reply successfully:
+        return jsonify(success=True), 200
+    elif request.method == 'POST':
+        # Handle POST request
+        ...
+
+
+
+
+
+
+
+
+#attempt at adding information to roles table:
+@app.route("/admin/role/new", methods=['POST'])
+def create_role():
+    roles_to_add = ["Role 1", "Role 2", "Role 3"]
+    for role_title in roles_to_add:
+        new_role = Role(title=role_title, category_id=1) #replace 1 with actual category id
+        db.session.add(new_role)
+    db.session.commit()
+    return {"roles": [role.title for role in Role.query.all()]}
+
+@app.route("/admin/role")
+def get_roles():
+    roles = Role.query.all()
+    return {"roles": [role.serialize() for role in roles]}
+
+
+
+
+
+
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':

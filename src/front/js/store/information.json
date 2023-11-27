@@ -1,0 +1,14 @@
+{
+    "categoryData": {
+        "name": "Example Category",
+        "description": "This is an example category."
+    },
+    "roleData": {
+        "name": "Example Role",
+        "description": "This is an example role."
+    },
+    "salaryData": {
+        "amount": 50000,
+        "role": "Example Role"
+    }
+}

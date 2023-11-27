@@ -13,6 +13,7 @@ import { Footer } from "./component/footer";
 import { Register } from "./pages/register";
 import { FormManual } from "./pages/formManual";
 import { Dashboard } from "./pages/dashboard";
+import AdminInit from "./pages/adminInit";
 
 //create your first component
 const Layout = () => {
@@ -32,6 +33,7 @@ const Layout = () => {
                         <Route element={<Register />} path="/register" />
                         <Route element={<FormManual />} path="/formManual" />  {/*make this route secret */}
                         <Route element={<Dashboard />} path="/dashboard" />
+                        <Route element={<AdminInit />} path="/adminInit" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />

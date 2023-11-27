@@ -9,7 +9,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 # from flask_mail import Mail, Message
 
 api = Blueprint('api', __name__)
-CORS(api)
+#CORS(api) commented to debug
 
 
 @api.route('/hello', methods=['POST'])

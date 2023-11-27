@@ -1,11 +1,12 @@
 import { toast } from 'react-toastify';
+import baseData from './information.json';
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			username: '',
-			password: '',
-			name: '',
+			username: [],
+			password: [],
+			name: [],
 			apiURL: 'https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3001.app.github.dev'
 		},
 		actions: {
@@ -30,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			register: (credentials) => {
 				const { apiURL } = getStore();
 				//console.log(credentials)
-				const url = `${apiURL}/admin/user`;
+				const url = `${apiURL}/api/register`;
 				const options = {
 					method: 'POST',
 					body: JSON.stringify(credentials), //  { username: 'lili.aqueveque', password: '123456' }
@@ -77,6 +78,57 @@ const getState = ({ getStore, getActions, setStore }) => {
 					[name]: value
 				})
 			},
+
+
+
+
+
+
+
+
+
+
+			//ACTIONS FROM THE ADMINS
+			postSalary: async () => {
+				const response = await fetch(getStore().apiURL + '/api/salary', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(baseData.salaryData)
+				});
+				const data = await response.json();
+				return data;
+			},
+
+			postRole: async () => {
+				const response = await fetch(getStore().apiURL + '/api/role', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(baseData.roleData)
+				});
+				const data = await response.json();
+				return data;
+			},
+
+			postCategory: async () => {
+				const response = await fetch(getStore().apiURL + '/api/category', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					credentials: 'include',  // Add this line
+					body: JSON.stringify(baseData.categoryData)
+				});
+				const data = await response.json();
+				return data;
+			},
+
+
+
+
 
 		}
 	}

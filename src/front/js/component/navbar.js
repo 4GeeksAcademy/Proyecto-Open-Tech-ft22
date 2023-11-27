@@ -11,6 +11,9 @@ export const Navbar = () => {
 					<span className="navbar-brand mb-0 openTech-Logo"><img src={openTechLogo} style={{ width: '160px' }} /></span>
 				</Link>
 				<div className="ml-auto">
+					<Link to="/adminInit">
+						<button className="btn submitSalaryNav me-5" style={{ backgroundColor: '#4f89ee' }}>Temporary admin access</button>
+					</Link>
 					<Link to="/dashboard">
 						<button className="btn submitSalaryNav me-5" style={{ backgroundColor: '#4f89ee' }}>Temporary dashboard access</button>
 					</Link>
