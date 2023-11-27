@@ -22,6 +22,7 @@ def handle_hello():
     return jsonify(response_body), 200
 
 
+
 @api.route('/registration', methods=['POST'])
 def signUp():
     username = request.json.get("username", None)
@@ -45,6 +46,7 @@ def signUp():
     return jsonify({"msg": "User added succesfully"}), 200
 
 
+
 @api.route('/login', methods=['POST'])
 def create_token():
     email = request.json.get("email", None)
@@ -56,57 +58,68 @@ def create_token():
     return jsonify({"token": access_token, "user_id": user.id})
 
 
-@api.route('/resetpassword', methods=['POST'])
-@jwt_required()
-def reset_password():
-    email = get_jwt_identity()
-    password = request.json.get("password", None)
-
-    user = User.query.filter_by(email=email).first()
-    if user is None:
-        return jsonify({"msg": "User with this email doesn't exist."}), 401
-
-    user.password = password
-    db.session.commit()
-
-    return jsonify({"msg": "success"}), 200
-
+#Category routes
 @api.route('/category', methods=['GET'])
 def get_categories():
     categories = Category.query.all()
     return jsonify([category.serialize() for category in categories]), 200
 
+
+@api.route('/category', methods=['POST'])
+def create_categories():
+    data = request.get_json()
+    category = Category(
+        name=data.get('name')
+    )
+    db.session.add(category)
+    db.session.commit()
+    return jsonify(category.serialize()), 200
+
+
+
+#Role routes
 @api.route('/role', methods=['GET'])
 def get_roles():
     roles = Role.query.all()
     return jsonify([role.serialize() for role in roles]), 200
 
+
+
+@api.route('/role', methods=['POST'])
+def create_roles():
+    data = request.get_json()
+    role = Role(
+        title=data.get('title'),
+        category_id=data.get('category_id')  # Add this line
+    )
+    db.session.add(role)
+    db.session.commit()
+    return jsonify(role.serialize()), 200
+
+
+
+
+#Salary routes
+@api.route('/salary', methods=['GET'])
+def get_salaries():
+    salaries = Salary.query.all()
+    return jsonify([salary.serialize() for salary in salaries]), 200
+
+
+
 @api.route('/salary', methods=['POST'])
-@jwt_required()
-def add_salary():
-    data = request.json
-    user_id = get_jwt_identity()
-
-    user = User.query.get(user_id)
-    if not user:
-        return jsonify({'message': 'User not found'}), 404
-
+def create_salaries():
+    data = request.get_json()
     salary = Salary(
         amount=data.get('amount'),
         years_of_experience=data.get('years_of_experience'),
         city=data.get('city'),
         country=data.get('country'),
-        user_id=user_id
+        user_id=data.get('user_id')
     )
-
     db.session.add(salary)
     db.session.commit()
+    return jsonify(salary.serialize()), 200
 
-    return jsonify({'message': 'Salary added successfully'}), 201
 
-@api.route('/salary', methods=['GET'])
-@jwt_required()
-def get_salaries():
-    user_id = get_jwt_identity()
-    salaries = Salary.query.filter_by(user_id=user_id).all()
-    return jsonify([salary.serialize() for salary in salaries]), 200
+

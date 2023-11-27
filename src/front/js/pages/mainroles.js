@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import RoleCard from '../component/roleCard';
 import styled from 'styled-components';
+import { Context } from '../store/appContext';
 
 function MainRoles() {
     return (
@@ -49,6 +50,14 @@ const types = ['Software Development', 'Cybersecurity', 'Data Science and Analyt
 function TabGroup() {
     const [active, setActive] = useState(types[0]);
     const [roleCards, setRoleCards] = useState(roles['Software Development']); // Initialize with the roles for 'Software Development'
+    const { store, actions } = useContext(Context);
+
+
+    useEffect(() => {
+        actions.getRoleAmount();
+    }, []);
+
+
 
     const handleTabClick = (type) => {
         setActive(type);
@@ -80,6 +89,7 @@ function TabGroup() {
                     </div>
                 ))}
             </div>
+            Role Amount: {store.totalAmount}
         </>
     );
 }

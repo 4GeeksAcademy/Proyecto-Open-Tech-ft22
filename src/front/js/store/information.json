@@ -1,14 +1,17 @@
 {
     "categoryData": {
-        "name": "Example Category",
-        "description": "This is an example category."
+        "name": "Example Category"
     },
     "roleData": {
-        "name": "Example Role",
-        "description": "This is an example role."
+        "title": "Example Role",
+        "category_id": "This is an example cateogory."
     },
     "salaryData": {
-        "amount": 50000,
-        "role": "Example Role"
+        "amount": 1000000,
+        "years_of_experience": 4,
+        "city": "Valparaiso",
+        "country": "Chile",
+        "user_id": "user_id",
+        "category_id": "category_id"
     }
 }

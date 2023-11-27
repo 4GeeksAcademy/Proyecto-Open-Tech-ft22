@@ -7,7 +7,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 			username: [],
 			password: [],
 			name: [],
-			apiURL: 'https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3001.app.github.dev'
+			apiURL: 'https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3001.app.github.dev',
+			roles: [{
+				"title": "Example Role 1",
+				"category_id": "This is an example role."
+			},
+			{
+				"title": "Example Role 2",
+				"category_id": "This is an example role."
+			},
+			],
+			categories: [{
+				"name": "Example Category 1"
+			},
+			{
+				"name": "Example Category 2"
+			},
+			],
+			salaries: [{
+				"amount": "Example Salary 1",
+				"years_of_experience": "This is an example salary.",
+				"city": "Example City 1",
+				"country": "Example Country 1",
+				"user_id": "Example User 1",
+				"category_id": "Example Category 1",
+			},
+			{
+				"amount": "Example Salary 2",
+				"years_of_experience": "This is an example salary.",
+				"city": "Example City 2",
+				"country": "Example Country 2",
+				"user_id": "Example User 2",
+				"category_id": "Example Category 2",
+			}]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -124,6 +156,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				const data = await response.json();
 				return data;
+			},
+
+
+			getRoles: async () => {
+				const response = await fetch(getStore().apiURL + '/api/role');
+				const data = await response.json();
+				setStore({
+					roles: data
+				})
+			},
+
+			getCategories: async () => {
+				const response = await fetch(getStore().apiURL + '/api/category');
+				const data = await response.json();
+				setStore({
+					category: data
+				})
+			},
+
+			getSalaries: async () => {
+				const response = await fetch(getStore().apiURL + '/api/salary');
+				const data = await response.json();
+				setStore({
+					salary: data
+				})
+			},
+
+
+
+
+
+
+
+
+			//specifics
+			getRoleAmount: async () => {
+				const response = await fetch('/api/salary'); // Replace with your API endpoint
+				const salaries = await response.json();
+				const totalAmount = salaries.reduce((total, salary) => total + salary.amount, 0);
+				setStore({ totalAmount });
 			},
 
 
