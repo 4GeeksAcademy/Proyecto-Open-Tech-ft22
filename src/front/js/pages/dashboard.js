@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import "../../styles/dashboard.css";
 
 import { ChartsComponent } from "./chartsComponent";
+import MainRoles from './mainroles';
 
 export const Dashboard = () => {
     const [activeComponent, setActiveComponent] = useState('BasicTabs');  // Initial active component
@@ -20,6 +21,7 @@ export const Dashboard = () => {
                 </h1>
 
                 <div className="button-container mt-5">
+                    <Link to="#" className="buttonStyle" onClick={() => handleButtonClick('MainRoles')}>Main</Link>
                     <Link to="#" className="buttonStyle" onClick={() => handleButtonClick('ChartsComponent')}>Charts</Link>
                     <Link to="#" className="buttonStyle">Button 3</Link>
                     <Link to="#" className="buttonStyle">Button 4</Link>
@@ -27,6 +29,7 @@ export const Dashboard = () => {
 
             </div>
 
+            {activeComponent === 'MainRoles' && <MainRoles />}
             {activeComponent === 'ChartsComponent' && <ChartsComponent />}
             {/* Add more conditions for other components */}
 
