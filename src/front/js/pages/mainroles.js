@@ -42,7 +42,6 @@ const roles = {
     'Data Science and Analytics': ['Data Scientist', 'Data Analyst', 'Machine Learning Engineer', 'Business Intelligence Analyst', 'Data Engineer', 'Statistician', 'Quantitative Analyst', 'Operations Analyst', 'Big Data Engineer', 'Data Visualization Specialist'],
     'Network and Systems Administration': ['Network Administrator', 'Systems Administrator', 'Network Engineer', 'Systems Engineer', 'Cloud Administrator', 'IT Support Specialist', 'Database Administrator', 'Virtualization Engineer', 'Wireless Communication Engineer', 'IT Security Administrator'],
     'IT Project Management': ['Project Manager', 'Scrum Master', 'Product Owner', 'IT Program Manager', 'Agile Coach', 'Business Analyst', 'Release Manager', 'Quality Assurance Manager', 'IT Service Manager', 'Change Management Specialist']
-    // Add the other categories here...
 };
 
 
@@ -73,7 +72,7 @@ function TabGroup() {
                 ))}
             </ButtonGroup>
             <p />
-            <p> Your category selection: {active} </p>
+            <p style={{ color: 'white' }}> Your category selection: {active} </p>
             <div className="mx-auto w-75" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
                 {roleCards.map((roleCard, index) => (
                     <div key={index} style={{ width: '17%', margin: '10px' }}>
