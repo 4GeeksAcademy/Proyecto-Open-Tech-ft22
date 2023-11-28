@@ -69,16 +69,21 @@ def get_salaries():
 
 @api.route('/salary', methods=['POST'])
 def create_salaries():
-    data = request.get_json()
-    salary = Salary(
-        category=data.get('category'),
-        role=data.get('role'),
-        amount=data.get('amount'),
-        years_of_experience=data.get('years_of_experience'),
-        city=data.get('city'),
-        country=data.get('country'),
-        user_id=data.get('user_id')
-    )
-    db.session.add(salary)
-    db.session.commit()
-    return jsonify(salary.serialize()), 200
+    print(data)
+    try:
+        data = request.get_json()
+        """salary = Salary(
+            category=data.get('category'),
+            role=data.get('role'),
+            amount=data.get('amount'),
+            years_of_experience=data.get('years_of_experience'),
+            city=data.get('city'),
+            country=data.get('country'),
+            user_id=data.get('user_id')
+        )
+        db.session.add(salary)
+        db.session.commit()
+        return jsonify(data), 200"""
+    except Exception as e:
+        return str(e), 500
+

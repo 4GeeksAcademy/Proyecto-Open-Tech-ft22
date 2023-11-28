@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Context } from '../store/appContext';
 
 export const FormManual = () => {
+    const { store, actions } = useContext(Context)
     const [salary, setSalary] = useState(75000);
     const [category, setCategory] = useState("");
     const [country, setCountry] = useState("");
-    const [experience, setExperience] = useState(0);
+    const navigate = useNavigate();
 
     const cities = {
-        Chile: ["Santiago", "Valparaiso", "Concepcion"],
+        Chile: ["Arica", "Iquique", "Santiago", "Valparaiso", "Concepcion"],
         // Add more countries and cities as needed
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Prevents the default form submission behavior
+        actions.handleSubmitForm(e, navigate);
     };
 
     const roles = {
@@ -26,10 +33,10 @@ export const FormManual = () => {
                 Submit information
             </h1>
 
-            <form className='mx-auto p-3 border-1 w-50' style={{ boxShadow: '0 5px 9px rgba(0, 0, 0, 0.5)', marginTop: '20px' }}>
+            <form onSubmit={handleSubmit} className='mx-auto p-3 border-1 w-50' style={{ boxShadow: '0 5px 9px rgba(0, 0, 0, 0.5)', marginTop: '20px' }}>
                 <div className="mb-3">
                     <label htmlFor="categoryInput" className="form-label" style={{ color: 'white' }}>IT category</label>
-                    <select className="form-control" id="categoryInput" value={category} onChange={e => setCategory(e.target.value)}>
+                    <select className="form-control" id="categoryInput" name="category" value={store.category} onChange={actions.handleChange} required>
                         <option value="">Select a category</option>
                         <option value="software">Software Development</option>
                         <option value="security">Cybersecurity</option>
@@ -41,8 +48,9 @@ export const FormManual = () => {
 
                 <div className="mb-3">
                     <label htmlFor="roleInput" className="form-label" style={{ color: 'white' }}>Specific role</label>
-                    <select className="form-control" id="roleInput">
-                        {category && roles[category].map(role => (
+                    <select className="form-control" id="roleInput" name="role" onChange={actions.handleChange} value={store.role} required>
+                        <option value="">Select a role</option>
+                        {store.category && roles[store.category].map(role => (
                             <option key={role} value={role}>{role}</option>
                         ))}
                     </select>
@@ -50,12 +58,12 @@ export const FormManual = () => {
 
                 <div className="mb-3">
                     <label htmlFor="experienceInput" className="form-label" style={{ color: 'white' }}>Years of Experience</label>
-                    <input type="number" className="form-control" id="experienceInput" min="0" max="50" value={experience} onChange={e => setExperience(e.target.value)} />
+                    <input type="number" className="form-control" id="experienceInput" name="years_of_experience" min="0" max="50" value={store.years_of_experience} onChange={actions.handleChange} required />
                 </div>
 
                 <div className="mb-3">
                     <label htmlFor="countryInput" className="form-label" style={{ color: 'white' }}>Country</label>
-                    <select className="form-control" id="countryInput" value={country} onChange={e => setCountry(e.target.value)}>
+                    <select className="form-control" id="countryInput" name="country" value={store.country} onChange={actions.handleChange} required>
                         <option value="">Select a country</option>
                         <option value="Chile">Chile</option>
                     </select>
@@ -63,8 +71,8 @@ export const FormManual = () => {
 
                 <div className="mb-3">
                     <label htmlFor="cityInput" className="form-label" style={{ color: 'white' }}>City</label>
-                    <select className="form-control" id="cityInput">
-                        {country && cities[country].map(city => (
+                    <select className="form-control" id="cityInput" name="city" onChange={actions.handleChange} value={store.city} required>
+                        {store.country && cities[store.country].map(city => (
                             <option key={city} value={city}>{city}</option>
                         ))}
                     </select>
@@ -73,12 +81,12 @@ export const FormManual = () => {
 
                 <div className="mb-3">
                     <label htmlFor="salaryInput" className="form-label" style={{ color: 'white' }}>Annual salary</label>
-                    <input type="range" className="form-control" id="salaryInput" min="7000" max="150000" step="100" value={salary} onChange={e => setSalary(e.target.value)} />
+                    <input type="range" className="form-control" id="salaryInput" name="amount" min="7000" max="150000" step="100" value={store.amount} onChange={actions.handleChange} required />
                     <output id="salaryOutput">{salary}</output>
                 </div>
 
 
-                <button className="btn w-100" style={{ backgroundColor: '#4f89ee' }}>Submit</button>
+                <button type="submit" className="btn w-100" style={{ backgroundColor: '#4f89ee' }}>Submit</button>
             </form>
 
 

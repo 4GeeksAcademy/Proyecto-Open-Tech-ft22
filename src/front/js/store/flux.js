@@ -10,38 +10,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			password: [],
 			name: [],
 			apiURL: 'https://psychic-space-enigma-qw9gwj7rxg7f9jx6-3001.app.github.dev',
-			roles: [{
-				"title": "Example Role 1",
-				"category_id": "This is an example role."
-			},
-			{
-				"title": "Example Role 2",
-				"category_id": "This is an example role."
-			},
-			],
-			categories: [{
-				"name": "Example Category 1"
-			},
-			{
-				"name": "Example Category 2"
-			},
-			],
-			salaries: [{
-				"amount": "Example Salary 1",
-				"years_of_experience": "This is an example salary.",
-				"city": "Example City 1",
-				"country": "Example Country 1",
-				"user_id": "Example User 1",
-				"category_id": "Example Category 1",
-			},
-			{
-				"amount": "Example Salary 2",
-				"years_of_experience": "This is an example salary.",
-				"city": "Example City 2",
-				"country": "Example Country 2",
-				"user_id": "Example User 2",
-				"category_id": "Example Category 2",
-			}]
+			roles: [],
+			categories: [],
+			salaries: [],
+			category: "",
+			role: "",
+			years_of_experience: "",
+			country: "",
+			amount: "",
+			city: ""
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -56,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { username, password, name, email } = getStore();
 				const { register } = getActions();
 				register({ username, password, name, email }, navigate);
-				console.log("Enviando Formulario");
+				console.log("Enviando Formulario Register");
 			},
 
 
@@ -113,7 +90,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 
 					const data = await response.json();
-					setStore({ user: data.user, token: data.token });
+					setStore({ user: data.user, token: data.token, user_id: data.user.id });
+					console.log(getStore().user_id);
 					sessionStorage.setItem('user', JSON.stringify(data.user))
 					sessionStorage.setItem('token', JSON.stringify(data.token))
 					toast.success(data.success)
@@ -145,10 +123,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			logout: () => {
 				setStore({
-					user: null, token: null
+					user: null, token: null, user_id: null
 				})
 				sessionStorage.removeItem('user')
 				sessionStorage.removeItem('token')
+				navigate('/'); // Redirects the user to the home page
 			},
 
 
@@ -180,6 +159,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
+
+
+
+
+			handleSubmitForm: (e, navigate) => {
+				e.preventDefault();
+				const { category, role, years_of_experience, country, city, amount } = getStore();
+				const { uploadForm } = getActions();
+				uploadForm({ category, role, years_of_experience, country, city, amount }, navigate);
+				console.log("Enviando Formulario Form");
+			},
+
+
+
+
+			uploadForm: (credentials, navigate) => {
+				const { apiURL, user_id } = getStore();
+				// Add user_id to the credentials object
+				credentials.user_id = user_id;
+				// See all credentials in the console
+				console.log(credentials)
+				const url = `${apiURL}/api/salary`;
+				const options = {
+					method: 'POST',
+					body: JSON.stringify(credentials),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				}
+				fetch(url, options)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data)
+
+						if (data.msg) {
+							toast.error(data.msg)
+						} else {
+							setStore({
+								currentUser: data
+							})
+							toast.success(data.success)
+							navigate('/dashboard')
+
+						}
+
+					})
+					.catch(error => console.error('Error during fetch:', error));
+			},
 
 
 

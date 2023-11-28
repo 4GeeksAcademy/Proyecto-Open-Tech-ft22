@@ -47,7 +47,7 @@ class Salary(db.Model):
     years_of_experience = db.Column(db.Integer, nullable=False)
     country = db.Column(db.String(120), nullable=False)
     city = db.Column(db.String(120), nullable=False)
-    amount = db.Column(db.Float, nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
 
     def __repr__(self):
