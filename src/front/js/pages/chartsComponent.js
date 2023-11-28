@@ -67,6 +67,7 @@ export const ChartsComponent = () => {
                 <h1>Linea y no de la dura</h1>
                 <Line
                     data={data} />
+                    
             </div>
 
         </div>
