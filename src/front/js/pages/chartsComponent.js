@@ -14,7 +14,7 @@ export const ChartsComponent = () => {
     const data = {
         labels: labels,
         datasets: [{
-            label: "My First Dataset",
+            label: "Grafico por el poder Perruno",
             data: values,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -58,8 +58,17 @@ export const ChartsComponent = () => {
                 <Bar
                     data={data} />
             </div>
-            <div>char 2</div>
-            <div>char 3</div>
+            <div>
+                <h1>Tortita</h1>
+                <Doughnut
+                    data={data} />
+            </div>
+            <div>
+                <h1>Linea y no de la dura</h1>
+                <Line
+                    data={data} />
+                    
+            </div>
 
         </div>
     );
