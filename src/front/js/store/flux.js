@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: [],
 			password: [],
 			name: [],
-			apiURL: 'https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3001.app.github.dev',
+			apiURL: 'https://miniature-winner-qw9gwj7rg4g24xq6-3001.app.github.dev',
 			roles: [{
 				"title": "Example Role 1",
 				"category_id": "This is an example role."
