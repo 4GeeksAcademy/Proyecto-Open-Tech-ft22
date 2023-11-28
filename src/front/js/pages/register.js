@@ -1,18 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const Register = () => {
     const navigate = useNavigate();
     const { store, actions } = useContext(Context)
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevents the default form submission behavior
+
+        if (store.password !== confirmPassword) {
+            toast("Passwords do not match", { type: "error", theme: "dark" });
+            return;
+        }
+
         actions.handleSubmitRegister(e, navigate);
     };
 
     return (
-        <div className="pseudo-navbar" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div className="pseudo-navbar-register" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h1 style={{ background: '-webkit-linear-gradient(left, blue, white)', WebkitBackgroundClip: 'text', color: 'transparent', paddingTop: '20px' }}>
                 Registration
             </h1>
@@ -33,6 +41,18 @@ export const Register = () => {
                     <label htmlFor="password" className="form-label" style={{ color: 'white' }}>Password:</label>
                     <input type="password" className="form-control" id="password" name="password" onChange={actions.handleChange} value={store.password} required />
                 </div>
+
+
+
+
+                <div className="form-group mb-3">
+                    <label htmlFor="confirmPassword" className="form-label" style={{ color: 'white' }}>Confirm Password:</label>
+                    <input type="password" className="form-control" id="confirmPassword" name="confirmPassword" onChange={e => setConfirmPassword(e.target.value)} value={confirmPassword} required />
+                </div>
+
+
+
+
                 <button type="submit" className='btn btn-primary w-100' style={{ backgroundColor: '#4f89ee' }}>Sign up</button>
             </form>
             <p className='mt-3' style={{ fontSize: '14px', color: 'white' }}>

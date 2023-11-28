@@ -121,7 +121,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log("In catch block"); // Add this line
 					console.error('Error:', error.message);
-					toast.error(`Error: ${error.message}`);
+					toast(`Error: ${error.message}`, { type: "error", theme: "dark" });
 				}
 			},
 

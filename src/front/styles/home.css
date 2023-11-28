@@ -5,7 +5,15 @@
     background-repeat: no-repeat;
     background-position: center center;
     color: #7A26C1;
-    height: 550px;
+    height: 510px;
+    font-family: 'Righteous', sans-serif;
+}
+.pseudo-navbar-register {
+    background-image: url('https://cdn.dribbble.com/users/1770290/screenshots/6183149/bg_79.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 650px;
     font-family: 'Righteous', sans-serif;
 }
 
