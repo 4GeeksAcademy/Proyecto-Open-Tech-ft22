@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import baseData from './information.json';
 
@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: [],
 			password: [],
 			name: [],
-			apiURL: 'https://miniature-winner-qw9gwj7rg4g24xq6-3001.app.github.dev',
+			apiURL: 'https://psychic-space-enigma-qw9gwj7rxg7f9jx6-3001.app.github.dev',
 			roles: [{
 				"title": "Example Role 1",
 				"category_id": "This is an example role."
@@ -108,7 +108,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 
 					if (!response.ok) {
-						throw new Error('Login failed');
+						const data = await response.json();
+						throw new Error(data.msg);
 					}
 
 					const data = await response.json();
@@ -118,8 +119,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					toast.success(data.success)
 					navigate('/dashboard');
 				} catch (error) {
-					console.error('Error:', error);
-					console.log(username, password)
+					console.log("In catch block"); // Add this line
+					console.error('Error:', error.message);
+					toast.error(`Error: ${error.message}`);
 				}
 			},
 

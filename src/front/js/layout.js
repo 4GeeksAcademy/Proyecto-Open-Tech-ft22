@@ -14,7 +14,7 @@ import { Register } from "./pages/register";
 import { FormManual } from "./pages/formManual";
 import { Dashboard } from "./pages/dashboard";
 import AdminInit from "./pages/adminInit";
-import { Toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 //create your first component
 const Layout = () => {

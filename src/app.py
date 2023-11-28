@@ -47,7 +47,7 @@ mail = Mail(app)
 app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
 # Allow CORS requests to this API
-CORS(app, resources={r"/*": {"origins": "https://miniature-winner-qw9gwj7rg4g24xq6-3000.app.github.dev"}})
+CORS(app, resources={r"/*": {"origins": "https://psychic-space-enigma-qw9gwj7rxg7f9jx6-3000.app.github.dev"}})
 
 
 # add the admin
