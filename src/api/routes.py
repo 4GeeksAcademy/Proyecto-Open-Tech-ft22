@@ -69,10 +69,11 @@ def get_salaries():
 
 @api.route('/salary', methods=['POST'])
 def create_salaries():
-    print(data)
-    try:
+    if request.method == 'OPTIONS':
+        return {}, 200
+    else:
         data = request.get_json()
-        """salary = Salary(
+        salary = Salary(
             category=data.get('category'),
             role=data.get('role'),
             amount=data.get('amount'),
@@ -83,7 +84,6 @@ def create_salaries():
         )
         db.session.add(salary)
         db.session.commit()
-        return jsonify(data), 200"""
-    except Exception as e:
-        return str(e), 500
+        return jsonify(data), 200
+
 
