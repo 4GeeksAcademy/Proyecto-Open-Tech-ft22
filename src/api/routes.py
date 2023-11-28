@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Login, Category, Role, Salary
+from api.models import db, User, Login, Salary
 from api.utils import generate_sitemap, APIException
 from flask_cors import cross_origin, CORS
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
@@ -58,46 +58,6 @@ def create_token():
     return jsonify({"token": access_token, "user": user.serialize(), "success": "User logged in succesfully"}), 200
 
 
-#Category routes
-@api.route('/category', methods=['GET'])
-def get_categories():
-    categories = Category.query.all()
-    return jsonify([category.serialize() for category in categories]), 200
-
-
-@api.route('/category', methods=['POST'])
-def create_categories():
-    data = request.get_json()
-    category = Category(
-        name=data.get('name')
-    )
-    db.session.add(category)
-    db.session.commit()
-    return jsonify(category.serialize()), 200
-
-
-
-#Role routes
-@api.route('/role', methods=['GET'])
-def get_roles():
-    roles = Role.query.all()
-    return jsonify([role.serialize() for role in roles]), 200
-
-
-
-@api.route('/role', methods=['POST'])
-def create_roles():
-    data = request.get_json()
-    role = Role(
-        title=data.get('title'),
-        category_id=data.get('category_id')  # Add this line
-    )
-    db.session.add(role)
-    db.session.commit()
-    return jsonify(role.serialize()), 200
-
-
-
 
 #Salary routes
 @api.route('/salary', methods=['GET'])
@@ -111,6 +71,8 @@ def get_salaries():
 def create_salaries():
     data = request.get_json()
     salary = Salary(
+        category=data.get('category'),
+        role=data.get('role'),
         amount=data.get('amount'),
         years_of_experience=data.get('years_of_experience'),
         city=data.get('city'),
@@ -120,6 +82,3 @@ def create_salaries():
     db.session.add(salary)
     db.session.commit()
     return jsonify(salary.serialize()), 200
-
-
-

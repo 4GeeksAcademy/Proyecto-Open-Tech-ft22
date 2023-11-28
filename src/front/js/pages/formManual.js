@@ -4,6 +4,13 @@ import { Link } from 'react-router-dom';
 export const FormManual = () => {
     const [salary, setSalary] = useState(75000);
     const [category, setCategory] = useState("");
+    const [country, setCountry] = useState("");
+    const [experience, setExperience] = useState(0);
+
+    const cities = {
+        Chile: ["Santiago", "Valparaiso", "Concepcion"],
+        // Add more countries and cities as needed
+    };
 
     const roles = {
         software: ['Frontend Developer', 'Backend Developer', 'Full-stack Developer', 'Mobile App Developer', 'DevOps Engineer', 'Software Architect', 'UI/UX Designer', 'Software Engineer in Test', 'Game Developer', 'Embedded Systems Developer'],
@@ -42,18 +49,25 @@ export const FormManual = () => {
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="yearsInput" className="form-label" style={{ color: 'white' }}>Years of experience</label>
-                    <input type="text" className="form-control" id="yearsInput" />
+                    <label htmlFor="experienceInput" className="form-label" style={{ color: 'white' }}>Years of Experience</label>
+                    <input type="number" className="form-control" id="experienceInput" min="0" max="50" value={experience} onChange={e => setExperience(e.target.value)} />
                 </div>
 
                 <div className="mb-3">
                     <label htmlFor="countryInput" className="form-label" style={{ color: 'white' }}>Country</label>
-                    <input type="text" className="form-control" id="countryInput" />
+                    <select className="form-control" id="countryInput" value={country} onChange={e => setCountry(e.target.value)}>
+                        <option value="">Select a country</option>
+                        <option value="Chile">Chile</option>
+                    </select>
                 </div>
 
                 <div className="mb-3">
                     <label htmlFor="cityInput" className="form-label" style={{ color: 'white' }}>City</label>
-                    <input type="text" className="form-control" id="cityInput" />
+                    <select className="form-control" id="cityInput">
+                        {country && cities[country].map(city => (
+                            <option key={city} value={city}>{city}</option>
+                        ))}
+                    </select>
                 </div>
 
 

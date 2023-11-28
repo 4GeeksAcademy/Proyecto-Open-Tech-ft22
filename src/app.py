@@ -99,43 +99,15 @@ def admin_user_route():
 
     return response
 
-@app.route('/api/category', methods=['POST', 'OPTIONS'])
-def handle_category():
+
+@app.route('/api/salary', methods=['POST', 'OPTIONS'])
+def handle_salary():
     if request.method == 'OPTIONS':
         # Pre-flight request. Reply successfully:
         return jsonify(success=True), 200
     elif request.method == 'POST':
         # Handle POST request
         ...
-
-
-
-
-
-
-
-
-
-
-
-#attempt at adding information to roles table:
-@app.route("/admin/role/new", methods=['POST'])
-def create_role():
-    roles_to_add = ["Role 1", "Role 2", "Role 3"]
-    for role_title in roles_to_add:
-        new_role = Role(title=role_title, category_id=1) #replace 1 with actual category id
-        db.session.add(new_role)
-    db.session.commit()
-    return {"roles": [role.title for role in Role.query.all()]}
-
-@app.route("/admin/role")
-def get_roles():
-    roles = Role.query.all()
-    return {"roles": [role.serialize() for role in roles]}
-
-
-
-
 
 
 

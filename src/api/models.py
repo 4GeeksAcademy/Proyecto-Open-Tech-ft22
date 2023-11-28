@@ -38,47 +38,16 @@ class Login(db.Model):
             # do not serialize the password, its a security breach
         }
 
-class Category(db.Model):
-    __tablename__='category'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
-
-    roles = db.relationship('Role', backref='category', lazy=True)
-
-    def __repr__(self):
-        return f'<Category {self.id} {self.name}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "name": self.name
-        }
-
-    
-class Role(db.Model):
-    __tablename__='roles'
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(120), nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False) # Specify the foreign key relationship
-
-    def __repr__(self):
-        return f'<Role {self.id}>'
-    
-    def serialize(self):
-        return {
-            "id": self.id,
-            "title": self.title,
-            "category_id": self.category_id
-        }
-
 
 class Salary(db.Model):
     __tablename__='salary'
     id = db.Column(db.Integer, primary_key=True)
-    amount = db.Column(db.Float, nullable=False)
+    category = db.Column(db.String(120), nullable=False)
+    role = db.Column(db.String(120), nullable=False)
     years_of_experience = db.Column(db.Integer, nullable=False)
-    city = db.Column(db.String(120), nullable=False)
     country = db.Column(db.String(120), nullable=False)
+    city = db.Column(db.String(120), nullable=False)
+    amount = db.Column(db.Float, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
 
     def __repr__(self):
@@ -87,6 +56,10 @@ class Salary(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "amount": self.amount,
-            "city" : self.city
+            "category": self.category,
+            "role": self.role,
+            "years_of_experience": self.years_of_experience,
+            "country": self.country,
+            "city" : self.city,
+            "amount": self.amount
         }
