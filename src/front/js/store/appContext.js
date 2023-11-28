@@ -24,9 +24,11 @@ const injectContext = PassedComponent => {
 		useEffect(() => {
 
 			//state.actions.checkCurrentUser()
+			state.actions.checkUser()
 			state.actions.getRoles()
 			state.actions.getSalaries()
 			state.actions.getCategories()
+			
 
 
 		}, []);

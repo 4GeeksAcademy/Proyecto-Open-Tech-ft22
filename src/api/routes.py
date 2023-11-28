@@ -43,7 +43,7 @@ def signUp():
     )
     db.session.add(user)
     db.session.commit()
-    return jsonify({"msg": "User added succesfully"}), 200
+    return jsonify({"success": "User added succesfully"}), 200
 
 
 
@@ -53,9 +53,9 @@ def create_token():
     password = request.json.get("password", None)
     user = User.query.filter_by(username=username, password=password).first()
     if user is None:
-        return jsonify({"msg": "Please check your email or password, something went wrong."}), 401
+        return jsonify({"msg": "Please check your username or password, something went wrong."}), 401
     access_token = create_access_token(identity=user.id)
-    return jsonify({"token": access_token, "user_id": user.id})
+    return jsonify({"token": access_token, "user": user.serialize(), "success": "User logged in succesfully"}), 200
 
 
 #Category routes
