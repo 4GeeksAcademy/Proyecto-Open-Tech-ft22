@@ -33,7 +33,7 @@ def signUp():
     existing_user_email = User.query.filter_by(email=email).first()
     existing_user_username = User.query.filter_by(username=username).first()
     if existing_user_email is not None or existing_user_username is not None:
-        return jsonify({"msg": "email or username all already registered"}), 401
+        return jsonify({"msg": "email or username already registered"}), 401
     user = User(
         username=username,
         name=name,
@@ -49,9 +49,9 @@ def signUp():
 
 @api.route('/login', methods=['POST'])
 def create_token():
-    email = request.json.get("email", None)
+    username = request.json.get("username", None)
     password = request.json.get("password", None)
-    user = User.query.filter_by(email=email, password=password).first()
+    user = User.query.filter_by(username=username, password=password).first()
     if user is None:
         return jsonify({"msg": "Please check your email or password, something went wrong."}), 401
     access_token = create_access_token(identity=user.id)

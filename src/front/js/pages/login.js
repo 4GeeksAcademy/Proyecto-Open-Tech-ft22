@@ -13,7 +13,7 @@ export const Login = () => {
             <form onSubmit={actions.handleSubmitLogin} className='mx-auto my-5 p-3 w-25' style={{ boxShadow: '0 5px 9px rgba(0, 0, 0, 0.5)' }}>
                 <div className="form-group mb-3">
                     <label htmlFor="username" className="form-label" style={{ color: 'white' }}>Username:</label>
-                    <input type="email" className="form-control" id="username" name="username" onChange={actions.handleChange} value={store.username} />
+                    <input type="text" className="form-control" id="username" name="username" onChange={actions.handleChange} value={store.username} />
                 </div>
                 <div className="form-group mb-3">
                     <label htmlFor="password" className="form-label" style={{ color: 'white' }}>Password:</label>

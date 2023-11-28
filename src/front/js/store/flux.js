@@ -1,4 +1,5 @@
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import baseData from './information.json';
 
 const getState = ({ getStore, getActions, setStore }) => {
@@ -89,6 +90,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.error('Error during fetch:', error));
 			},
+
+
+
+
+
+			login: async ({ username, password }) => {
+				const { apiURL } = getStore();
+				try {
+					const response = await fetch(`${apiURL}/api/login`, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ username, password })
+					});
+
+					if (!response.ok) {
+						throw new Error('Login failed');
+					}
+
+					const data = await response.json();
+					setStore({ user: data.user, token: data.token });
+				} catch (error) {
+					console.error('Error:', error);
+				}
+			},
+
+
 
 
 
