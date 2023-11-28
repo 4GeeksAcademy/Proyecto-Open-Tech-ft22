@@ -9,7 +9,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 # from flask_mail import Mail, Message
 
 api = Blueprint('api', __name__)
-#CORS(api) commented to debug
+CORS(api)
 
 
 @api.route('/hello', methods=['POST'])
@@ -23,7 +23,7 @@ def handle_hello():
 
 
 
-@api.route('/registration', methods=['POST'])
+@api.route('/register', methods=['POST'])
 def signUp():
     username = request.json.get("username", None)
     name = request.json.get("name", None)

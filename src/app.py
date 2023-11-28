@@ -47,7 +47,7 @@ mail = Mail(app)
 app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
 # Allow CORS requests to this API
-CORS(app, resources={r"/api/*": {"origins": "https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3000.app.github.dev"}})
+CORS(app, resources={r"/*": {"origins": "https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3000.app.github.dev"}})
 
 
 # add the admin
@@ -107,6 +107,9 @@ def handle_category():
     elif request.method == 'POST':
         # Handle POST request
         ...
+
+
+
 
 
 

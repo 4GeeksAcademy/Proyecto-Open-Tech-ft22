@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			username: [],
+			email: [],
 			password: [],
 			name: [],
 			apiURL: 'https://cuddly-space-goggles-9pq4pr7vwqxcxx9j-3001.app.github.dev',
@@ -50,11 +51,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			handleSubmitRegister: e => {
-				e.preventDefault()
-				const { username, password } = getStore()
-				const { register } = getActions()
-				register({ username, password }) // { username: username, password: password }
-				console.log("Enviando Formulario")
+				e.preventDefault();
+				const { username, password, name, email } = getStore();
+				const { register } = getActions();
+				register({ username, password, name, email });
+				console.log("Enviando Formulario");
 			},
 
 
@@ -66,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const url = `${apiURL}/api/register`;
 				const options = {
 					method: 'POST',
-					body: JSON.stringify(credentials), //  { username: 'lili.aqueveque', password: '123456' }
+					body: JSON.stringify(credentials), //  { username: 'user', password: 'pass', name: 'name', email: 'email' }
 					headers: {
 						'Content-Type': 'application/json'
 					}
