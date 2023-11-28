@@ -14,6 +14,7 @@ import { Register } from "./pages/register";
 import { FormManual } from "./pages/formManual";
 import { Dashboard } from "./pages/dashboard";
 import AdminInit from "./pages/adminInit";
+import { Toast, ToastContainer } from "react-toastify";
 
 //create your first component
 const Layout = () => {
@@ -39,6 +40,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
+                    <ToastContainer />
                 </ScrollToTop>
             </BrowserRouter>
         </div>

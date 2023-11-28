@@ -51,18 +51,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-			handleSubmitRegister: e => {
+			handleSubmitRegister: (e, navigate) => {
 				e.preventDefault();
 				const { username, password, name, email } = getStore();
 				const { register } = getActions();
-				register({ username, password, name, email });
+				register({ username, password, name, email }, navigate);
 				console.log("Enviando Formulario");
 			},
 
 
 
 
-			register: (credentials) => {
+			register: (credentials, navigate) => {
 				const { apiURL } = getStore();
 				//console.log(credentials)
 				const url = `${apiURL}/api/register`;
@@ -85,6 +85,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 								currentUser: data
 							})
 							toast.success(data.success)
+							navigate('/')
 						}
 
 					})
@@ -95,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-			login: async ({ username, password }) => {
+			login: async ({ username, password }, navigate) => {
 				const { apiURL } = getStore();
 				try {
 					const response = await fetch(`${apiURL}/api/login`, {
@@ -112,8 +113,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const data = await response.json();
 					setStore({ user: data.user, token: data.token });
+					sessionStorage.setItem('user', JSON.stringify(data.user))
+					sessionStorage.setItem('token', JSON.stringify(data.token))
+					toast.success(data.success)
+					navigate('/dashboard');
 				} catch (error) {
 					console.error('Error:', error);
+					console.log(username, password)
 				}
 			},
 
@@ -121,13 +127,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-			handleSubmitLogin: e => {
+			handleSubmitLogin: (e, navigate) => {
 				e.preventDefault()
 				const { username, password } = getStore()
 				const { login } = getActions()
-				login({ username, password }) // { username: username, password: password }
+				login({ username, password }, navigate) // { username: username, password: password }
 				console.log("Enviando Formulario")
 			},
+
+
+
+
+
+
+
+			logout: () => {
+				setStore({
+					user: null, token: null
+				})
+				sessionStorage.removeItem('user')
+				sessionStorage.removeItem('token')
+			},
+
+
+
+
+
+
+			checkUser: () => {
+				if (sessionStorage.getItem('user')) {
+					setStore({
+						user: JSON.parse(sessionStorage.getItem('user')),
+						token: JSON.parse(sessionStorage.getItem('token'))
+					})
+				}
+			},
+
+
+
 
 
 
