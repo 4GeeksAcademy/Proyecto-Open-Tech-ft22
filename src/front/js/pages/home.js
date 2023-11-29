@@ -17,11 +17,7 @@ export const Home = () => {
 				<h1 style={{ background: '-webkit-linear-gradient(left, blue, white)', WebkitBackgroundClip: 'text', color: 'transparent', paddingTop: '20px' }}>
 					Unlocking IT salaries, Embracing Transparency in Tech Careers.
 				</h1>
-				<Login />
-			</div>
-
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
+				{store.user ? null : <Login />}
 			</div>
 
 

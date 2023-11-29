@@ -82,8 +82,7 @@ export const FormManual = () => {
 
                 <div className="mb-3">
                     <label htmlFor="salaryInput" className="form-label" style={{ color: 'white' }}>Annual salary</label>
-                    <input type="range" className="form-control" id="salaryInput" name="amount" min="7000" max="150000" step="100" value={store.amount} onChange={actions.handleChange} required />
-                    <output id="salaryOutput">{salary}</output>
+                    <input type="number" className="form-control" id="salaryInput" name="amount" min="6000" value={store.amount} onChange={actions.handleChange} required />
                 </div>
 
 
