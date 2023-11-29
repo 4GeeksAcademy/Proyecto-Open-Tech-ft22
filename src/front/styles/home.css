@@ -45,3 +45,27 @@ body {
     font-family: 'Righteous', sans-serif;
 }
 
+.table-bordered {
+    width: 90%;
+    margin: auto;
+    color: #C9C9C9;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    border-left: none;
+    border-right: none;
+    padding: 4px;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border-left: none;
+    border-right: none;
+    padding: 6px;
+}
+.table-bordered td {
+    background-color: #222222;
+}
+.table-bordered th {
+    background-color: #3a4e70;
+    color: white;
+}

@@ -6,7 +6,7 @@ import { BackendURL } from "./component/backendURL";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
-import injectContext from "./store/appContext";
+import injectContext, { Context } from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -16,9 +16,11 @@ import { Dashboard } from "./pages/dashboard";
 import AdminInit from "./pages/adminInit";
 import { ToastContainer } from "react-toastify";
 import { SpectPages } from "./pages/spectPages";
+import { ProtectedRoute } from "./pages/privateRoute";
 
 //create your first component
 const Layout = () => {
+    const { store, actions } = React.useContext(Context);
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
@@ -33,13 +35,17 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Register />} path="/register" />
-                        <Route element={<FormManual />} path="/formManual" />  {/*make this route secret */}
-                        <Route element={<Dashboard />} path="/dashboard" />
-                        <Route element={<SpectPages />} path="/spectPages" />
+
+                        <Route path='dashboard' element={<ProtectedRoute currentUser={store.user} redirectPath={'/'} />}>
+                            <Route index element={<Dashboard />} />
+                            <Route path="formManual" element={<FormManual />} />
+                            <Route path="spectPages" element={<SpectPages />} />
+                        </Route>
+
                         <Route element={<AdminInit />} path="/adminInit" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<h1>Not found!</h1>} />
+                        <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
                     <ToastContainer />

@@ -16,7 +16,7 @@ export const Navbar = () => {
 					<Link to="/adminInit">
 						<button className="btn submitSalaryNav me-4" style={{ backgroundColor: '#4f89ee' }}>Temporary admin access</button>
 					</Link>
-					<Link to="/formManual">
+					<Link to="/dashboard/formManual">
 						<button className="btn submitSalaryNav me-4" style={{ backgroundColor: '#4f89ee' }}>Submit Salary</button>
 					</Link>
 					<Logout />

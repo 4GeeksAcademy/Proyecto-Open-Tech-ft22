@@ -169,9 +169,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			handleSubmitForm: (e, navigate) => {
 				e.preventDefault();
-				const { category, role, years_of_experience, country, city, amount } = getStore();
+				const { category, role, years_of_experience, country, city, amount, user } = getStore();
 				const { uploadForm } = getActions();
-				uploadForm({ category, role, years_of_experience, country, city, amount }, navigate);
+				uploadForm({ category, role, years_of_experience, country, city, amount, user_id: user.id }, navigate);
 				console.log("Enviando Formulario Form");
 			},
 
@@ -179,9 +179,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			uploadForm: (credentials, navigate) => {
-				const { apiURL, user_id } = getStore();
-				// Add user_id to the credentials object
-				credentials.user_id = user_id;
+				const { apiURL } = getStore();
 				// See all credentials in the console
 				console.log(credentials)
 				const url = `${apiURL}/api/salary`;

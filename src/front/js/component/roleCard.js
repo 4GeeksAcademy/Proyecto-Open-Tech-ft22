@@ -6,7 +6,7 @@ const RoleCard = ({ roleName, average, entries }) => {
 
     return (
         //<Link to={'/aboutPlanets/' + planet.result.uid}>
-        <Link to='/spectPages' style={{ textDecoration: 'none' }}>
+        <Link to='/dashboard/spectPages' style={{ textDecoration: 'none' }}>
             <div className="card salaryCard" style={{ height: '142px' }}>
                 <div className="card-body">
                     <h6 className="card-title" style={{ fontSize: '16px', height: '50px', color: '#B4B4B4' }}>{roleName}</h6>
