@@ -1,3 +1,37 @@
 .submitSalaryNav {
     font-family: 'Righteous', sans-serif;
 }
+.dropdown-toggle::after {
+    display: none;
+}
+.dropdown-toggle:hover {
+    cursor: pointer;
+}
+.avatar-circle{
+    border: 4px solid transparent;
+}
+.avatar-circle:hover{
+    border-color: #414141;
+}
+.avatar-dropdown {
+    background-color: #292929;
+    border-radius: 10px;
+}
+.avatar-dropdown:hover {
+    background-color: #292929;
+}
+.logoutButton {
+    background-color: black;
+    margin-right: 5px;
+    color: white;
+    padding: 20px;
+    border-radius: 30px;
+}
+.logoutButton:hover {
+    background-color: rgb(63, 18, 100);
+    color: white;
+}
+
+.dropdown-item:hover {  
+    background-color: #292929 !important;
+}

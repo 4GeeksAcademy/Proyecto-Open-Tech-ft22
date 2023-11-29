@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: [],
 			password: [],
 			name: [],
-			apiURL: 'https://cuddly-train-vxg7x9645p72p7j7-3001.app.github.dev',
+			apiURL: 'https://fuzzy-umbrella-xj9qj756gvpf6rx5-3001.app.github.dev',
 			roles: [],
 			categories: [],
 			salaries: [],

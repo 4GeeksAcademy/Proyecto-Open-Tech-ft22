@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { Context } from "../store/appContext";
 import { Link } from 'react-router-dom';
+import { Dropdown } from 'react-bootstrap';
+import "../../styles/navbar.css";
 
 
 const Logout = () => {
@@ -14,17 +16,28 @@ const Logout = () => {
         <div>
             {store?.user && (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <Link to="/">
-                        <button onClick={actions.logout} className="btn submitSalaryNav" style={{ backgroundColor: '#4f89ee', marginRight: '5px' }}>Logout</button>
-                    </Link>
                     <span className="username" style={{ color: '#ccc', marginLeft: '5px' }}>{store.user.email}</span>
-                    <div className="ms-2" style={{ borderRadius: '50%', overflow: 'hidden', width: '50px', height: '50px' }}>
-                        <img src={imageUrl} alt="Avatar" style={{ width: '100%', height: 'auto', backgroundColor: '#ba4ff8' }} />
-                    </div>
+                    <Dropdown>
+                        <Dropdown.Toggle className="dropdown-toggle" as="div" id="dropdown-basic" style={{ backgroundColor: 'transparent', borderColor: 'transparent' }}>
+                            <div className="ms-2 avatar-circle" style={{ borderRadius: '50%', overflow: 'hidden', width: '50px', height: '50px' }}>
+                                <img src={imageUrl} alt="Avatar" style={{ width: '100%', height: 'auto', backgroundColor: '#ba4ff8' }} />
+                            </div>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu align='end' className="avatar-dropdown">
+                            <Dropdown.Item>
+                                <Link to="/">
+                                    <button onClick={actions.logout} className="btn logoutButton">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+                                    </button>
+                                </Link>
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </div>
             )}
         </div>
     );
-};
+}
 
 export default Logout;
