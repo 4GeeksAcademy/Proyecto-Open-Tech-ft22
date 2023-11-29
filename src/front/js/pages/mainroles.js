@@ -6,7 +6,7 @@ import { Context } from '../store/appContext';
 function MainRoles() {
     return (
         <div>
-            <h1>MainComponent</h1>
+            <h1>Select the category:</h1>
             <TabGroup />
         </div>
     );
@@ -41,7 +41,7 @@ const roles = {
     'Software Development': ['Frontend Developer', 'Backend Developer', 'Full-stack Developer', 'Mobile App Developer', 'DevOps Engineer', 'Software Architect', 'UI/UX Designer', 'Software Engineer in Test', 'Game Developer', 'Embedded Systems Developer'],
     'Cybersecurity': ['Information Security Analyst', 'Ethical Hacker', 'Security Consultant', 'Security Engineer', 'Chief Information Security Officer', 'Security Operations Center Analyst', 'Cryptographer', 'Incident Responder', 'Security Software Developer', 'Cybersecurity Researcher'],
     'Data Science and Analytics': ['Data Scientist', 'Data Analyst', 'Machine Learning Engineer', 'Business Intelligence Analyst', 'Data Engineer', 'Statistician', 'Quantitative Analyst', 'Operations Analyst', 'Big Data Engineer', 'Data Visualization Specialist'],
-    'Network and Systems Administration': ['Network Administrator', 'Systems Administrator', 'Network Engineer', 'Systems Engineer', 'Cloud Administrator', 'IT Support Specialist', 'Database Administrator', 'Virtualization Engineer', 'Wireless Communication Engineer', 'IT Security Administrator'],
+    'Network and Systems Administration': ['Network Administrator', 'Systems Administrator', 'Network Engineer', 'Systems Engineer', 'Cloud Administrator', 'IT Support Specialist', 'Database Administrator', 'Virtualization Engineer', 'Wireless Engineer', 'IT Security Administrator'],
     'IT Project Management': ['Project Manager', 'Scrum Master', 'Product Owner', 'IT Program Manager', 'Agile Coach', 'Business Analyst', 'Release Manager', 'Quality Assurance Manager', 'IT Service Manager', 'Change Management Specialist']
 };
 
@@ -56,7 +56,7 @@ function TabGroup() {
     useEffect(() => {
         actions.fetchSalaries();
     }, []);
-    
+
     useEffect(() => {
         console.log(store.salaries);
     }, [store.salaries]);
@@ -87,11 +87,27 @@ function TabGroup() {
             <p />
             <p style={{ color: 'white' }}> Your category selection: {active} </p>
             <div className="mx-auto w-75" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
-                {roleCards.map((roleCard, index) => (
-                    <div key={index} style={{ width: '17%', margin: '10px' }}>
-                        <RoleCard roleName={roleCard} />
-                    </div>
-                ))}
+                {roleCards.map((roleCard, index) => {
+                    // Find the salary data for this role
+                    const salaryDataArray = store.salaries.filter(salary => salary.role === roleCard);
+
+                    // If there's no salary data for this role, use default values
+                    const salaryData = salaryDataArray.length > 0 ? salaryDataArray[0] : { average: 0, entries: 0 };
+
+                    const sum = salaryDataArray.reduce((total, salaryData) => total + salaryData.amount, 0);
+
+                    const average = salaryDataArray.length > 0 ? sum / salaryDataArray.length : 0;
+
+                    return (
+                        <div key={index} style={{ width: '17%', margin: '10px' }}>
+                            <RoleCard
+                                roleName={roleCard}
+                                average={average}
+                                entries={salaryDataArray.length}
+                            />
+                        </div>
+                    );
+                })}
             </div>
             <div>
                 Role Amount:
