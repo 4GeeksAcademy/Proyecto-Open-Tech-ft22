@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../../styles/dashboard.css";
 
-import { ChartsComponent } from "./chartsComponent";
+import { ChartsComponent } from "./chars/chartsComponent";
 import MainRoles from './mainroles';
 import { NeutralView } from './neutralView';
 
