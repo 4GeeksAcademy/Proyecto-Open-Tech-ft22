@@ -15,6 +15,7 @@ import { FormManual } from "./pages/formManual";
 import { Dashboard } from "./pages/dashboard";
 import AdminInit from "./pages/adminInit";
 import { ToastContainer } from "react-toastify";
+import { SpectPages } from "./pages/spectPages";
 
 //create your first component
 const Layout = () => {
@@ -34,6 +35,7 @@ const Layout = () => {
                         <Route element={<Register />} path="/register" />
                         <Route element={<FormManual />} path="/formManual" />  {/*make this route secret */}
                         <Route element={<Dashboard />} path="/dashboard" />
+                        <Route element={<SpectPages />} path="/spectPages" />
                         <Route element={<AdminInit />} path="/adminInit" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />

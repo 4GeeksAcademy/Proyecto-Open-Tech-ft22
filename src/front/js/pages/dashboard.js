@@ -9,7 +9,7 @@ import { NeutralView } from './neutralView';
 import { ChartDoughnut } from './chars/charDoughnut';
 
 export const Dashboard = () => {
-    const [activeComponent, setActiveComponent] = useState('BasicTabs');  // Initial active component
+    const [activeComponent, setActiveComponent] = useState('MainRoles');  // Initial active component
 
     const handleButtonClick = (componentName) => {
         setActiveComponent(componentName);
@@ -38,7 +38,6 @@ export const Dashboard = () => {
 
             {activeComponent === 'MainRoles' && <MainRoles />}
             {activeComponent === 'ChartsComponent' && <ChartsComponent />}
-            {(activeComponent !== 'MainRoles' && activeComponent !== 'ChartsComponent') && <NeutralView />}
             {/* Add more conditions for other components */}
 
             <div>

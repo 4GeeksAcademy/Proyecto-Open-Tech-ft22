@@ -22,8 +22,17 @@ body {
 }
 
 .custom-card {
-    background-color: #15171a; /* Change this to your desired dark color */
+    background-color: #15171a;
     color: #ffffffb4;
+}
+
+.card.custom-card {
+    transition: all 0.3s ease;
+}
+
+.card.custom-card:hover {
+    box-shadow: 0 0 20px 5px rgba(80, 23, 172, 0.8); /* This will make the card shine more noticeably */
+    transform: scale(1.05); /* This will make the card come forward a little */
 }
 
 .formManual {
