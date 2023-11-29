@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../../styles/dashboard.css";
+import openTechIcon from "../../img/dark-logo.png";
 
 import { ChartsComponent } from "./chars/chartsComponent";
 import MainRoles from './mainroles';
@@ -22,11 +23,15 @@ export const Dashboard = () => {
                     Unlocking IT salaries, Embracing Transparency in Tech Careers.
                 </h1>
 
-                <div className="button-container mt-5">
+                <div className="button-container mt-2">
                     <Link to="#" className="buttonStyle" onClick={() => handleButtonClick('MainRoles')}>Main</Link>
                     <Link to="#" className="buttonStyle" onClick={() => handleButtonClick('ChartsComponent')}>Charts</Link>
-                    <Link to="#" className="buttonStyle">Button 3</Link>
-                    <Link to="#" className="buttonStyle">Button 4</Link>
+                </div>
+                <div className="button-container" style={{ marginTop: '15px' }}>
+                    <Link to="/" className="buttonStyle" style={{ padding: '20px', fontSize: '25px', borderRadius: '20px', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <img src={openTechIcon} alt="open Tech Logo" style={{ marginBottom: '5px', width: '65px' }} />
+                        Go back home
+                    </Link>
                 </div>
 
             </div>
