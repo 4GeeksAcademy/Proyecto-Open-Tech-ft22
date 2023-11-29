@@ -5,6 +5,9 @@ import baseData from './information.json';
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			user: null,
+			token: null,
+			user_id: null,
 			username: [],
 			email: [],
 			password: [],
@@ -90,8 +93,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 
 					const data = await response.json();
-					setStore({ user: data.user, token: data.token, user_id: data.user.id });
-					console.log(getStore().user_id);
+					console.log(data.user); // SEE WHAT IT IS PRINTING
+					setStore({ ...getStore(), user: data.user, token: data.token, user_id: data.user.id });
+					console.log(getStore().user); // SEE WHAT IT IS PRINTING
 					sessionStorage.setItem('user', JSON.stringify(data.user))
 					sessionStorage.setItem('token', JSON.stringify(data.token))
 					toast.success(data.success)
@@ -231,7 +235,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error('Error during fetch:', error);
 					});
 			},
-			
+
 
 
 
