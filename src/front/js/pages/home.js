@@ -7,6 +7,7 @@ import card1 from "../../img/card1.png";
 import card2 from "../../img/card2.png";
 import card3 from "../../img/card3.png";
 import card4 from "../../img/card4.png";
+import { Welcome } from "./welcome";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -17,7 +18,7 @@ export const Home = () => {
 				<h1 style={{ background: '-webkit-linear-gradient(left, blue, white)', WebkitBackgroundClip: 'text', color: 'transparent', paddingTop: '20px' }}>
 					Unlocking IT salaries, Embracing Transparency in Tech Careers.
 				</h1>
-				{store.user ? null : <Login />}
+				{store.user ? <Welcome /> : <Login />}
 			</div>
 
 

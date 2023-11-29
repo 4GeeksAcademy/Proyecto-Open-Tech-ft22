@@ -47,7 +47,7 @@ mail = Mail(app)
 app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
 # Allow CORS requests to this API
-CORS(app, resources={r"/*": {"origins": "https://psychic-space-enigma-qw9gwj7rxg7f9jx6-3000.app.github.dev"}})
+CORS(app, resources={r"/*": {"origins": "https://cuddly-train-vxg7x9645p72p7j7-3000.app.github.dev"}})
 
 
 # add the admin
@@ -82,7 +82,7 @@ def serve_any_other_file(path):
 
 # Handle CORS for the specific route
 @app.route('/api/admin/user', methods=['POST', 'OPTIONS'])
-@cross_origin(origin='https://miniature-winner-qw9gwj7rg4g24xq6-3000.app.github.dev', headers=['Content-Type', 'Authorization'])
+@cross_origin(origin='https://cuddly-train-vxg7x9645p72p7j7-3000.app.github.dev', headers=['Content-Type', 'Authorization'])
 def admin_user_route():
     if request.method == 'OPTIONS':
         return jsonify({"message": "CORS preflight request successful"}), 200
@@ -93,7 +93,7 @@ def admin_user_route():
     response = jsonify({"message": "Your response message"})
     
     # Add the necessary CORS headers
-    response.headers.add('Access-Control-Allow-Origin', 'https://miniature-winner-qw9gwj7rg4g24xq6-3000.app.github.dev')
+    response.headers.add('Access-Control-Allow-Origin', 'https://cuddly-train-vxg7x9645p72p7j7-3000.app.github.dev')
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 
