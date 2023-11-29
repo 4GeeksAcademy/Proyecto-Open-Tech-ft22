@@ -16,7 +16,7 @@ export default MainRoles;
 
 
 
-const Tab = styled.button`
+const Tab = styled(({ isActive, ...props }) => <button {...props} />)`
   font-size: 15px;
   padding: 10px 60px;
   cursor: pointer;
@@ -24,8 +24,8 @@ const Tab = styled.button`
   background: grey;
   border: 0;
   outline: 0;
-  ${({ active }) =>
-        active &&
+  ${({ isActive }) =>
+        isActive &&
         `
     border-bottom: 2px solid black;
     opacity: 1;
@@ -54,8 +54,12 @@ function TabGroup() {
 
 
     useEffect(() => {
-        actions.getRoleAmount();
+        actions.fetchSalaries();
     }, []);
+    
+    useEffect(() => {
+        console.log(store.salaries);
+    }, [store.salaries]);
 
 
 
@@ -73,7 +77,7 @@ function TabGroup() {
                 {types.map(type => (
                     <Tab
                         key={type}
-                        active={active === type}
+                        isActive={active === type}
                         onClick={() => handleTabClick(type)}
                     >
                         {type}
@@ -89,7 +93,19 @@ function TabGroup() {
                     </div>
                 ))}
             </div>
-            Role Amount: {store.totalAmount}
+            <div>
+                Role Amount:
+                {store.salaries.map((salary, index) => (
+                    <div key={index}>
+                        <p>Amount: {salary.amount}</p>
+                        <p>Category: {salary.category}</p>
+                        <p>City: {salary.city}</p>
+                        <p>Country: {salary.country}</p>
+                        <p>Role: {salary.role}</p>
+                        <p>Years of Experience: {salary.years_of_experience}</p>
+                    </div>
+                ))}
+            </div>
         </>
     );
 }

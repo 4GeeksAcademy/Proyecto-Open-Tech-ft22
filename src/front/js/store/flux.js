@@ -212,9 +212,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
+			fetchSalaries: () => {
+				const { apiURL } = getStore();
+				fetch(`${apiURL}/api/salary`)
+					.then(response => {
+						if (!response.ok) {
+							throw new Error('Network response was not ok');
+						}
+						return response.json();
+					})
+					.then(salaries => {
+						setStore({
+							...getStore(),
+							salaries: salaries
+						});
+					})
+					.catch(error => {
+						console.error('Error during fetch:', error);
+					});
+			},
+			
 
 
 
+
+
+
+
+
+
+
+			// TODO INUTIL DE AQUI EN ADELANTE
 
 			//ACTIONS FROM THE ADMINS
 			postSalary: async () => {
