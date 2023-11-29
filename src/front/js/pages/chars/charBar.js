@@ -36,7 +36,7 @@ export const ChartBar = () => {
             ],
             borderWidth: 1
         }]
-    }
+    };
 
 
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Chart as ChartJs } from 'chart.js';
-import { Doughnut, } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 
 import sourceData from "../data/sourceData.json";
 
@@ -36,7 +36,7 @@ export const ChartDoughnut = () => {
             ],
             borderWidth: 1
         }]
-    }
+    };
 
     return (
         <div>

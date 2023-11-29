@@ -5,6 +5,7 @@ import "../../styles/dashboard.css";
 import { ChartsComponent } from "./chars/chartsComponent";
 import MainRoles from './mainroles';
 import { NeutralView } from './neutralView';
+import { ChartDoughnut } from './chars/charDoughnut';
 
 export const Dashboard = () => {
     const [activeComponent, setActiveComponent] = useState('BasicTabs');  // Initial active component
@@ -35,6 +36,9 @@ export const Dashboard = () => {
             {(activeComponent !== 'MainRoles' && activeComponent !== 'ChartsComponent') && <NeutralView />}
             {/* Add more conditions for other components */}
 
+            <div className='row'>
+                <ChartDoughnut />
+            </div>
         </div>
     );
 };
