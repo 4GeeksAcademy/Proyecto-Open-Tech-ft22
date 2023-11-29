@@ -36,7 +36,7 @@ export const Dashboard = () => {
             {(activeComponent !== 'MainRoles' && activeComponent !== 'ChartsComponent') && <NeutralView />}
             {/* Add more conditions for other components */}
 
-            <div className='row'>
+            <div>
                 <ChartDoughnut />
             </div>
         </div>
