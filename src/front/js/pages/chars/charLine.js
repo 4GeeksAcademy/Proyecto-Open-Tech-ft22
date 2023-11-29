@@ -36,7 +36,7 @@ export const ChartsLine = () => {
             ],
             borderWidth: 1
         }]
-    }
+    };
 
 
     return (
