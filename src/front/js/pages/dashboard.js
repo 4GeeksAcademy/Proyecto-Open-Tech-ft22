@@ -9,12 +9,6 @@ import { NeutralView } from './neutralView';
 
 
 export const Dashboard = () => {
-    const [activeComponent, setActiveComponent] = useState('MainRoles');  // Initial active component
-
-    const handleButtonClick = (componentName) => {
-        setActiveComponent(componentName);
-    };
-
 
     return (
         <div className="text-center">
@@ -22,12 +16,7 @@ export const Dashboard = () => {
                 <h1 style={{ background: '-webkit-linear-gradient(left, blue, white)', WebkitBackgroundClip: 'text', color: 'transparent', paddingTop: '20px' }}>
                     Unlocking IT salaries, Embracing Transparency in Tech Careers.
                 </h1>
-
-                <div className="button-container mt-2">
-                    <Link to="#" className="buttonStyle" onClick={() => handleButtonClick('MainRoles')}>Main</Link>
-                    <Link to="#" className="buttonStyle" onClick={() => handleButtonClick('ChartsComponent')}>Charts</Link>
-                </div>
-                <div className="button-container" style={{ marginTop: '15px' }}>
+                <div className="button-container" style={{ marginTop: '25px' }}>
                     <Link to="/" className="buttonStyle" style={{ padding: '20px', fontSize: '25px', borderRadius: '20px', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         <img src={openTechIcon} alt="open Tech Logo" style={{ marginBottom: '5px', width: '65px' }} />
                         Go back home
@@ -36,10 +25,7 @@ export const Dashboard = () => {
 
             </div>
 
-            {activeComponent === 'MainRoles' && <MainRoles />}
-            {activeComponent === 'ChartsComponent' && <ChartsComponent />}
-            {/* Add more conditions for other components */}
-
+            <MainRoles />
         </div>
     );
 };
