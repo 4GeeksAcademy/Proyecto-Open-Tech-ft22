@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import RoleCard from '../component/roleCard';
 import styled from 'styled-components';
 import { Context } from '../store/appContext';
+import { ChartDoughnut } from './chars/charDoughnut';
 
 function MainRoles() {
     return (
@@ -105,6 +106,9 @@ function TabGroup() {
                                 average={average}
                                 entries={salaryDataArray.length}
                             />
+                            <div>
+                                <ChartDoughnut />
+                            </div>
                         </div>
                     );
                 })}
