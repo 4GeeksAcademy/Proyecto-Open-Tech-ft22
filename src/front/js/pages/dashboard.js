@@ -6,7 +6,7 @@ import openTechIcon from "../../img/dark-logo.png";
 import { ChartsComponent } from "./chars/chartsComponent";
 import MainRoles from './mainroles';
 import { NeutralView } from './neutralView';
-import { ChartDoughnut } from './chars/charDoughnut';
+
 
 export const Dashboard = () => {
     const [activeComponent, setActiveComponent] = useState('MainRoles');  // Initial active component
@@ -40,9 +40,6 @@ export const Dashboard = () => {
             {activeComponent === 'ChartsComponent' && <ChartsComponent />}
             {/* Add more conditions for other components */}
 
-            <div>
-                <ChartDoughnut />
-            </div>
         </div>
     );
 };

@@ -106,12 +106,12 @@ function TabGroup() {
                                 average={average}
                                 entries={salaryDataArray.length}
                             />
-                            <div>
-                                <ChartDoughnut />
-                            </div>
                         </div>
                     );
                 })}
+            </div>
+            <div>
+                <ChartDoughnut />
             </div>
             <div>
                 Role Amount:
