@@ -51,12 +51,12 @@ export const SpectPages = () => {
                 </table>
             </div>
             <div className='madreGrafico'>
-                <div className='hijo1'>
-                    <ChartLine category={active} roles={roles} salaries={store.salaries}/>
+                <div className='hijo1 mx-auto w-75'>
+                    <ChartLine data={filteredData} />
                 </div>
-                <div className='hijo2'>
+                {/*<div className='hijo2'>
                     <ChartDoughnutCard category={active} roles={roles} salaries={store.salaries}/>
-                </div>
+                        </div>*/}
             </div>
 
             <div className="text-center">

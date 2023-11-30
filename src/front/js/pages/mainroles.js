@@ -102,7 +102,7 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
 
                     const sum = salaryDataArray.reduce((total, salaryData) => total + salaryData.amount, 0);
 
-                    const average = salaryDataArray.length > 0 ? sum / salaryDataArray.length : 0;
+                    const average = salaryDataArray.length > 0 ? Math.floor(sum / salaryDataArray.length) : 0;
 
                     return (
                         <div key={index} style={{ width: '17%', margin: '10px' }}>
