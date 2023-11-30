@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: [],
 			password: [],
 			name: [],
-			apiURL: 'https://ideal-lamp-xj9qj756x4whv9j9-3001.app.github.dev/',
+			apiURL: 'https://vigilant-space-enigma-6jr7jq96pw73x4rg-3001.app.github.dev',
 			roles: [],
 			categories: [],
 			salaries: [],

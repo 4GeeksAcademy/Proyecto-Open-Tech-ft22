@@ -27,9 +27,11 @@ const Logout = () => {
                         <Dropdown.Menu align='end' className="avatar-dropdown">
                             <Dropdown.Item>
                                 <Link to="/">
-                                    <button onClick={actions.logout} className="btn logoutButton">
-                                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
-                                    </button>
+                                    <Dropdown.Item as="div">
+                                        <button onClick={actions.logout} className="btn logoutButton">
+                                            <i className="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+                                        </button>
+                                    </Dropdown.Item>
                                 </Link>
                             </Dropdown.Item>
                         </Dropdown.Menu>

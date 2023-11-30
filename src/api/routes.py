@@ -6,6 +6,7 @@ from api.models import db, User, Login, Salary
 from api.utils import generate_sitemap, APIException
 from flask_cors import cross_origin, CORS
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from werkzeug.security import generate_password_hash, check_password_hash
 # from flask_mail import Mail, Message
 
 api = Blueprint('api', __name__)

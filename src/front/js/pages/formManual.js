@@ -11,7 +11,10 @@ export const FormManual = () => {
 
     const cities = {
         Chile: ["Arica", "Iquique", "Santiago", "Valparaiso", "Concepcion"],
-        // Add more countries and cities as needed
+        Venezuela: ["Caracas", "Maracaibo", "Valencia", "Barquisimeto", "Maracay"],
+        USA: ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"],
+        Argentina: ["Buenos Aires", "Cordoba", "Rosario", "Mendoza", "Tucuman"],
+        Brazil: ["Sao Paulo", "Rio de Janeiro", "Salvador", "Brasilia", "Fortaleza"]
     };
 
     const handleSubmit = (e) => {
@@ -67,6 +70,10 @@ export const FormManual = () => {
                     <select className="form-control" id="countryInput" name="country" value={store.country} onChange={actions.handleChange} required>
                         <option value="">Select a country</option>
                         <option value="Chile">Chile</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="USA">USA</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Brazil">Brazil</option>
                     </select>
                 </div>
 
@@ -81,7 +88,7 @@ export const FormManual = () => {
 
 
                 <div className="mb-3">
-                    <label htmlFor="salaryInput" className="form-label" style={{ color: 'white' }}>Annual salary</label>
+                    <label htmlFor="salaryInput" className="form-label" style={{ color: 'white' }}>Annual salary in USD</label>
                     <input type="number" className="form-control" id="salaryInput" name="amount" min="6000" value={store.amount} onChange={actions.handleChange} required />
                 </div>
 

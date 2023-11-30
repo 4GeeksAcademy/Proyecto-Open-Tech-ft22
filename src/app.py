@@ -82,7 +82,6 @@ def serve_any_other_file(path):
 
 # Handle CORS for the specific route
 @app.route('/api/admin/user', methods=['POST', 'OPTIONS'])
-@cross_origin(origin='https://reimagined-pancake-vxg7x964w4v269x6-3000.app.github.dev', headers=['Content-Type', 'Authorization'])
 def admin_user_route():
     if request.method == 'OPTIONS':
         return jsonify({"message": "CORS preflight request successful"}), 200
@@ -93,7 +92,7 @@ def admin_user_route():
     response = jsonify({"message": "Your response message"})
     
     # Add the necessary CORS headers
-    response.headers.add('Access-Control-Allow-Origin', 'https://reimagined-pancake-vxg7x964w4v269x6-3000.app.github.dev')
+    response.headers.add('Access-Control-Allow-Origin', 'https://vigilant-space-enigma-6jr7jq96pw73x4rg-3000.app.github.dev')
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 

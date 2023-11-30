@@ -11,6 +11,7 @@ export const SpectPages = () => {
     console.log('roleName:', roleName);
     const { store, actions } = useContext(Context);
     const [data, setData] = useState([]);
+    
 
     useEffect(() => {
         fetch(`${store.apiURL}/api/salary`)
