@@ -5,7 +5,7 @@ import { Line } from 'react-chartjs-2';
 import sourceData from "../data/sourceData.json";
 
 
-export const ChartsLine = () => {
+export const ChartLine = () => {
     const [labels, setLabels] = useState(sourceData.map((data) => data.label))
     const [values, setValues] = useState(sourceData.map((data) => data.value))
 
