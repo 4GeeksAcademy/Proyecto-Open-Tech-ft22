@@ -107,7 +107,7 @@ function TabGroup() {
                                 entries={salaryDataArray.length}
                             />
                             <div>
-                                <charDoughnut />
+                                <ChartDoughnut />
                             </div>
                         </div>
                     );
