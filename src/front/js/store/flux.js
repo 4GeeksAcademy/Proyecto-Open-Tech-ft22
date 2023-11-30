@@ -21,7 +21,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			years_of_experience: "",
 			country: "",
 			amount: "",
-			city: ""
+			city: "",
+			pdf: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -166,12 +167,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
+			handleChangeFile: e => {
+				const { name, files } = e.target;
+				setStore({
+					[name]: files[0]
+				})
+			},
+
+
+
+
 
 			handleSubmitForm: (e, navigate) => {
 				e.preventDefault();
-				const { category, role, years_of_experience, country, city, amount, user } = getStore();
+				const { category, role, years_of_experience, country, city, amount, user, pdf } = getStore();
+				console.log(category)
 				const { uploadForm } = getActions();
-				uploadForm({ category, role, years_of_experience, country, city, amount, user_id: user.id }, navigate);
+
+				const formData = new FormData()
+
+				// añadimos campos al formulario
+				formData.append("category", category)
+				formData.append("role", role)
+				formData.append("years_of_experience", years_of_experience)
+				formData.append("country", country)
+				formData.append("city", city)
+				formData.append("amount", amount)
+				formData.append("user_id", user.id)
+				formData.append("pdf", pdf)
+
+				uploadForm(formData, navigate);
 				console.log("Enviando Formulario Form");
 			},
 
@@ -185,15 +210,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const url = `${apiURL}/api/salary`;
 				const options = {
 					method: 'POST',
-					body: JSON.stringify(credentials),
-					headers: {
-						'Content-Type': 'application/json'
-					}
+					body: credentials, //credentials
 				}
 				fetch(url, options)
 					.then(response => response.json())
 					.then(data => {
 						console.log(data)
+
 
 						if (data.msg) {
 							toast.error(data.msg)
@@ -203,7 +226,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 							})
 							toast.success(data.success)
 							navigate('/dashboard')
-
 						}
 
 					})

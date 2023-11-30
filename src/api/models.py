@@ -8,7 +8,7 @@ class User(db.Model):
     username=db.Column(db.String(120), unique=True, nullable=False)
     name=db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), nullable=False)
+    password = db.Column(db.String(200), nullable=False)
     is_active = db.Column(db.Boolean(), nullable=False)
 
     def __repr__(self):
@@ -49,6 +49,7 @@ class Salary(db.Model):
     city = db.Column(db.String(120), nullable=False)
     amount = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    pdf = db.Column(db.String(200), default="")
 
     def __repr__(self):
         return f'<Salary {self.id} {self.amount}>'
@@ -61,5 +62,6 @@ class Salary(db.Model):
             "years_of_experience": self.years_of_experience,
             "country": self.country,
             "city" : self.city,
-            "amount": self.amount
+            "amount": self.amount,
+            "pdf": self.pdf
         }

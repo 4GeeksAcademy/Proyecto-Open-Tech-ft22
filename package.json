@@ -75,6 +75,8 @@
 	"dependencies": {
 		"@emotion/react": "^11.7.1",
 		"@emotion/styled": "^11.6.0",
+		"@fortawesome/free-solid-svg-icons": "^6.5.1",
+		"@fortawesome/react-fontawesome": "^0.2.0",
 		"bcryptjs": "^2.4.3",
 		"chart.js": "^2.9.4",
 		"prop-types": "^15.6.1",

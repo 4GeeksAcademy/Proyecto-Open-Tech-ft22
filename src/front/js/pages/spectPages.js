@@ -4,6 +4,8 @@ import { Link, useParams } from 'react-router-dom';
 import '../../styles/home.css';
 import { ChartLine } from './chars/charLine';
 import { ChartDoughnutCard } from './chars/chartDoughnutCard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 export const SpectPages = () => {
@@ -34,6 +36,7 @@ export const SpectPages = () => {
                             <th>City</th>
                             <th>Country</th>
                             <th>Amount</th>
+                            <th>PDF</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +48,7 @@ export const SpectPages = () => {
                                 <td>{item.city}</td>
                                 <td>{item.country}</td>
                                 <td>{item.amount}</td>
+                                <td>{item.pdf ? <FontAwesomeIcon icon={faCheckCircle} /> : null}</td>
                             </tr>
                         ))}
                     </tbody>

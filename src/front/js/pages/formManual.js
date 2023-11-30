@@ -92,6 +92,13 @@ export const FormManual = () => {
                     <input type="number" className="form-control" id="salaryInput" name="amount" min="6000" value={store.amount} onChange={actions.handleChange} required />
                 </div>
 
+                <div className="mb-3">
+                    <label htmlFor="pdfInput" className="form-label" style={{ color: 'white' }}>Upload Salary optional</label>
+                    <input type="file" className="form-control" id="pdfInput" name="pdf" onChange={actions.handleChangeFile} />
+                </div>
+
+
+
 
                 <button type="submit" className="btn w-100" style={{ backgroundColor: '#4f89ee' }}>Submit</button>
             </form>
