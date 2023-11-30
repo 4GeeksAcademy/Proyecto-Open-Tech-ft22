@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { Link, useParams } from 'react-router-dom';
 import '../../styles/home.css';
+import { ChartLine } from './chars/charLine';
+import { ChartDoughnut } from './chars/charDoughnut';
 
 export const SpectPages = () => {
     const { roleName } = useParams();
@@ -46,6 +48,15 @@ export const SpectPages = () => {
                     </tbody>
                 </table>
             </div>
+            <div className='madreGrafico'>
+                <div className='hijo1'>
+                    <ChartLine />
+                </div>
+                <div className='hijo2'>
+                    <ChartDoughnut />
+                </div>
+            </div>
+
             <div className="text-center">
                 <Link to='/dashboard' className='backButton'>Go back to the main page</Link>
             </div>
