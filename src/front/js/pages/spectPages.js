@@ -3,7 +3,8 @@ import { Context } from '../store/appContext';
 import { Link, useParams } from 'react-router-dom';
 import '../../styles/home.css';
 import { ChartLine } from './chars/charLine';
-import { ChartDoughnut } from './chars/charDoughnut';
+import { ChartDoughnutCard } from './chars/chartDoughnutCard';
+
 
 export const SpectPages = () => {
     const { roleName } = useParams();
@@ -50,10 +51,10 @@ export const SpectPages = () => {
             </div>
             <div className='madreGrafico'>
                 <div className='hijo1'>
-                    <ChartLine />
+                    <ChartLine category={active} roles={roles} salaries={store.salaries}/>
                 </div>
                 <div className='hijo2'>
-                    <ChartDoughnut />
+                    <ChartDoughnutCard category={active} roles={roles} salaries={store.salaries}/>
                 </div>
             </div>
 
