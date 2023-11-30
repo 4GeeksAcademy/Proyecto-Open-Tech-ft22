@@ -5,10 +5,11 @@ import { Context } from '../store/appContext';
 import { ChartDoughnut } from './chars/charDoughnut';
 
 function MainRoles() {
+    const [selectedCategory, setSelectedCategory] = useState("Software Development");
     return (
         <div>
             <h1>Select the category:</h1>
-            <TabGroup />
+            <TabGroup selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         </div>
     );
 }
@@ -48,7 +49,7 @@ const roles = {
 
 
 const types = ['Software Development', 'Cybersecurity', 'Data Science and Analytics', 'Network and Systems Administration', 'IT Project Management'];
-function TabGroup() {
+function TabGroup({ selectedCategory, setSelectedCategory }) {
     const [active, setActive] = useState(types[0]);
     const [roleCards, setRoleCards] = useState(roles['Software Development']); // Initialize with the roles for 'Software Development'
     const { store, actions } = useContext(Context);
@@ -66,10 +67,14 @@ function TabGroup() {
 
     const handleTabClick = (type) => {
         setActive(type);
-
+        setSelectedCategory(type); // Update selectedCategory when a tab is clicked
         // Update roleCards state with the roles for the clicked tab
         setRoleCards(roles[type]);
     };
+
+    const handleTabSelect = (category) => {
+        setSelectedCategory(category);
+    }
 
 
     return (
@@ -111,7 +116,7 @@ function TabGroup() {
                 })}
             </div>
             <div>
-                <ChartDoughnut />
+                <ChartDoughnut category={active} roles={roles} salaries={store.salaries} />
             </div>
             <div>
                 Role Amount:

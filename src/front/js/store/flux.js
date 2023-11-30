@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: [],
 			password: [],
 			name: [],
-			apiURL: 'https://reimagined-pancake-vxg7x964w4v269x6-3001.app.github.dev',
+			apiURL: 'https://scaling-telegram-ww9jwpr6jvrhgjqw-3001.app.github.dev',
 			roles: [],
 			categories: [],
 			salaries: [],

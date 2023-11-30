@@ -47,7 +47,7 @@ mail = Mail(app)
 app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
 # Allow CORS requests to this API
-CORS(app, resources={r"/*": {"origins": "https://reimagined-pancake-vxg7x964w4v269x6-3000.app.github.dev"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 # add the admin

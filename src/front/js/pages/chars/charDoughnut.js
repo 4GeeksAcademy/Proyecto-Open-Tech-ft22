@@ -5,9 +5,13 @@ import { Doughnut } from 'react-chartjs-2';
 import sourceData from "../data/sourceData.json";
 
 
-export const ChartDoughnut = () => {
-    const [labels, setLabels] = useState(sourceData.map((data) => data.label))
-    const [values, setValues] = useState(sourceData.map((data) => data.value))
+export const ChartDoughnut = ({ category, roles, salaries }) => {
+    const roleNames = roles[category];
+    const labels = roleNames;
+    const values = roleNames.map(role => {
+        const roleSalaries = salaries.filter(salary => salary.role === role);
+        return roleSalaries.length;
+    });
 
     // Your component logic here
 
@@ -45,7 +49,6 @@ export const ChartDoughnut = () => {
                 <Doughnut
                     data={data} />
             </div>
-
         </div>
     );
 
