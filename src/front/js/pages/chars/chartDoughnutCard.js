@@ -21,7 +21,7 @@ export const ChartDoughnutCard = ({ data }) => {
     const chartData = {
         labels: labels,
         datasets: [{
-            label: "Grafico por el poder Perruno",
+            label: "Salaries",
             data: values,
             backgroundColor: [
                 /*Azul*/ 'rgba(15, 15, 255, 0.2)',
@@ -54,7 +54,7 @@ export const ChartDoughnutCard = ({ data }) => {
     return (
         <div>
             <div>
-                <h1>Tortita</h1>
+                <h1 className='mb-3' style={{color: '#959595'}}>Country VS Average</h1>
                 <Doughnut
                     data={chartData} />
             </div>

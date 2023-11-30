@@ -51,7 +51,7 @@ export const ChartDoughnut = ({ category, roles, salaries }) => {
     return (
         <div>
             <div>
-                <h1>Tortita</h1>
+                <h1>Role VS Entries</h1>
                 <Doughnut
                     data={data} />
             </div>

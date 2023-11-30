@@ -50,12 +50,14 @@ export const SpectPages = () => {
                     </tbody>
                 </table>
             </div>
-            <div className='madreGrafico'>
-                <div className='hijo1 mx-auto w-75'>
-                    <ChartLine data={filteredData} />
-                </div>
-                <div className='hijo2'>
-                    <ChartDoughnutCard data={filteredData} />
+            <div className='container p-5 m-5 text-center mx-auto'>
+                <div className='madreGrafico row'>
+                    <div className='col-6 hijo1 mx-auto'>
+                        <ChartLine data={filteredData} />
+                    </div>
+                    <div className='col-6 hijo2'>
+                        <ChartDoughnutCard data={filteredData} />
+                    </div>
                 </div>
             </div>
 

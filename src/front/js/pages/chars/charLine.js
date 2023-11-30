@@ -28,7 +28,7 @@ export const ChartLine = ({ data }) => {
     const chartData = {
         labels: labels,
         datasets: [{
-            label: "Grafico por el poder Perruno",
+            label: "Salaries",
             data: values,
             backgroundColor: '#121212',
             borderColor: 'rgba(15, 15, 255, 1)', // Use a single color for the line
@@ -66,7 +66,7 @@ export const ChartLine = ({ data }) => {
     return (
         <div>
             <div>
-                <h1>Linea y no de la dura</h1>
+                <h1 className='mb-3' style={{color: '#959595'}}>Experience VS Salary</h1>
                 <Line
                     data={chartData} options={options}
                 />

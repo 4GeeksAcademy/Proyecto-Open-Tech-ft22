@@ -115,10 +115,14 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
                     );
                 })}
             </div>
-            <div>
-                <ChartDoughnut category={active} roles={roles} salaries={store.salaries} />
+            <div className='container text-center mx-auto mb-5'>
+                <div className='row'>
+                    <div className='col-8 mx-auto'>
+                        <ChartDoughnut category={active} roles={roles} salaries={store.salaries} />
+                    </div>
+                </div>
             </div>
-            <div>
+            {/*<div>
                 Role Amount:
                 {store.salaries.map((salary, index) => (
                     <div key={index}>
@@ -130,7 +134,7 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
                         <p>Years of Experience: {salary.years_of_experience}</p>
                     </div>
                 ))}
-            </div>
+                </div>*/}
         </>
     );
 }
