@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: [],
 			password: [],
 			name: [],
-			apiURL: 'https://fuzzy-umbrella-xj9qj756gvpf6rx5-3001.app.github.dev',
+			apiURL: 'https://reimagined-pancake-vxg7x964w4v269x6-3001.app.github.dev',
 			roles: [],
 			categories: [],
 			salaries: [],

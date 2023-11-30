@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../../styles/home.css';
 
-export const SpectPages = ({ selectedRole }) => {
+export const SpectPages = () => {
+    const { roleName } = useParams();
+    console.log('roleName:', roleName);
     const { store, actions } = useContext(Context);
     const [data, setData] = useState([]);
 
@@ -13,7 +15,8 @@ export const SpectPages = ({ selectedRole }) => {
             .then(data => setData(data));
     }, []);
 
-    const filteredData = data.filter(item => item.role === selectedRole);
+    const filteredData = data ? data.filter(item => item.role === roleName) : undefined;
+    console.log(data, roleName);
 
     return (
         <div>
@@ -30,7 +33,7 @@ export const SpectPages = ({ selectedRole }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredData.map((item, index) => (
+                        {filteredData && filteredData.map((item, index) => (
                             <tr key={index}>
                                 <td>{item.years_of_experience}</td>
                                 <td>{item.role}</td>
@@ -42,6 +45,9 @@ export const SpectPages = ({ selectedRole }) => {
                         ))}
                     </tbody>
                 </table>
+            </div>
+            <div className="text-center">
+                <Link to='/dashboard' className='backButton'>Go back to the main page</Link>
             </div>
         </div>
     );

@@ -36,10 +36,10 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<Register />} path="/register" />
 
-                        <Route path='dashboard' element={<ProtectedRoute currentUser={store.user} redirectPath={'/'} />}>
+                        <Route path='/dashboard' element={<ProtectedRoute currentUser={store.user} redirectPath={'/'} />}>
                             <Route index element={<Dashboard />} />
                             <Route path="formManual" element={<FormManual />} />
-                            <Route path="spectPages" element={<SpectPages />} />
+                            <Route path="spectPages/:roleName" element={<SpectPages />} />
                         </Route>
 
                         <Route element={<AdminInit />} path="/adminInit" />

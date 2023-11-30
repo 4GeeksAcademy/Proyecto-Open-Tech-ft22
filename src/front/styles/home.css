@@ -111,3 +111,39 @@ body {
     box-shadow: none;
     color: #2c5777;
   }
+
+.backButton {
+  background-color: #1f1f1f;
+  border: 1px solid rgb(58, 39, 129);
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #5f5f5f;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 2 12px 2 14px;
+  position: relative;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 175px;
+}
+
+.backButton:hover {
+  background-color: #383838;
+  color: white;
+}
+
+.backButton:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+}
