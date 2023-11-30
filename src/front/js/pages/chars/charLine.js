@@ -16,6 +16,11 @@ export const ChartLine = ({ data }) => {
                 ticks: {
                     beginAtZero: true
                 }
+            }],
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
             }]
         }
     };
@@ -25,7 +30,7 @@ export const ChartLine = ({ data }) => {
         datasets: [{
             label: "Grafico por el poder Perruno",
             data: values,
-            backgroundColor: '#181818',
+            backgroundColor: '#121212',
             borderColor: 'rgba(15, 15, 255, 1)', // Use a single color for the line
             borderWidth: 2,
             pointBackgroundColor: [

@@ -11,7 +11,7 @@ export const SpectPages = () => {
     console.log('roleName:', roleName);
     const { store, actions } = useContext(Context);
     const [data, setData] = useState([]);
-    
+
 
     useEffect(() => {
         fetch(`${store.apiURL}/api/salary`)
@@ -37,7 +37,7 @@ export const SpectPages = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredData && filteredData.map((item, index) => (
+                        {filteredData && filteredData.sort((a, b) => a.years_of_experience - b.years_of_experience).map((item, index) => (
                             <tr key={index}>
                                 <td>{item.years_of_experience}</td>
                                 <td>{item.role}</td>
@@ -54,9 +54,9 @@ export const SpectPages = () => {
                 <div className='hijo1 mx-auto w-75'>
                     <ChartLine data={filteredData} />
                 </div>
-                {/*<div className='hijo2'>
-                    <ChartDoughnutCard category={active} roles={roles} salaries={store.salaries}/>
-                        </div>*/}
+                <div className='hijo2'>
+                    <ChartDoughnutCard data={filteredData} />
+                </div>
             </div>
 
             <div className="text-center">

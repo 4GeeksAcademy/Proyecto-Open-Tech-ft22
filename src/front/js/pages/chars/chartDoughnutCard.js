@@ -5,17 +5,20 @@ import { Doughnut } from 'react-chartjs-2';
 import sourceData from "../data/sourceData.json";
 
 
-export const ChartDoughnutCard = ({ category, roles, salaries }) => {
-    const roleNames = roles[category];
-    const labels = roleNames;
-    const values = roleNames.map(role => {
-        const roleSalaries = salaries.filter(salary => salary.role === role);
-        return roleSalaries.length;
+export const ChartDoughnutCard = ({ data }) => {
+    // Get unique countries
+    const labels = [...new Set(data.map(item => item.country))];
+
+    // Calculate total amount for each country
+    const values = labels.map(country => {
+        const countryData = data.filter(item => item.country === country);
+        const sum = countryData.reduce((total, item) => total + item.amount, 0);
+        return sum / countryData.length;
     });
 
     // Your component logic here
 
-    const data = {
+    const chartData = {
         labels: labels,
         datasets: [{
             label: "Grafico por el poder Perruno",
@@ -53,7 +56,7 @@ export const ChartDoughnutCard = ({ category, roles, salaries }) => {
             <div>
                 <h1>Tortita</h1>
                 <Doughnut
-                    data={data} />
+                    data={chartData} />
             </div>
         </div>
     );
