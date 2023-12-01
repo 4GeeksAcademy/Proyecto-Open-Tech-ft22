@@ -19,8 +19,8 @@ export const Footer = () => (
 		</div>
 		<div className="column">
 			<p>
-				<a href="https://www.linkedin.com/tucuentadelinkedin">
-					<i className="fa-solid fa-question" style={{ fontSize: '30px', color: 'white' }}></i>
+				<a href="https://discord.com/">
+					<i class="fa-brands fa-discord" style={{ fontSize: '30px', color: 'white' }}></i>
 				</a>
 			</p>
 		</div>

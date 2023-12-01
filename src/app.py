@@ -47,7 +47,7 @@ mail = Mail(app)
 app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
 # Allow CORS requests to this API
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
 
 
 # add the admin
@@ -92,7 +92,7 @@ def admin_user_route():
     response = jsonify({"message": "Your response message"})
     
     # Add the necessary CORS headers
-    response.headers.add('Access-Control-Allow-Origin', 'https://vigilant-space-enigma-6jr7jq96pw73x4rg-3000.app.github.dev')
+    response.headers.add('Access-Control-Allow-Origin', 'https://orange-space-garbanzo-qw9gwj7rgqp264r9-3000.app.github.dev')
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 

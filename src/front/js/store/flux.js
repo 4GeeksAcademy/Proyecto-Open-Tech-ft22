@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: [],
 			password: [],
 			name: [],
-			apiURL: 'https://vigilant-space-enigma-6jr7jq96pw73x4rg-3001.app.github.dev',
+			apiURL: 'https://orange-space-garbanzo-qw9gwj7rgqp264r9-3001.app.github.dev',
 			roles: [],
 			categories: [],
 			salaries: [],
