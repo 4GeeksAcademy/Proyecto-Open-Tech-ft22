@@ -21,37 +21,37 @@ export const ChartDoughnut = ({ category, roles, salaries }) => {
             label: "Grafico por el poder Perruno",
             data: values,
             backgroundColor: [
-                /*Azul*/ 'rgba(15, 15, 255, 0.2)',
-                /*Morado*/ 'rgba(139, 15, 255, 0.2)',
-                /*Menos morado*/ 'rgba(202, 10, 255, 0.2)',
-                /*Rosado*/ 'rgba(255, 5, 243, 0.2)',
-                /*Fucsia*/ 'rgba(250, 0, 104, 0.2)',
-                /*Sandia*/ 'rgba(245, 0, 37, 0.2)',
-                /*Naranja*/ 'rgba(240, 24, 0, 0.2)',
-                /*Salmon*/ 'rgba(235, 86, 0, 0.2)',
-                /*Gold*/ 'rgba(230, 145, 0, 0.2)',
-                /*Amarillo*/ 'rgba(224, 202, 0, 0.2)',
+                /*Azul*/ 'rgba(1, 97, 237, 0.3)',
+                /*Morado*/ 'rgba(227, 87, 255, 0.3)',
+                /*Menos morado*/ 'rgba(175, 77, 255, 0.3)',
+                /*Rosado*/ 'rgba(117, 66, 255, 0.3)',
+                /*Fucsia*/ 'rgba(56, 59, 255, 0.3)',
+                /*Sandia*/ 'rgba(46, 109, 255, 0.3)',
+                /*Naranja*/ 'rgba(36, 164, 255, 0.3)',
+                /*Salmon*/ 'rgba(26, 224, 255, 0.3)',
+                /*Gold*/ 'rgba(15, 255, 219, 0.3)',
+                /*Amarillo*/ 'rgba(5, 255, 147, 0.3)'
             ],
             borderColor: [
-                /*Azul*/ 'rgb(15, 15, 255)',
-                /*Morado*/ 'rgb(139, 15, 255)',
-                /*Menos morado*/ 'rgb(202, 10, 255)',
-                /*Rosado*/ 'rgb(255, 5, 243)',
-                /*Fucsia*/ 'rgb(250, 0, 104)',
-                /*Sandia*/ 'rgb(245, 0, 37)',
-                /*Naranja*/ 'rgb(240, 24, 0)',
-                /*Salmon*/ 'rgb(235, 86, 0)',
-                /*Gold*/ 'rgb(230, 145, 0)',
-                /*Amarillo*/ 'rgb(224, 202, 0)'
+                /*Azul*/ 'rgba(1, 97, 237)',
+                /*Morado*/ 'rgba(227, 87, 255)',
+                /*Menos morado*/ 'rgba(175, 77, 255)',
+                /*Rosado*/ 'rgba(117, 66, 255)',
+                /*Fucsia*/ 'rgba(56, 59, 255)',
+                /*Sandia*/ 'rgba(46, 109, 255)',
+                /*Naranja*/ 'rgba(36, 164, 255)',
+                /*Salmon*/ 'rgba(26, 224, 255)',
+                /*Gold*/ 'rgba(15, 255, 219)',
+                /*Amarillo*/ 'rgba(5, 255, 147)'
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     };
 
     return (
         <div>
-            <div>
-                <h1>Role VS Entries</h1>
+            <div style={{ backgroundColor: '#161616', padding: '20px', margin: '15px', borderRadius: '20px' }}>
+                <h1 style={{ color: '#eaeaea' }}>Role VS Entries</h1>
                 <Doughnut
                     data={data} />
             </div>

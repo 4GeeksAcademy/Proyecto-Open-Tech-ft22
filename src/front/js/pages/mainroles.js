@@ -8,7 +8,7 @@ function MainRoles() {
     const [selectedCategory, setSelectedCategory] = useState("Software Development");
     return (
         <div>
-            <h1>Select the category:</h1>
+            <h1 style={{ color: 'white' }}>Select the category:</h1>
             <TabGroup selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         </div>
     );
