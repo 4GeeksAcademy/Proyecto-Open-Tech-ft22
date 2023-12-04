@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Chart as ChartJs } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-
 import sourceData from "../data/sourceData.json";
-
 
 export const ChartLine = ({ data }) => {
     const labels = data.map((item) => item.years_of_experience);
@@ -25,48 +23,46 @@ export const ChartLine = ({ data }) => {
         }
     };
 
+    // Function to get color based on index
+    const getColor = (index) => {
+        const colorPalette = [
+            'rgb(1, 97, 237)',
+            'rgb(227, 87, 255)',
+            'rgb(175, 77, 255)',
+            'rgb(117, 66, 255)',
+            'rgb(56, 59, 255)',
+            'rgb(46, 109, 255)',
+            'rgb(36, 164, 255)',
+            'rgb(26, 224, 255)',
+            'rgb(15, 255, 219)',
+            'rgb(5, 255, 147)'
+        ];
+
+        return colorPalette[index % colorPalette.length];
+    };
+
+    // Create dynamic pointBackgroundColor and pointBorderColor arrays
+    const pointBackgroundColor = data.map((item, index) => getColor(index));
+    const pointBorderColor = data.map((item, index) => getColor(index));
+
     const chartData = {
         labels: labels,
         datasets: [{
             label: "Salaries",
             data: values,
             backgroundColor: '#121212',
-            borderColor: 'rgba(15, 15, 255, 1)', // Use a single color for the line
+            borderColor: 'rgba(1, 97, 237, 1)',
             borderWidth: 2,
-            pointBackgroundColor: [
-                /*Azul*/ 'rgb(15, 15, 255)',
-                /*Morado*/ 'rgb(139, 15, 255)',
-                /*Menos morado*/ 'rgb(202, 10, 255)',
-                /*Rosado*/ 'rgb(255, 5, 243)',
-                /*Fucsia*/ 'rgb(250, 0, 104)',
-                /*Sandia*/ 'rgb(245, 0, 37)',
-                /*Naranja*/ 'rgb(240, 24, 0)',
-                /*Salmon*/ 'rgb(235, 86, 0)',
-                /*Gold*/ 'rgb(230, 145, 0)',
-                /*Amarillo*/ 'rgb(224, 202, 0)'
-            ],
-            pointBorderColor: [
-                /*Azul*/ 'rgb(15, 15, 255)',
-                /*Morado*/ 'rgb(139, 15, 255)',
-                /*Menos morado*/ 'rgb(202, 10, 255)',
-                /*Rosado*/ 'rgb(255, 5, 243)',
-                /*Fucsia*/ 'rgb(250, 0, 104)',
-                /*Sandia*/ 'rgb(245, 0, 37)',
-                /*Naranja*/ 'rgb(240, 24, 0)',
-                /*Salmon*/ 'rgb(235, 86, 0)',
-                /*Gold*/ 'rgb(230, 145, 0)',
-                /*Amarillo*/ 'rgb(224, 202, 0)'
-            ],
+            pointBackgroundColor: pointBackgroundColor,
+            pointBorderColor: pointBorderColor,
             pointRadius: 5
         }]
     };
 
-
-
     return (
         <div>
             <div>
-                <h1 className='mb-3' style={{color: '#959595'}}>Experience VS Salary</h1>
+                <h1 className='mb-3' style={{ color: '#959595' }}>Experience VS Salary</h1>
                 <Line
                     data={chartData} options={options}
                 />
