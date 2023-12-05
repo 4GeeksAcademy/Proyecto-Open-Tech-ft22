@@ -1,7 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
-
 class User(db.Model):
     __tablename__='users'
     id = db.Column(db.Integer, primary_key=True)
@@ -10,6 +9,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     is_active = db.Column(db.Boolean(), nullable=False)
+    role = db.Column(db.Enum('USER', 'ADMIN', name='role_types'), default='USER')
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -19,9 +19,11 @@ class User(db.Model):
             "username": self.username,
             "name": self.name,
             "email": self.email,
-            " is_active ":self. is_active
+            " is_active ":self. is_active,
+            "role": self.role
             # do not serialize the password, its a security breach
         }
+    
 class Login(db.Model):
     __tablename__='login'
     id = db.Column(db.Integer, primary_key=True)

@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: null,
 			token: null,
+			role: null,
 			user_id: null,
 			username: [],
 			email: [],
@@ -95,10 +96,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const data = await response.json();
 					console.log(data.user); // SEE WHAT IT IS PRINTING
-					setStore({ ...getStore(), user: data.user, token: data.token, user_id: data.user.id });
+					setStore({ ...getStore(), user: data.user, token: data.token, user_id: data.user.id, role: data.user.role });
 					console.log(getStore().user); // SEE WHAT IT IS PRINTING
 					sessionStorage.setItem('user', JSON.stringify(data.user))
 					sessionStorage.setItem('token', JSON.stringify(data.token))
+					sessionStorage.setItem('role', JSON.stringify(data.user.role)) // Store role in session storage
 					toast.success(data.success)
 					navigate('/dashboard');
 				} catch (error) {

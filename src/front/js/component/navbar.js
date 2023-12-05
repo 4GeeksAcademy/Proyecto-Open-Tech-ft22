@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
 import openTechLogo from "../../img/navbar-brand-img.png";
 import Logout from "../pages/logout";
+import { Context } from "../store/appContext";
 
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+	const { role } = store;
+
 	return (
 		<nav className="navbar" style={{ backgroundColor: 'black', height: '90px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', borderBottom: '1px solid #ccc' }}>
 			<div className="container">
@@ -13,6 +17,11 @@ export const Navbar = () => {
 					<span className="navbar-brand mb-0 openTech-Logo"><img src={openTechLogo} style={{ width: '160px' }} /></span>
 				</Link>
 				<div className="ml-auto" style={{ display: 'flex', alignItems: 'center' }}>
+					{role === 'ADMIN' && (
+						<Link to="/admin">
+							<button className="btn adminButton me-4">Admin Button</button>
+						</Link>
+					)}
 					<Link to="/dashboard/formManual">
 						<button className="btn submitSalaryNav me-4" style={{ backgroundColor: '#4f89ee' }}>Submit Salary</button>
 					</Link>

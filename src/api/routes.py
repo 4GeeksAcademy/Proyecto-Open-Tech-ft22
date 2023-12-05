@@ -42,6 +42,7 @@ def signUp():
     name = request.json.get("name", None)
     email = request.json.get("email", None)
     password = request.json.get("password", None)
+    role = request.json.get("role", 'USER')  # Default to 'USER' if no role is provided
 
     existing_user_email = User.query.filter_by(email=email).first()
     existing_user_username = User.query.filter_by(username=username).first()
@@ -52,7 +53,8 @@ def signUp():
         name=name,
         email=email,
         password=generate_password_hash(password),
-        is_active=True
+        is_active=True,
+        role=role
     )
     db.session.add(user)
     db.session.commit()
@@ -66,10 +68,10 @@ def create_token():
     password = request.json.get("password") # None
     
     if not username:
-        return jsonify({ "error": "Username es obligatorio"}), 400
+        return jsonify({ "error": "Missing username"}), 400
     
     if not password:
-        return jsonify({ "error": "Password es obligatorio"}), 400
+        return jsonify({ "error": "Missing password"}), 400
     
     userFound = User.query.filter_by(username=username).first()
     
