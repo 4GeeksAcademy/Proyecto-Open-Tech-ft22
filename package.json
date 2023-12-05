@@ -84,6 +84,7 @@
 		"react-bootstrap": "^2.9.1",
 		"react-chartjs-2": "^2.11.2",
 		"react-dom": "^16.8.4",
+		"react-pdf": "^7.5.1",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
 		"react-toastify": "^9.1.3",
