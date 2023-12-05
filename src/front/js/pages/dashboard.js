@@ -24,7 +24,7 @@ export const Dashboard = () => {
                         Go back home
                     </Link>
                     {role === 'ADMIN' && (
-                        <Link to="/admin" className="buttonStyle" style={{ padding: '20px', fontSize: '25px', borderRadius: '20px', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <Link to="/dashboard/admin" className="buttonStyle" style={{ padding: '20px', fontSize: '25px', borderRadius: '20px', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                             <i class="fa-solid fa-lock" alt="Admin Icon" style={{ marginBottom: '15px', width: '65px', color: '#853BB0', fontSize: '40px' }}></i>
                             Admin Button
                         </Link>

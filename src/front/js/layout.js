@@ -13,7 +13,7 @@ import { Footer } from "./component/footer";
 import { Register } from "./pages/register";
 import { FormManual } from "./pages/formManual";
 import { Dashboard } from "./pages/dashboard";
-import AdminInit from "./pages/adminInit";
+import AdminView from "./pages/adminView";
 import { ToastContainer } from "react-toastify";
 import { SpectPages } from "./pages/spectPages";
 import { ProtectedRoute } from "./pages/privateRoute";
@@ -40,9 +40,9 @@ const Layout = () => {
                             <Route index element={<Dashboard />} />
                             <Route path="formManual" element={<FormManual />} />
                             <Route path="spectPages/:roleName" element={<SpectPages />} />
+                            <Route path="admin" element={<AdminView />} />
                         </Route>
 
-                        <Route element={<AdminInit />} path="/adminInit" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route path="*" element={<h1>Not found!</h1>} />
