@@ -54,6 +54,7 @@ class Salary(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
     pdf = db.Column(db.String(200), default="")
     public_id = db.Column(db.String(200), default="")
+    pdf_optimized = db.Column(db.String(200), default="")  # New field to store the optimized PDF URL
 
     def __repr__(self):
         return f'<Salary {self.id} {self.amount}>'
@@ -68,7 +69,7 @@ class Salary(db.Model):
             "city" : self.city,
             "amount": self.amount,
             "pdf": self.pdf,
-            "pdf_optimized": self.get_optimized_url(self.public_id)
+            "pdf_optimized": self.pdf_optimized  # Return the saved optimized URL
         }
     
     def get_optimized_url(self, public_id, format="auto", quality="auto"):
@@ -78,5 +79,8 @@ class Salary(db.Model):
             transformation=[{'quality': quality, 'fetch_format': format}],
             secure=True  # Use HTTPS
         )
+
+        self.pdf_optimized = url[0]  # Save the optimized URL to the new field
+        db.session.commit()  # Commit the changes to the database
 
         return url[0]  # The URL is at position 0 of the returned tuple

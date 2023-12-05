@@ -99,6 +99,7 @@ def get_salaries():
 @api.route('/salary', methods=['POST'])
 def create_salaries():
     pdf = None
+    public_id = None  # Initialize public_pdf
     category = ""
     role = ""
     amount = ""
@@ -144,7 +145,7 @@ def create_salaries():
         respA = upload(pdf, folder="salaries")
         if respA:
             pdf = respA['secure_url']
-            public_id = respA['public_id']
+            public_id = respA['public_id'].replace('salaries/', '')  # Remove the 'salaries/' prefix
         else:
             return jsonify({ "msg": "Error al subir el pdf"}), 400
 
@@ -157,8 +158,13 @@ def create_salaries():
         city=city,
         country=country,
         user_id=user_id,
-        pdf=pdf
+        pdf=pdf,
+        public_id=public_id  # Add the public_id to the Salary instance
     )
+
+    if public_id is not None:
+        salary.get_optimized_url(public_id)  # Generate and save the optimized URL
+
     db.session.add(salary)
     db.session.commit()
     return jsonify({"salary": salary.serialize(), "success": "Form submitted succesfully"}), 200
