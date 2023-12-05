@@ -144,6 +144,7 @@ def create_salaries():
         respA = upload(pdf, folder="salaries")
         if respA:
             pdf = respA['secure_url']
+            public_id = respA['public_id']
         else:
             return jsonify({ "msg": "Error al subir el pdf"}), 400
 
@@ -162,4 +163,10 @@ def create_salaries():
     db.session.commit()
     return jsonify({"salary": salary.serialize(), "success": "Form submitted succesfully"}), 200
 
+@api.route('/salary/<int:id>', methods=['GET'])
+def get_salary_by_id(id):
+    salary = Salary.query.get(id)
+    if salary is None:
+        raise APIException('Salary not found', status_code=404)
+    return jsonify(salary.serialize()), 200
 

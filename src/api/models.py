@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+import cloudinary
 db = SQLAlchemy()
 
 class User(db.Model):
@@ -52,6 +53,7 @@ class Salary(db.Model):
     amount = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
     pdf = db.Column(db.String(200), default="")
+    public_id = db.Column(db.String(200), default="")
 
     def __repr__(self):
         return f'<Salary {self.id} {self.amount}>'
@@ -65,5 +67,16 @@ class Salary(db.Model):
             "country": self.country,
             "city" : self.city,
             "amount": self.amount,
-            "pdf": self.pdf
+            "pdf": self.pdf,
+            "pdf_optimized": self.get_optimized_url(self.public_id)
         }
+    
+    def get_optimized_url(self, public_id, format="auto", quality="auto"):
+
+        url = cloudinary.utils.cloudinary_url(
+            f"v1/salaries/{public_id}",
+            transformation=[{'quality': quality, 'fetch_format': format}],
+            secure=True  # Use HTTPS
+        )
+
+        return url[0]  # The URL is at position 0 of the returned tuple
