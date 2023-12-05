@@ -146,7 +146,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (sessionStorage.getItem('user')) {
 					setStore({
 						user: JSON.parse(sessionStorage.getItem('user')),
-						token: JSON.parse(sessionStorage.getItem('token'))
+						token: JSON.parse(sessionStorage.getItem('token')),
+						role: JSON.parse(sessionStorage.getItem('role'))
 					})
 				}
 			},
