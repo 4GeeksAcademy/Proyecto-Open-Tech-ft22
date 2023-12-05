@@ -7,6 +7,7 @@ export const FormManual = () => {
     const [salary, setSalary] = useState(75000);
     const [category, setCategory] = useState("");
     const [country, setCountry] = useState("");
+    const [city, setCity] = useState(""); // Add a state for the city
     const navigate = useNavigate();
 
     const cities = {
@@ -80,6 +81,7 @@ export const FormManual = () => {
                 <div className="mb-3">
                     <label htmlFor="cityInput" className="form-label" style={{ color: 'white' }}>City</label>
                     <select className="form-control" id="cityInput" name="city" onChange={actions.handleChange} value={store.city} required>
+                        <option value="">Select a city</option>
                         {store.country && cities[store.country].map(city => (
                             <option key={city} value={city}>{city}</option>
                         ))}
