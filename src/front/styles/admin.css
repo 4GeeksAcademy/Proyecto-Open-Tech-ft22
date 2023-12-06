@@ -78,3 +78,18 @@
     margin-bottom: 15px;
     margin-top: 15px;
 }
+
+.eye-icon {
+    cursor: pointer;
+    color: #ba4ff8;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.eye-icon:hover {
+    color: #9a4ff8;
+}
+
+.eye-icon:active {
+    color: #7a4ff8;
+}

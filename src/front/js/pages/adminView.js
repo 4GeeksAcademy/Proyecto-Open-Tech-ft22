@@ -72,7 +72,7 @@ const AdminView = () => {
                                     <td>{item.country}</td>
                                     <td>{item.amount}</td>
                                     <td>{item.isVerified ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: '#ba4ff8', marginLeft: '20px' }} /> : null}</td>
-                                    <td>{item.pdf ? <FontAwesomeIcon icon={faEye} style={{ color: '#ba4ff8', marginLeft: '20px' }} onClick={() => setSelectedItem(item)} /> : null}</td>
+                                    <td>{item.pdf ? <FontAwesomeIcon icon={faEye} className="eye-icon" onClick={() => setSelectedItem(item)} /> : null}</td>
                                 </tr>
                             ))}
                     </tbody>
