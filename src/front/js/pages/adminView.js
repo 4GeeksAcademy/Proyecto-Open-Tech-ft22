@@ -17,14 +17,30 @@ const AdminView = () => {
             .then(data => setData(data));
     }, []);
 
-    const handleVerifyClick = () => {
+    const handleVerifyClick = async () => {
         // Update the verification status of the selected item
-        const updatedItem = { ...selectedItem, isVerified: true };
+        const updatedItem = { ...selectedItem, is_verified: true };
         setSelectedItem(updatedItem);
 
-        // Update the data array
-        const updatedData = data.map(item => item === selectedItem ? updatedItem : item);
-        setData(updatedData);
+        // Send a request to the API to update the item
+        try {
+            const response = await fetch(`${store.apiURL}/api/salary/${selectedItem.id}/verify`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedItem),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to verify PDF');
+            }
+
+            const updatedData = data.map(item => item.id === selectedItem.id ? updatedItem : item);
+            setData(updatedData);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
@@ -40,7 +56,7 @@ const AdminView = () => {
                             <th>Country</th>
                             <th>Amount</th>
                             <th>Verified</th>
-                            <th>PDF view</th>
+                            <th>view PDF</th>
                         </tr>
                     </thead>
                     <tbody>

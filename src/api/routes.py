@@ -177,3 +177,18 @@ def get_salary_by_id(id):
         raise APIException('Salary not found', status_code=404)
     return jsonify(salary.serialize()), 200
 
+
+
+@api.route('/salary/<int:salary_id>/verify', methods=['PUT'])
+def verify_salary(salary_id):
+    salary = Salary.query.get(salary_id)
+    if salary is None:
+        return jsonify({"error": "Salary not found"}), 404
+
+    data = request.get_json()
+    if 'is_verified' in data:
+        salary.is_verified = data['is_verified']
+        db.session.commit()
+
+    return jsonify(salary.serialize()), 200
+
