@@ -176,7 +176,7 @@ function Map() {
     const stylingFunction = ({ countryValue, minValue, maxValue, country, color }) => {
         if (countryValue === undefined) {
             return {
-                fill: "#f3ebf7",
+                fill: "#c3c0c4",
                 stroke: "white",
                 strokeWidth: 1,
                 strokeOpacity: 0.2,
