@@ -43,15 +43,21 @@ const AdminView = () => {
         }
     };
 
+    const handleRejectClick = async () => {
+        // Aqui agregar logica para rechazar PDF:
+        // Enviar correo de rechazo
+        // Dejar sin icono de verificacion en la vista del usuario
+    }
+
     return (
         <div>
             <div>
                 <table className="table-bordered">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Years of Experience</th>
                             <th>Role</th>
-                            <th>Category</th>
                             <th>City</th>
                             <th>Country</th>
                             <th>Amount</th>
@@ -65,16 +71,16 @@ const AdminView = () => {
                             .sort((a, b) => a.years_of_experience - b.years_of_experience)
                             .map((item, index) => (
                                 <tr key={index}>
+                                    <td className="id-column">{item.id}</td>
                                     <td>{item.years_of_experience}</td>
                                     <td>{item.role}</td>
-                                    <td>{item.category}</td>
                                     <td>{item.city}</td>
                                     <td>{item.country}</td>
                                     <td>{item.amount}</td>
                                     <td>
                                         {item.is_verified
                                             ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green', marginLeft: '20px' }} />
-                                            : <FontAwesomeIcon icon={faTimesCircle} style={{ color: 'red', marginLeft: '20px' }} />
+                                            : <FontAwesomeIcon icon={faTimesCircle} style={{ color: '#F29339', marginLeft: '20px' }} />
                                         }
                                     </td>
                                     <td>{item.pdf ? <FontAwesomeIcon icon={faEye} className="eye-icon" onClick={() => setSelectedItem(item)} /> : null}</td>
@@ -88,7 +94,21 @@ const AdminView = () => {
 
             <div class="pdf-container">
                 <h3>Selected PDF:</h3>
-                {selectedItem && <div className='justify-content-center verify-div'><button className='verify-button' onClick={handleVerifyClick}>Verify PDF <FontAwesomeIcon icon={faCheckCircle} style={{ color: '#ba4ff8', marginLeft: '20px' }} /></button></div>}
+                {selectedItem && <h4 style={{ color: 'white' }}>ID {selectedItem.id}</h4>}
+                {selectedItem &&
+                    <div className='button-container'>
+                        <div className='justify-content-center verify-div'>
+                            <button className='verify-button' onClick={handleVerifyClick}>
+                                Verify PDF <FontAwesomeIcon icon={faCheckCircle} style={{ marginLeft: '20px' }} />
+                            </button>
+                        </div>
+                        <div className='justify-content-center verify-div'>
+                            <button className='verify-button reject-button' onClick={handleRejectClick}>
+                                Reject PDF <FontAwesomeIcon icon={faTimesCircle} style={{ marginLeft: '20px' }} />
+                            </button>
+                        </div>
+                    </div>
+                }
                 {selectedItem ? <iframe class="myPDF" src={selectedItem.pdf_optimized}></iframe> : <p>Please select a PDF from the table by clicking on the <FontAwesomeIcon icon={faEye} /> icon.</p>}
             </div>
         </div>
