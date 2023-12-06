@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faEye, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { Button, Modal } from 'react-bootstrap';
 import "../../styles/admin.css";
 
 
@@ -10,6 +11,7 @@ const AdminView = () => {
     const [data, setData] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null);
     const [isPdfVerified, setPdfVerified] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         fetch(`${store.apiURL}/api/salary`)
@@ -17,8 +19,12 @@ const AdminView = () => {
             .then(data => setData(data));
     }, []);
 
-    const handleVerifyClick = async () => {
+    const handleVerifyClick = () => {
         // Update the verification status of the selected item
+        setShowModal(true);
+    };
+
+    const verify = async () => {
         const updatedItem = { ...selectedItem, is_verified: true };
         setSelectedItem(updatedItem);
 
@@ -37,11 +43,12 @@ const AdminView = () => {
             }
 
             const updatedData = data.map(item => item.id === selectedItem.id ? updatedItem : item);
+            setShowModal(false);
             setData(updatedData);
         } catch (error) {
             console.error(error);
         }
-    };
+    }
 
     const handleRejectClick = async () => {
         // Aqui agregar logica para rechazar PDF:
@@ -92,7 +99,7 @@ const AdminView = () => {
 
 
 
-            <div class="pdf-container">
+            <div className="pdf-container">
                 <h3>Selected PDF:</h3>
                 {selectedItem && <h4 style={{ color: 'white' }}>ID {selectedItem.id}</h4>}
                 {selectedItem &&
@@ -109,8 +116,26 @@ const AdminView = () => {
                         </div>
                     </div>
                 }
-                {selectedItem ? <iframe class="myPDF" src={selectedItem.pdf_optimized}></iframe> : <p>Please select a PDF from the table by clicking on the <FontAwesomeIcon icon={faEye} /> icon.</p>}
+                {selectedItem ? <iframe className="myPDF" src={selectedItem.pdf_optimized}></iframe> : <p>Please select a PDF from the table by clicking on the <FontAwesomeIcon icon={faEye} /> icon.</p>}
             </div>
+
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>PDF verification</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Are you sure you want to verify this PDF?</p>
+                    <p>A verification email will be sent to the user.</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>
+                        Cancel
+                    </Button>
+                    <Button variant="primary" onClick={verify}>
+                        Verify
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };
