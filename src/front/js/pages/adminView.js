@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faEye, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import "../../styles/admin.css";
 
 
@@ -71,7 +71,12 @@ const AdminView = () => {
                                     <td>{item.city}</td>
                                     <td>{item.country}</td>
                                     <td>{item.amount}</td>
-                                    <td>{item.isVerified ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: '#ba4ff8', marginLeft: '20px' }} /> : null}</td>
+                                    <td>
+                                        {item.is_verified
+                                            ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green', marginLeft: '20px' }} />
+                                            : <FontAwesomeIcon icon={faTimesCircle} style={{ color: 'red', marginLeft: '20px' }} />
+                                        }
+                                    </td>
                                     <td>{item.pdf ? <FontAwesomeIcon icon={faEye} className="eye-icon" onClick={() => setSelectedItem(item)} /> : null}</td>
                                 </tr>
                             ))}
