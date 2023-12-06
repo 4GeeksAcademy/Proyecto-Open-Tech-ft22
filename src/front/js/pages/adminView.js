@@ -12,6 +12,7 @@ const AdminView = () => {
     const [selectedItem, setSelectedItem] = useState(null);
     const [isPdfVerified, setPdfVerified] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [showRejectModal, setShowRejectModal] = useState(false);
 
     useEffect(() => {
         fetch(`${store.apiURL}/api/salary`)
@@ -24,7 +25,11 @@ const AdminView = () => {
         setShowModal(true);
     };
 
-    const verify = async () => {
+    const handleRejectClick = () => {
+        setShowRejectModal(true);
+    };
+
+    const handleVerify = async () => {
         const updatedItem = { ...selectedItem, is_verified: true };
         setSelectedItem(updatedItem);
 
@@ -50,7 +55,7 @@ const AdminView = () => {
         }
     }
 
-    const handleRejectClick = async () => {
+    const handleReject = async () => {
         // Aqui agregar logica para rechazar PDF:
         // Enviar correo de rechazo
         // Dejar sin icono de verificacion en la vista del usuario
@@ -131,8 +136,26 @@ const AdminView = () => {
                     <Button variant="secondary" onClick={() => setShowModal(false)}>
                         Cancel
                     </Button>
-                    <Button variant="primary" onClick={verify}>
+                    <Button variant="primary" onClick={handleVerify}>
                         Verify
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+            <Modal show={showRejectModal} onHide={() => setShowRejectModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>PDF rejection</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Are you sure you want to reject this PDF?</p>
+                    <p>A rejection email will be sent to the user.</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowRejectModal(false)}>
+                        Cancel
+                    </Button>
+                    <Button variant="primary" onClick={handleReject}>
+                        Reject
                     </Button>
                 </Modal.Footer>
             </Modal>
