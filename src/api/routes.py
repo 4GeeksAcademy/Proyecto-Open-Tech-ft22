@@ -150,7 +150,7 @@ def create_salaries():
             return jsonify({ "msg": "Error al subir el pdf"}), 400
 
 
-    salary = Salary(
+    salary = Salary (
         category=category,
         role=role,
         amount=amount,
@@ -159,7 +159,8 @@ def create_salaries():
         country=country,
         user_id=user_id,
         pdf=pdf,
-        public_id=public_id  # Add the public_id to the Salary instance
+        public_id=public_id,  # Add the public_id to the Salary instance
+        is_verified=False  # Add this line
     )
 
     if public_id is not None:

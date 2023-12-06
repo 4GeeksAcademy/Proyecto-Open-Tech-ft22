@@ -55,11 +55,12 @@ class Salary(db.Model):
     pdf = db.Column(db.String(200), default="")
     public_id = db.Column(db.String(200), default="")
     pdf_optimized = db.Column(db.String(200), default="")  # New field to store the optimized PDF URL
+    is_verified = db.Column(db.Boolean(), default=False)
 
     def __repr__(self):
         return f'<Salary {self.id} {self.amount}>'
 
-    def serialize(self):
+    def serialize(self): #This is to include in JSON response when fetching items from our API
         return {
             "id": self.id,
             "category": self.category,
@@ -69,7 +70,8 @@ class Salary(db.Model):
             "city" : self.city,
             "amount": self.amount,
             "pdf": self.pdf,
-            "pdf_optimized": self.pdf_optimized  # Return the saved optimized URL
+            "pdf_optimized": self.pdf_optimized,  # Return the saved optimized URL
+            "is_verified": self.is_verified
         }
     
     def get_optimized_url(self, public_id, format="auto", quality="auto"):
