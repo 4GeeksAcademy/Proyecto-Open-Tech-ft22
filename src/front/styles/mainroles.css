@@ -1,0 +1,8 @@
+.map-styles svg {
+    background-color: #131313;
+}
+
+.worldmap__figure-container {
+    background-color: #131313 !important;
+    margin-bottom: 30px;
+}

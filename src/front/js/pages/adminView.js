@@ -59,6 +59,30 @@ const AdminView = () => {
         // Aqui agregar logica para rechazar PDF:
         // Enviar correo de rechazo
         // Dejar sin icono de verificacion en la vista del usuario
+        const updatedItem = { ...selectedItem, is_verified: false };
+        setSelectedItem(updatedItem);
+
+        // Send a request to the API to update the item
+        try {
+            const response = await fetch(`${store.apiURL}/api/salary/${selectedItem.id}/reject`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedItem),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to reject PDF');
+            }
+
+            const updatedData = data.map(item => item.id === selectedItem.id ? updatedItem : item);
+            setShowRejectModal(false);
+            setData(updatedData);
+        } catch (error) {
+            // Handle the error...
+            console.error(error);
+        }
     }
 
     return (

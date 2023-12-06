@@ -48,7 +48,7 @@ export const SpectPages = () => {
                                 <td>{item.city}</td>
                                 <td>{item.country}</td>
                                 <td>{item.amount}</td>
-                                <td>{item.pdf ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: '#ba4ff8', marginLeft: '20px' }} /> : null}</td>
+                                <td>{item.is_verified ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: '#ba4ff8', marginLeft: '20px' }} /> : null}</td>
                             </tr>
                         ))}
                     </tbody>

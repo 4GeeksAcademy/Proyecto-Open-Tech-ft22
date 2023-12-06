@@ -50,7 +50,7 @@ export const ChartDoughnut = ({ category, roles, salaries }) => {
 
     return (
         <div>
-            <div style={{ backgroundColor: '#161616', padding: '25px', margin: '25px', borderRadius: '20px' }}>
+            <div style={{ backgroundColor: '#2c2c2c', padding: '25px', margin: '25px', borderRadius: '20px' }}>
                 <h1 style={{ color: '#eaeaea', marginBottom: '20px' }}>Role VS Entries</h1>
                 <Doughnut
                     data={data} />

@@ -192,3 +192,14 @@ def verify_salary(salary_id):
 
     return jsonify(salary.serialize()), 200
 
+@api.route('/salary/<int:salary_id>/reject', methods=['PUT'])
+def reject_salary(salary_id):
+    salary = Salary.query.get(salary_id)
+    if salary is None:
+        return jsonify({"error": "Salary not found"}), 404
+
+    salary.is_verified = False
+    db.session.commit()
+
+    return jsonify(salary.serialize()), 200
+

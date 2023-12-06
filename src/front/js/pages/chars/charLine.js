@@ -50,7 +50,7 @@ export const ChartLine = ({ data }) => {
         datasets: [{
             label: "Salaries",
             data: values,
-            backgroundColor: '#121212',
+            backgroundColor: '#2c2c2c',
             borderColor: 'rgba(1, 97, 237, 1)',
             borderWidth: 2,
             pointBackgroundColor: pointBackgroundColor,
@@ -62,7 +62,7 @@ export const ChartLine = ({ data }) => {
     return (
         <div>
             <div>
-                <h1 className='mb-3' style={{ color: '#959595' }}>Experience VS Salary</h1>
+                <h1 className='mb-3' style={{ color: 'white' }}>Experience VS Salary</h1>
                 <Line
                     data={chartData} options={options}
                 />

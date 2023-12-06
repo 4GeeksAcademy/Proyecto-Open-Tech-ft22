@@ -3,13 +3,14 @@ import RoleCard from '../component/roleCard';
 import styled from 'styled-components';
 import { Context } from '../store/appContext';
 import { ChartDoughnut } from './chars/charDoughnut';
+import { WorldMap } from "react-svg-worldmap";
+import "../../styles/mainroles.css";
 
 function MainRoles() {
     const [selectedCategory, setSelectedCategory] = useState("Software Development");
     return (
         <div>
-            <h1 style={{ color: 'white' }}>Select the category:</h1>
-            <TabGroup selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+            <TabGroup selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} style={{ marginTop: '40px' }} />
         </div>
     );
 }
@@ -122,6 +123,8 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
                     </div>
                 </div>
             </div>
+            <h1 style={{ color: 'white' }}>Entries by country</h1>
+            <Map />
             {/*<div>
                 Role Amount:
                 {store.salaries.map((salary, index) => (
@@ -140,3 +143,70 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
 }
 // Usage
 <TabGroup />
+
+function Map() {
+    const { store } = useContext(Context);
+    const countryNameToCode = { //ISO Alpha-2 country codes to identify countries
+        'USA': 'US',
+        'Brazil': 'BR',
+        'Chile': 'CL',
+        'Venezuela': 'VE',
+        'Argentina': 'AR',
+        'India': 'IN',
+        'Australia': 'AU',
+        'Germany': 'DE',
+        'Egypt': 'EG'
+    };
+    const data = store.salaries.reduce((acc, salary) => {
+        const countryCode = countryNameToCode[salary.country];
+        if (!countryCode) {
+            console.warn(`No country code found for "${salary.country}"`);
+            return acc;
+        }
+
+        const existingCountry = acc.find(item => item.country === countryCode);
+        if (existingCountry) {
+            existingCountry.value += 1;
+        } else {
+            acc.push({ country: countryCode, value: 1 });
+        }
+        return acc;
+    }, []);
+
+    const stylingFunction = ({ countryValue, minValue, maxValue, country, color }) => {
+        if (countryValue === undefined) {
+            return {
+                fill: "#f3ebf7",
+                stroke: "white",
+                strokeWidth: 1,
+                strokeOpacity: 0.2,
+                cursor: "pointer",
+            };
+        }
+
+        const calculatedValue = typeof countryValue === "string" ? minValue : countryValue;
+        const opacityLevel = 0.1 + (1.5 * (calculatedValue - minValue)) / (maxValue - minValue);
+        return {
+            fill: color,
+            fillOpacity: opacityLevel,
+            stroke: "white",
+            strokeWidth: 1,
+            strokeOpacity: 0.2,
+            cursor: "pointer",
+        };
+    };
+
+    return (
+        <div className='map-container'>
+            <div className="map-styles">
+                <WorldMap
+                    color="#e357ff"
+                    value-suffix="entries"
+                    size="xxl"
+                    data={data}
+                    styleFunction={stylingFunction}
+                />
+            </div>
+        </div>
+    );
+}

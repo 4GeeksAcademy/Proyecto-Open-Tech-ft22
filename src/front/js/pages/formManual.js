@@ -15,7 +15,11 @@ export const FormManual = () => {
         Venezuela: ["Caracas", "Maracaibo", "Valencia", "Barquisimeto", "Maracay"],
         USA: ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"],
         Argentina: ["Buenos Aires", "Cordoba", "Rosario", "Mendoza", "Tucuman"],
-        Brazil: ["Sao Paulo", "Rio de Janeiro", "Salvador", "Brasilia", "Fortaleza"]
+        Brazil: ["Sao Paulo", "Rio de Janeiro", "Salvador", "Brasilia", "Fortaleza"],
+        India: ["Mumbai", "Delhi", "Bangalore", "Hyderabad", "Ahmedabad"],
+        Australia: ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide"],
+        Germany: ["Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt"],
+        Egypt: ["Cairo", "Alexandria", "Giza", "Port Said", "Suez"]
     };
 
     const handleSubmit = (e) => {
@@ -75,6 +79,10 @@ export const FormManual = () => {
                         <option value="USA">USA</option>
                         <option value="Argentina">Argentina</option>
                         <option value="Brazil">Brazil</option>
+                        <option value="India">India</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Egypt">Egypt</option>
                     </select>
                 </div>
 

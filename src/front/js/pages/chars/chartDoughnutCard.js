@@ -54,7 +54,7 @@ export const ChartDoughnutCard = ({ data }) => {
     return (
         <div>
             <div>
-                <h1 className='mb-3' style={{ color: '#959595' }}>Country VS Average</h1>
+                <h1 className='mb-3' style={{ color: 'white' }}>Country VS Average</h1>
                 <Doughnut
                     data={chartData} />
             </div>
