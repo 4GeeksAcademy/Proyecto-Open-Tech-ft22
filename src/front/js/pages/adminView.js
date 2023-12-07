@@ -222,6 +222,7 @@ const AdminView = () => {
                             <th>City</th>
                             <th>Country</th>
                             <th>Amount</th>
+                            <th>Updated at</th>
                             <th>Verified</th>
                         </tr>
                     </thead>
@@ -236,6 +237,7 @@ const AdminView = () => {
                                     <td>{item.city}</td>
                                     <td>{item.country}</td>
                                     <td>{item.amount}</td>
+                                    <td>{item.updated_at}</td>
                                     <td>
                                         {item.is_verified
                                             ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green', marginLeft: '20px' }} />
