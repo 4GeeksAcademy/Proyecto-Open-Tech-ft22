@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faEye, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { Button, Modal } from 'react-bootstrap';
 import "../../styles/admin.css";
+import { Link } from 'react-router-dom';
 
 
 const AdminView = () => {
@@ -111,6 +112,9 @@ const AdminView = () => {
 
     return (
         <div>
+            <div className="text-center">
+                <Link to='/dashboard' className='backButton'>Go back to the main page</Link>
+            </div>
             <div>
                 <h4 style={{ marginLeft: '80px', color: 'white', marginTop: '30px' }}>Pending:</h4>
                 <table className="table-bordered">
