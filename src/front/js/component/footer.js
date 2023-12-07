@@ -1,4 +1,5 @@
 import React from "react";
+import { FaXTwitter } from "react-icons/fa6";
 import "../../styles/footer.css";
 
 export const Footer = () => (
@@ -13,7 +14,7 @@ export const Footer = () => (
 		<div className="column">
 			<p>
 				<a href="https://twitter.com/tucuentadetwitter">
-					<i className="fa-brands fa-twitter" style={{ fontSize: '30px', color: 'white' }}></i>
+					<FaXTwitter style={{ fontSize: '30px', color: 'white' }}/>
 				</a>
 			</p>
 		</div>
