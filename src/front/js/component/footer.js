@@ -20,7 +20,7 @@ export const Footer = () => (
 		<div className="column">
 			<p>
 				<a href="https://discord.com/">
-					<i class="fa-brands fa-discord" style={{ fontSize: '30px', color: 'white' }}></i>
+					<i className="fa-brands fa-discord" style={{ fontSize: '30px', color: 'white' }}></i>
 				</a>
 			</p>
 		</div>

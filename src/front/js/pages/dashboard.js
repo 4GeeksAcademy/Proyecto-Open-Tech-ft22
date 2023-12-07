@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "../../styles/dashboard.css";
 import { Context } from "../store/appContext";
@@ -11,6 +11,10 @@ import { NeutralView } from './neutralView';
 export const Dashboard = () => {
     const { store, actions } = useContext(Context);
     const { role } = store;
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className="text-center">

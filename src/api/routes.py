@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Login, Salary
+from api.models import db, User, Login, Salary, History
 from api.utils import generate_sitemap, APIException
 from flask_cors import cross_origin, CORS
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
@@ -202,4 +202,21 @@ def reject_salary(salary_id):
     db.session.commit()
 
     return jsonify(salary.serialize()), 200
+
+@api.route('/history', methods=['POST'])
+def add_history():
+    data = request.get_json()
+    history = History(
+        role=data['role'],
+        years_of_experience=data['years_of_experience'],
+        country=data['country'],
+        city=data['city'],
+        amount=data['amount'],
+        user_id=data['user_id'],
+        is_verified=data['is_verified']
+    )
+    db.session.add(history)
+    db.session.commit()
+
+    return jsonify(history.serialize()), 201
 

@@ -28,7 +28,7 @@ if db_url is not None:
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
 
@@ -101,6 +101,15 @@ def admin_user_route():
 
 @app.route('/api/salary', methods=['POST', 'OPTIONS'])
 def handle_salary():
+    if request.method == 'OPTIONS':
+        # Pre-flight request. Reply successfully:
+        return jsonify(success=True), 200
+    elif request.method == 'POST':
+        # Handle POST request
+        ...
+
+@app.route('/api/history', methods=['POST', 'OPTIONS'])
+def handle_history():
     if request.method == 'OPTIONS':
         # Pre-flight request. Reply successfully:
         return jsonify(success=True), 200

@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 import cloudinary
+from datetime import datetime
 db = SQLAlchemy()
 
 class User(db.Model):
@@ -86,3 +87,33 @@ class Salary(db.Model):
         db.session.commit()  # Commit the changes to the database
 
         return url[0]  # The URL is at position 0 of the returned tuple
+    
+class History(db.Model):
+    __tablename__='history'
+    id = db.Column(db.Integer, primary_key=True)
+    role = db.Column(db.String(120), nullable=False)
+    years_of_experience = db.Column(db.Integer, nullable=False)
+    country = db.Column(db.String(120), nullable=False)
+    city = db.Column(db.String(120), nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    is_verified = db.Column(db.Boolean(), default=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<History {self.id}>'
+    
+    def serialize(self):
+        return {
+            "id": self.id,
+            "role": self.role,
+            "years_of_experience": self.years_of_experience,
+            "country": self.country,
+            "city": self.city,
+            "amount": self.amount,
+            "user_id": self.user_id,
+            "is_verified": self.is_verified,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
+        }

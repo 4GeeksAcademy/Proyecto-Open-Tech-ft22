@@ -183,6 +183,59 @@ const AdminView = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
+
+
+
+
+
+
+
+
+
+            <div>
+                <h4 style={{ marginLeft: '80px', color: 'white' }}>History:</h4>
+                <table className="table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Years of Experience</th>
+                            <th>Role</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Amount</th>
+                            <th>Verified</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data && data
+                            .filter(item => item.pdf)
+                            .sort((a, b) => a.years_of_experience - b.years_of_experience)
+                            .map((item, index) => (
+                                <tr key={index}>
+                                    <td className="id-column">{item.id}</td>
+                                    <td>{item.years_of_experience}</td>
+                                    <td>{item.role}</td>
+                                    <td>{item.city}</td>
+                                    <td>{item.country}</td>
+                                    <td>{item.amount}</td>
+                                    <td>
+                                        {item.is_verified
+                                            ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green', marginLeft: '20px' }} />
+                                            : <FontAwesomeIcon icon={faTimesCircle} style={{ color: '#F29339', marginLeft: '20px' }} />
+                                        }
+                                    </td>
+
+                                </tr>
+                            ))}
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
         </div>
     );
 };
