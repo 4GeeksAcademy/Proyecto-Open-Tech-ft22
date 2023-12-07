@@ -160,7 +160,8 @@ def create_salaries():
         user_id=user_id,
         pdf=pdf,
         public_id=public_id,  # Add the public_id to the Salary instance
-        is_verified=False  # Add this line
+        is_verified=False,
+        is_in_history=False
     )
 
     if public_id is not None:
@@ -190,6 +191,26 @@ def verify_salary(salary_id):
         salary.is_verified = data['is_verified']
         db.session.commit()
 
+        # Add a record to the history table
+        history = History(
+            salary_id=salary.id,
+            role=salary.role,
+            years_of_experience=salary.years_of_experience,
+            country=salary.country,
+            city=salary.city,
+            amount=salary.amount,
+            user_id=salary.user_id,
+            is_verified=salary.is_verified
+        )
+        db.session.add(history)
+
+        # Update is_in_history to True
+        salary.is_in_history = True
+
+        # Delete the salary record
+        # db.session.delete(salary)
+        db.session.commit()
+
     return jsonify(salary.serialize()), 200
 
 @api.route('/salary/<int:salary_id>/reject', methods=['PUT'])
@@ -201,12 +222,32 @@ def reject_salary(salary_id):
     salary.is_verified = False
     db.session.commit()
 
+    # Add a record to the history table
+    history = History(
+        salary_id=salary.id,
+        role=salary.role,
+        years_of_experience=salary.years_of_experience,
+        country=salary.country,
+        city=salary.city,
+        amount=salary.amount,
+        user_id=salary.user_id,
+        is_verified=False
+    )
+    db.session.add(history)
+
+    # Update is_in_history to True
+    salary.is_in_history = True
+    db.session.commit()
+
     return jsonify(salary.serialize()), 200
+
+
 
 @api.route('/history', methods=['POST'])
 def add_history():
     data = request.get_json()
     history = History(
+        salary_id=data['salary_id'],
         role=data['role'],
         years_of_experience=data['years_of_experience'],
         country=data['country'],
@@ -219,4 +260,9 @@ def add_history():
     db.session.commit()
 
     return jsonify(history.serialize()), 201
+
+@api.route('/history', methods=['GET'])
+def get_history():
+    history = History.query.all()
+    return jsonify([item.serialize() for item in history]), 200
 

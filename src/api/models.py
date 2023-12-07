@@ -57,6 +57,7 @@ class Salary(db.Model):
     public_id = db.Column(db.String(200), default="")
     pdf_optimized = db.Column(db.String(200), default="")  # New field to store the optimized PDF URL
     is_verified = db.Column(db.Boolean(), default=False)
+    is_in_history = db.Column(db.Boolean(), default=False)
 
     def __repr__(self):
         return f'<Salary {self.id} {self.amount}>'
@@ -72,7 +73,8 @@ class Salary(db.Model):
             "amount": self.amount,
             "pdf": self.pdf,
             "pdf_optimized": self.pdf_optimized,  # Return the saved optimized URL
-            "is_verified": self.is_verified
+            "is_verified": self.is_verified,
+            "is_in_history": self.is_in_history
         }
     
     def get_optimized_url(self, public_id, format="auto", quality="auto"):
@@ -91,6 +93,7 @@ class Salary(db.Model):
 class History(db.Model):
     __tablename__='history'
     id = db.Column(db.Integer, primary_key=True)
+    salary_id = db.Column(db.Integer, db.ForeignKey('salary.id'))  # New field to store the original salary ID
     role = db.Column(db.String(120), nullable=False)
     years_of_experience = db.Column(db.Integer, nullable=False)
     country = db.Column(db.String(120), nullable=False)
@@ -107,6 +110,7 @@ class History(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "salary_id": self.salary_id,
             "role": self.role,
             "years_of_experience": self.years_of_experience,
             "country": self.country,

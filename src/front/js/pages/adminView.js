@@ -9,23 +9,35 @@ import "../../styles/admin.css";
 const AdminView = () => {
     const { store } = useContext(Context);
     const [data, setData] = useState([]);
+    const [historyData, setHistoryData] = useState([]); // Aqui se guarda el historial de verificaciones [PDFs verificados]
     const [selectedItem, setSelectedItem] = useState(null);
     const [isPdfVerified, setPdfVerified] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [showRejectModal, setShowRejectModal] = useState(false);
 
+    const fetchData = async () => {
+        const response = await fetch(`${store.apiURL}/api/salary`);
+        const data = await response.json();
+        console.log(data);  // Log the data to the console
+        setData(data);
+
+        const historyResponse = await fetch(`${store.apiURL}/api/history`);
+        const historyData = await historyResponse.json();
+        setHistoryData(historyData);
+    };
+
     useEffect(() => {
-        fetch(`${store.apiURL}/api/salary`)
-            .then(response => response.json())
-            .then(data => setData(data));
+        fetchData();
     }, []);
 
-    const handleVerifyClick = () => {
+    const handleVerifyClick = async () => {
+        await fetchData();
         // Update the verification status of the selected item
         setShowModal(true);
     };
 
-    const handleRejectClick = () => {
+    const handleRejectClick = async () => {
+        await fetchData();
         setShowRejectModal(true);
     };
 
@@ -50,6 +62,9 @@ const AdminView = () => {
             const updatedData = data.map(item => item.id === selectedItem.id ? updatedItem : item);
             setShowModal(false);
             setData(updatedData);
+
+            // Re-fetch the data
+            await fetchData();
         } catch (error) {
             console.error(error);
         }
@@ -79,8 +94,10 @@ const AdminView = () => {
             const updatedData = data.map(item => item.id === selectedItem.id ? updatedItem : item);
             setShowRejectModal(false);
             setData(updatedData);
+
+            // Re-fetch the data
+            await fetchData();
         } catch (error) {
-            // Handle the error...
             console.error(error);
         }
     }
@@ -88,6 +105,7 @@ const AdminView = () => {
     return (
         <div>
             <div>
+                <h4 style={{ marginLeft: '80px', color: 'white', marginTop: '30px' }}>Pending:</h4>
                 <table className="table-bordered">
                     <thead>
                         <tr>
@@ -103,8 +121,8 @@ const AdminView = () => {
                     </thead>
                     <tbody>
                         {data && data
-                            .filter(item => item.pdf)
-                            .sort((a, b) => a.years_of_experience - b.years_of_experience)
+                            .filter(item => item.pdf && !item.is_in_history)
+                            .sort((a, b) => a.id - b.id)
                             .map((item, index) => (
                                 <tr key={index}>
                                     <td className="id-column">{item.id}</td>
@@ -208,12 +226,11 @@ const AdminView = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data && data
-                            .filter(item => item.pdf)
+                        {historyData && historyData
                             .sort((a, b) => a.years_of_experience - b.years_of_experience)
                             .map((item, index) => (
                                 <tr key={index}>
-                                    <td className="id-column">{item.id}</td>
+                                    <td className="id-column">{item.salary_id}</td>
                                     <td>{item.years_of_experience}</td>
                                     <td>{item.role}</td>
                                     <td>{item.city}</td>

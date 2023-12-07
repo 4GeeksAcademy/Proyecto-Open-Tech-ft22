@@ -24,12 +24,12 @@ export const Dashboard = () => {
                 </h1>
                 <div className="button-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '25px' }}>
                     <Link to="/" className="buttonStyle" style={{ padding: '20px', fontSize: '25px', borderRadius: '20px', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginRight: '20px' }}>
-                        <i class="fa-solid fa-house" alt="Home Icon" style={{ marginBottom: '15px', width: '65px', color: '#853BB0', fontSize: '40px' }}></i>
+                        <i className="fa-solid fa-house" alt="Home Icon" style={{ marginBottom: '15px', width: '65px', color: '#853BB0', fontSize: '40px' }}></i>
                         Go back home
                     </Link>
                     {role === 'ADMIN' && (
                         <Link to="/dashboard/admin" className="buttonStyle" style={{ padding: '20px', fontSize: '25px', borderRadius: '20px', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                            <i class="fa-solid fa-lock" alt="Admin Icon" style={{ marginBottom: '15px', width: '65px', color: '#853BB0', fontSize: '40px' }}></i>
+                            <i className="fa-solid fa-lock" alt="Admin Icon" style={{ marginBottom: '15px', width: '65px', color: '#853BB0', fontSize: '40px' }}></i>
                             Admin Button
                         </Link>
                     )}
