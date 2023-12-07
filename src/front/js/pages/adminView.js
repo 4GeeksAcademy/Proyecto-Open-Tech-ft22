@@ -14,6 +14,11 @@ const AdminView = () => {
     const [isPdfVerified, setPdfVerified] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [showRejectModal, setShowRejectModal] = useState(false);
+    //Pagination:
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 20;
+
+
 
     const fetchData = async () => {
         const response = await fetch(`${store.apiURL}/api/salary`);
@@ -62,6 +67,7 @@ const AdminView = () => {
             const updatedData = data.map(item => item.id === selectedItem.id ? updatedItem : item);
             setShowModal(false);
             setData(updatedData);
+            setSelectedItem(null);
 
             // Re-fetch the data
             await fetchData();
@@ -94,6 +100,7 @@ const AdminView = () => {
             const updatedData = data.map(item => item.id === selectedItem.id ? updatedItem : item);
             setShowRejectModal(false);
             setData(updatedData);
+            setSelectedItem(null);
 
             // Re-fetch the data
             await fetchData();
@@ -228,7 +235,8 @@ const AdminView = () => {
                     </thead>
                     <tbody>
                         {historyData && historyData
-                            .sort((a, b) => a.years_of_experience - b.years_of_experience)
+                            .sort((a, b) => a.salary_id - b.salary_id)
+                            .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
                             .map((item, index) => (
                                 <tr key={index}>
                                     <td className="id-column">{item.salary_id}</td>
@@ -249,6 +257,16 @@ const AdminView = () => {
                             ))}
                     </tbody>
                 </table>
+                <div className='previous-next'>
+                    <button className='pagination' onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}><div className="button-content">
+                        <i className="fa-solid fa-angles-left"></i>
+                        <span>Previous</span>
+                    </div></button>
+                    <button className='pagination' onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === Math.ceil(data.length / itemsPerPage)}><div className="button-content">
+                        <span>Next</span>
+                        <i className="fa-solid fa-angles-right"></i>
+                    </div></button>
+                </div>
             </div>
 
 

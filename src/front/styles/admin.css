@@ -50,7 +50,7 @@
 .verify-button:active,
 .verify-button:hover {
     outline: 0;
-    background-color: rgba(38, 207, 38, 0.8);
+    background-color: rgba(38, 173, 207, 0.8);
 }
 
 .verify-button span {
@@ -112,4 +112,29 @@ body {
 .button-container {
     display: flex;
     justify-content: center;
+}
+
+.previous-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.pagination {
+    background-color: #7A51DD;
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+}
+.button-content span {
+    margin-left: 5px;
+}
+.fa-angles-right {
+    margin-left: 5px;
+}
+.fa-angles-left {
+    margin-left: 5px;
 }
