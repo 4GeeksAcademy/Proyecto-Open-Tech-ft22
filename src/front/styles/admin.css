@@ -50,6 +50,7 @@
 .verify-button:active,
 .verify-button:hover {
     outline: 0;
+    background-color: rgba(38, 207, 38, 0.8);
 }
 
 .verify-button span {
