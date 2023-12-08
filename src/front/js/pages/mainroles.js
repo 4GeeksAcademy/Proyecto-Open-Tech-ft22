@@ -5,6 +5,7 @@ import { Context } from '../store/appContext';
 import { ChartDoughnut } from './chars/charDoughnut';
 import { WorldMap } from "react-svg-worldmap";
 import "../../styles/mainroles.css";
+import { useTranslation } from 'react-i18next';
 
 function MainRoles() {
     const [selectedCategory, setSelectedCategory] = useState("Software Development");
@@ -51,6 +52,7 @@ const roles = {
 
 const types = ['Software Development', 'Cybersecurity', 'Data Science and Analytics', 'Network and Systems Administration', 'IT Project Management'];
 function TabGroup({ selectedCategory, setSelectedCategory }) {
+    const { t } = useTranslation();
     const [active, setActive] = useState(types[0]);
     const [roleCards, setRoleCards] = useState(roles['Software Development']); // Initialize with the roles for 'Software Development'
     const { store, actions } = useContext(Context);
@@ -92,7 +94,7 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
                 ))}
             </ButtonGroup>
             <p />
-            <p style={{ color: 'white' }}> Your category selection: {active} </p>
+            <p style={{ color: 'white' }}> {t('Your category selection')}: {active} </p>
             <div className="mx-auto w-75" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
                 {roleCards.map((roleCard, index) => {
                     // Find the salary data for this role
@@ -123,7 +125,7 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
                     </div>
                 </div>
             </div>
-            <h1 style={{ color: 'white' }}>Entries by country</h1>
+            <h1 style={{ color: 'white' }}>{t('Entries by country')}</h1>
             <Map />
             {/*<div>
                 Role Amount:

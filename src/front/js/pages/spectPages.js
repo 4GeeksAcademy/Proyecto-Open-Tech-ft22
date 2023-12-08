@@ -6,9 +6,11 @@ import { ChartLine } from './chars/charLine';
 import { ChartDoughnutCard } from './chars/chartDoughnutCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 
 export const SpectPages = () => {
+    const { t } = useTranslation();
     const { roleName } = useParams();
     console.log('roleName:', roleName);
     const { store, actions } = useContext(Context);
@@ -30,20 +32,20 @@ export const SpectPages = () => {
                 <table className="table-bordered">
                     <thead>
                         <tr>
-                            <th>Years of experience</th>
-                            <th>Role Name</th>
-                            <th>Category</th>
-                            <th>City</th>
-                            <th>Country</th>
-                            <th>Amount</th>
-                            <th>Verified</th>
+                            <th>{t('Years of experience')}</th>
+                            <th>{t('Role Name')}</th>
+                            <th>{t('Category')}</th>
+                            <th>{t('City')}</th>
+                            <th>{t('Country')}</th>
+                            <th>{t('Amount')}</th>
+                            <th>{t('Verified')}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {filteredData && filteredData.sort((a, b) => a.years_of_experience - b.years_of_experience).map((item, index) => (
                             <tr key={index}>
                                 <td>{item.years_of_experience}</td>
-                                <td>{item.role}</td>
+                                <td>{t(item.role)}</td>
                                 <td>{item.category}</td>
                                 <td>{item.city}</td>
                                 <td>{item.country}</td>
@@ -66,7 +68,7 @@ export const SpectPages = () => {
             </div>
 
             <div className="text-center">
-                <Link to='/dashboard' className='backButton'>Go back to the main page</Link>
+                <Link to='/dashboard' className='backButton'>{t('Go back to the main page')}</Link>
             </div>
         </div>
     );

@@ -3,10 +3,12 @@ import { Context } from "../store/appContext";
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import "../../styles/navbar.css";
+import { useTranslation } from 'react-i18next';
 
 
 const Logout = () => {
     const { store, actions } = useContext(Context)
+    const { t } = useTranslation();
 
     const randomPokemon = Math.floor(Math.random() * 1017) + 1;
     const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomPokemon}.png`;
@@ -29,7 +31,7 @@ const Logout = () => {
                                 <Link to="/">
                                     <Dropdown.Item as="div">
                                         <button onClick={actions.logout} className="btn logoutButton">
-                                            <i className="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+                                            <i className="fa-solid fa-arrow-right-from-bracket"></i> {t('Sign out')}
                                         </button>
                                     </Dropdown.Item>
                                 </Link>

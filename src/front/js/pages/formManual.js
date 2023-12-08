@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Context } from '../store/appContext';
+import { useTranslation } from 'react-i18next';
 
 export const FormManual = () => {
     const { store, actions } = useContext(Context)
+    const { t } = useTranslation();
     const [salary, setSalary] = useState(75000);
     const [category, setCategory] = useState("");
     const [country, setCountry] = useState("");
@@ -39,41 +41,41 @@ export const FormManual = () => {
     return (
         <div className="formManual" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h1 style={{ background: '-webkit-linear-gradient(left, blue, white)', WebkitBackgroundClip: 'text', color: 'transparent', paddingTop: '20px' }}>
-                Submit information
+                {t('Submit information')}
             </h1>
 
             <form onSubmit={handleSubmit} className='mx-auto p-3 border-1 w-50' style={{ boxShadow: '0 5px 9px rgba(0, 0, 0, 0.5)', marginTop: '20px' }}>
                 <div className="mb-3">
-                    <label htmlFor="categoryInput" className="form-label" style={{ color: 'white' }}>IT category</label>
+                    <label htmlFor="categoryInput" className="form-label" style={{ color: 'white' }}>{t('IT category')}</label>
                     <select className="form-control" id="categoryInput" name="category" value={store.category} onChange={actions.handleChange} required>
-                        <option value="">Select a category</option>
-                        <option value="software">Software Development</option>
-                        <option value="security">Cybersecurity</option>
-                        <option value="data">Data Science and Analytics</option>
-                        <option value="administration">Network and Systems Administration</option>
-                        <option value="management">IT Project Management</option>
+                        <option value="">{t('Select a category')}</option>
+                        <option value="software">{t('Software Development')}</option>
+                        <option value="security">{t('Cybersecurity')}</option>
+                        <option value="data">{t('Data Science and Analytics')}</option>
+                        <option value="administration">{t('Network and Systems Administration')}</option>
+                        <option value="management">{t('IT Project Management')}</option>
                     </select>
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="roleInput" className="form-label" style={{ color: 'white' }}>Specific role</label>
+                    <label htmlFor="roleInput" className="form-label" style={{ color: 'white' }}>{t('Specific role')}</label>
                     <select className="form-control" id="roleInput" name="role" onChange={actions.handleChange} value={store.role} required>
-                        <option value="">Select a role</option>
+                        <option value="">{t('Select a role')}</option>
                         {store.category && roles[store.category].map(role => (
-                            <option key={role} value={role}>{role}</option>
+                            <option key={role} value={role}>{t(role)}</option>
                         ))}
                     </select>
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="experienceInput" className="form-label" style={{ color: 'white' }}>Years of Experience</label>
+                    <label htmlFor="experienceInput" className="form-label" style={{ color: 'white' }}>{t('Years of experience')}</label>
                     <input type="number" className="form-control" id="experienceInput" name="years_of_experience" min="0" max="50" value={store.years_of_experience} onChange={actions.handleChange} required />
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="countryInput" className="form-label" style={{ color: 'white' }}>Country</label>
+                    <label htmlFor="countryInput" className="form-label" style={{ color: 'white' }}>{t('Country')}</label>
                     <select className="form-control" id="countryInput" name="country" value={store.country} onChange={actions.handleChange} required>
-                        <option value="">Select a country</option>
+                        <option value="">{t('Select a country')}</option>
                         <option value="Chile">Chile</option>
                         <option value="Venezuela">Venezuela</option>
                         <option value="USA">USA</option>
@@ -87,9 +89,9 @@ export const FormManual = () => {
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="cityInput" className="form-label" style={{ color: 'white' }}>City</label>
+                    <label htmlFor="cityInput" className="form-label" style={{ color: 'white' }}>{t('City')}</label>
                     <select className="form-control" id="cityInput" name="city" onChange={actions.handleChange} value={store.city} required>
-                        <option value="">Select a city</option>
+                        <option value="">{t('Select a city')}</option>
                         {store.country && cities[store.country].map(city => (
                             <option key={city} value={city}>{city}</option>
                         ))}
@@ -98,25 +100,25 @@ export const FormManual = () => {
 
 
                 <div className="mb-3">
-                    <label htmlFor="salaryInput" className="form-label" style={{ color: 'white' }}>Annual salary in USD</label>
+                    <label htmlFor="salaryInput" className="form-label" style={{ color: 'white' }}>{t('Annual salary in USD')}</label>
                     <input type="number" className="form-control" id="salaryInput" name="amount" min="6000" value={store.amount} onChange={actions.handleChange} required />
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="pdfInput" className="form-label" style={{ color: 'white' }}>Upload Salary optional</label>
+                    <label htmlFor="pdfInput" className="form-label" style={{ color: 'white' }}>{t('Upload Salary optional')}</label>
                     <input type="file" className="form-control" id="pdfInput" name="pdf" onChange={actions.handleChangeFile} />
                 </div>
 
 
 
 
-                <button type="submit" className="btn w-100" style={{ backgroundColor: '#4f89ee' }}>Submit</button>
+                <button type="submit" className="btn w-100" style={{ backgroundColor: '#4f89ee' }}>{t('Submit')}</button>
             </form>
 
 
             <div className='text-center my-4'>
                 <Link to="/">
-                    <p>Go back Home</p>
+                    <p>{t('Go back Home')}</p>
                 </Link>
             </div>
 

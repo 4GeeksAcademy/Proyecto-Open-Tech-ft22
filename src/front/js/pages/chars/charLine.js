@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Chart as ChartJs } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import sourceData from "../data/sourceData.json";
+import { useTranslation } from 'react-i18next';
 
 export const ChartLine = ({ data }) => {
     const labels = data.map((item) => item.years_of_experience);
     const values = data.map((item) => item.amount);
+    const { t } = useTranslation();
 
     // Your component logic here
     const options = {
@@ -62,7 +64,7 @@ export const ChartLine = ({ data }) => {
     return (
         <div>
             <div>
-                <h1 className='mb-3' style={{ color: 'white' }}>Experience VS Salary</h1>
+                <h1 className='mb-3' style={{ color: 'white' }}>{t('Experience VS Salary')}</h1>
                 <Line
                     data={chartData} options={options}
                 />

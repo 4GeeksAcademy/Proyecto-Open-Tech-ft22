@@ -3,11 +3,13 @@ import { Chart as ChartJs } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
 import sourceData from "../data/sourceData.json";
+import { useTranslation } from 'react-i18next';
 
 
 export const ChartDoughnut = ({ category, roles, salaries }) => {
+    const { t } = useTranslation();
     const roleNames = roles[category];
-    const labels = roleNames;
+    const labels = roleNames.map(role => t(role));
     const values = roleNames.map(role => {
         const roleSalaries = salaries.filter(salary => salary.role === role);
         return roleSalaries.length;
@@ -51,7 +53,7 @@ export const ChartDoughnut = ({ category, roles, salaries }) => {
     return (
         <div>
             <div style={{ backgroundColor: '#2c2c2c', padding: '25px', margin: '25px', borderRadius: '20px' }}>
-                <h1 style={{ color: '#eaeaea', marginBottom: '20px' }}>Role VS Entries</h1>
+                <h1 style={{ color: '#eaeaea', marginBottom: '20px' }}>{t('Role VS Entries')}</h1>
                 <Doughnut
                     data={data} />
             </div>

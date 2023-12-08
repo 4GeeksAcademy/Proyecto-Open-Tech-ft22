@@ -3,11 +3,13 @@ import { Chart as ChartJs } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
 import sourceData from "../data/sourceData.json";
+import { useTranslation } from 'react-i18next';
 
 
 export const ChartDoughnutCard = ({ data }) => {
     // Get unique countries
     const labels = [...new Set(data.map(item => item.country))];
+    const { t } = useTranslation();
 
     // Calculate total amount for each country
     const values = labels.map(country => {
@@ -54,7 +56,7 @@ export const ChartDoughnutCard = ({ data }) => {
     return (
         <div>
             <div>
-                <h1 className='mb-3' style={{ color: 'white' }}>Country VS Average</h1>
+                <h1 className='mb-3' style={{ color: 'white' }}>{t('Country VS Average')}</h1>
                 <Doughnut
                     data={chartData} />
             </div>
