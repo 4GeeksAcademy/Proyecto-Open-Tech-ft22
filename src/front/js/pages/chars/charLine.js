@@ -52,7 +52,7 @@ export const ChartLine = ({ data }) => {
         datasets: [{
             label: "Salaries",
             data: values,
-            backgroundColor: '#2c2c2c',
+            backgroundColor: '#464646',
             borderColor: 'rgba(1, 97, 237, 1)',
             borderWidth: 2,
             pointBackgroundColor: pointBackgroundColor,

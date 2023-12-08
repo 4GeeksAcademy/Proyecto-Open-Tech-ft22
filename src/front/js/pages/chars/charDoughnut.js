@@ -23,16 +23,16 @@ export const ChartDoughnut = ({ category, roles, salaries }) => {
             label: "Grafico por el poder Perruno",
             data: values,
             backgroundColor: [
-                /*Azul*/ 'rgba(1, 97, 237, 0.3)',
-                /*Morado*/ 'rgba(227, 87, 255, 0.3)',
-                /*Menos morado*/ 'rgba(175, 77, 255, 0.3)',
-                /*Rosado*/ 'rgba(117, 66, 255, 0.3)',
-                /*Fucsia*/ 'rgba(56, 59, 255, 0.3)',
-                /*Sandia*/ 'rgba(46, 109, 255, 0.3)',
-                /*Naranja*/ 'rgba(36, 164, 255, 0.3)',
-                /*Salmon*/ 'rgba(26, 224, 255, 0.3)',
-                /*Gold*/ 'rgba(15, 255, 219, 0.3)',
-                /*Amarillo*/ 'rgba(5, 255, 147, 0.3)'
+                /*Azul*/ 'rgba(1, 97, 237, 0.5)',
+                /*Morado*/ 'rgba(227, 87, 255, 0.5)',
+                /*Menos morado*/ 'rgba(175, 77, 255, 0.5)',
+                /*Rosado*/ 'rgba(117, 66, 255, 0.5)',
+                /*Fucsia*/ 'rgba(56, 59, 255, 0.5)',
+                /*Sandia*/ 'rgba(46, 109, 255, 0.5)',
+                /*Naranja*/ 'rgba(36, 164, 255, 0.5)',
+                /*Salmon*/ 'rgba(26, 224, 255, 0.5)',
+                /*Gold*/ 'rgba(15, 255, 219, 0.5)',
+                /*Amarillo*/ 'rgba(5, 255, 147, 0.5)'
             ],
             borderColor: [
                 /*Azul*/ 'rgba(1, 97, 237)',
