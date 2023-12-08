@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faEye, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faEye, faFileCircleExclamation, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { Button, Modal } from 'react-bootstrap';
 import "../../styles/admin.css";
 import { Link } from 'react-router-dom';
@@ -17,7 +17,7 @@ const AdminView = () => {
     const [showRejectModal, setShowRejectModal] = useState(false);
     //Pagination:
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 20;
+    const itemsPerPage = 10;
 
 
 
@@ -126,7 +126,7 @@ const AdminView = () => {
                             <th>City</th>
                             <th>Country</th>
                             <th>Amount</th>
-                            <th>Verified</th>
+                            <th>To be Verified</th>
                             <th>view PDF</th>
                         </tr>
                     </thead>
@@ -145,7 +145,7 @@ const AdminView = () => {
                                     <td>
                                         {item.is_verified
                                             ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green', marginLeft: '20px' }} />
-                                            : <FontAwesomeIcon icon={faTimesCircle} style={{ color: '#F29339', marginLeft: '20px' }} />
+                                            : <FontAwesomeIcon icon={faFileCircleExclamation} style={{ color: '#F29339', marginLeft: '20px' }} />
                                         }
                                     </td>
                                     <td>{item.pdf ? <FontAwesomeIcon icon={faEye} className="eye-icon" onClick={() => setSelectedItem(item)} /> : null}</td>
@@ -233,7 +233,7 @@ const AdminView = () => {
                             <th>City</th>
                             <th>Country</th>
                             <th>Amount</th>
-                            <th>Updated at</th>
+                            <th>Verification date</th>
                             <th>Verified</th>
                         </tr>
                     </thead>
@@ -253,7 +253,7 @@ const AdminView = () => {
                                     <td>
                                         {item.is_verified
                                             ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green', marginLeft: '20px' }} />
-                                            : <FontAwesomeIcon icon={faTimesCircle} style={{ color: '#F29339', marginLeft: '20px' }} />
+                                            : <FontAwesomeIcon icon={faTimesCircle} style={{ color: '#e2142d', marginLeft: '20px' }} />
                                         }
                                     </td>
 

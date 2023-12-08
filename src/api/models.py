@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import cloudinary
 from datetime import datetime
+from datetime import datetime, timedelta
 db = SQLAlchemy()
 
 class User(db.Model):
@@ -90,6 +91,12 @@ class Salary(db.Model):
 
         return url[0]  # The URL is at position 0 of the returned tuple
     
+def get_chile_time():
+    utc_now = datetime.utcnow()
+    chile_offset = timedelta(hours=-3)  # Change this to -3 during daylight saving time
+    chile_time = utc_now + chile_offset
+    return chile_time
+    
 class History(db.Model):
     __tablename__='history'
     id = db.Column(db.Integer, primary_key=True)
@@ -101,8 +108,8 @@ class History(db.Model):
     amount = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
     is_verified = db.Column(db.Boolean(), default=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=get_chile_time)
+    updated_at = db.Column(db.DateTime, default=get_chile_time, onupdate=get_chile_time)
 
     def __repr__(self):
         return f'<History {self.id}>'
