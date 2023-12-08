@@ -36,7 +36,7 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<Register />} path="/register" />
 
-                        <Route path='/dashboard' element={<ProtectedRoute currentUser={store.user} redirectPath={'/'} />}>
+                        <Route path='/dashboard' element={<ProtectedRoute currentUser={store.user} redirectPath={'/'} message="You have to login to submit salary" />}>
                             <Route index element={<Dashboard />} />
                             <Route path="formManual" element={<FormManual />} />
                             <Route path="spectPages/:roleName" element={<SpectPages />} />
