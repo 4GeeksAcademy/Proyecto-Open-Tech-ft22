@@ -16,13 +16,14 @@ export const Navbar = () => {
 				<Link to="/">
 					<span className="navbar-brand mb-0 openTech-Logo"><img src={openTechLogo} style={{ width: '160px' }} /></span>
 				</Link>
-				<div className="ml-auto" style={{ display: 'flex', alignItems: 'center' }}>
+				<div className="ml-auto d-flex justify-content-between" style={{ alignItems: 'center' }}>
 					<LanguageSelector />
 					<Link to="/dashboard/formManual">
 						<button className="btn submitSalaryNav me-4" style={{ backgroundColor: '#4f89ee' }}>{t('Submit Salary')}</button>
 					</Link>
 					<Logout />
 				</div>
+
 			</div>
 		</nav>
 	);

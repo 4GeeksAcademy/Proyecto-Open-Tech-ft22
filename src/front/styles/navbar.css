@@ -44,6 +44,41 @@
     background-color: #292929 !important;
 }
 
-.language {
-    margin-right: 10px;
+.navbar-container {
+    display: flex;
+    align-items: center;
+}
+
+.language-selector {
+    position: relative;
+    margin-right: 15px;
+    /* Adjust the margin as needed */
+}
+
+.selected-language {
+    cursor: pointer;
+}
+
+.dropdown-language {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #292929;
+    color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #292929;
 }
