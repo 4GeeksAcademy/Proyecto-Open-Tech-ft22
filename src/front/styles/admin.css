@@ -148,6 +148,7 @@ body {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
 }
 .table-container .table-bordered {
     width: 100%; /* Make the table take up the full width of its container */

@@ -6,6 +6,7 @@ import { ChartDoughnut } from './chars/charDoughnut';
 import { WorldMap } from "react-svg-worldmap";
 import "../../styles/mainroles.css";
 import { useTranslation } from 'react-i18next';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 function MainRoles() {
     const [selectedCategory, setSelectedCategory] = useState("Software Development");
@@ -36,6 +37,7 @@ const Tab = styled(({ isActive, ...props }) => <button {...props} />)`
     color: purple;
   `}
 `;
+
 const ButtonGroup = styled.div`
   display: flex;
 `;
@@ -82,17 +84,28 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
 
     return (
         <>
-            <ButtonGroup className='mx-auto w-75'>
-                {types.map(type => (
-                    <Tab
-                        key={type}
-                        isActive={active === type}
-                        onClick={() => handleTabClick(type)}
-                    >
-                        {type}
-                    </Tab>
-                ))}
-            </ButtonGroup>
+            <div className="d-none d-lg-block mx-auto w-75">
+                <ButtonGroup>
+                    {types.map(type => (
+                        <Tab
+                            key={type}
+                            isActive={active === type}
+                            onClick={() => handleTabClick(type)}
+                        >
+                            {type}
+                        </Tab>
+                    ))}
+                </ButtonGroup>
+            </div>
+            <div className="d-block d-lg-none">
+                <DropdownButton id="dropdown-basic-button" title={active} variant="secondary">
+                    {types.map(type => (
+                        <Dropdown.Item key={type} onClick={() => handleTabClick(type)}>
+                            {type}
+                        </Dropdown.Item>
+                    ))}
+                </DropdownButton>
+            </div>
             <p />
             <p style={{ color: 'white' }}> {t('Your category selection')}: {active} </p>
             <div className="mx-auto w-75" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
