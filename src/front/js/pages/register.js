@@ -29,15 +29,15 @@ export const Register = () => {
             <form onSubmit={handleSubmit} className='mx-auto p-3 border-1 w-25' style={{ boxShadow: '0 5px 9px rgba(0, 0, 0, 0.5)', marginTop: '20px' }}>
                 <div className="form-group mb-3">
                     <label htmlFor="name" className="form-label" style={{ color: 'white' }}>{t('Name')}:</label>
-                    <input type="text" className="form-control" id="name" name="name" onChange={actions.handleChange} value={store.name} required />
+                    <input type="text" className="form-control" id="name" name="name" onChange={actions.handleChange} value={store.name} required autocomplete="off"/>
                 </div>
                 <div className="form-group mb-3">
                     <label htmlFor="username" className="form-label" style={{ color: 'white' }}>{t('Username')}:</label>
-                    <input type="text" className="form-control" id="username" name="username" onChange={actions.handleChange} value={store.username} required />
+                    <input type="text" className="form-control" id="username" name="username" onChange={actions.handleChange} value={store.username} required autocomplete="off"/>
                 </div>
                 <div className="form-group mb-3">
                     <label htmlFor="email" className="form-label" style={{ color: 'white' }}>{t('Email')}:</label>
-                    <input type="email" className="form-control" id="email" name="email" onChange={actions.handleChange} value={store.email} required />
+                    <input type="email" className="form-control" id="email" name="email" onChange={actions.handleChange} value={store.email} required autocomplete="off"/>
                 </div>
                 <div className="form-group mb-3">
                     <label htmlFor="password" className="form-label" style={{ color: 'white' }}>{t('Password')}:</label>
