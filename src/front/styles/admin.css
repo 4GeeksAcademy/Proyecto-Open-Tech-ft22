@@ -129,12 +129,28 @@ body {
     display: flex;
     align-items: center;
 }
+
 .button-content span {
     margin-left: 5px;
 }
+
 .fa-angles-right {
     margin-left: 5px;
 }
+
 .fa-angles-left {
     margin-left: 5px;
 }
+
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.table-container .table-bordered {
+    width: 100%; /* Make the table take up the full width of its container */
+    border-spacing: 0; /* Remove the default spacing around the table */
+    border-collapse: collapse; /* Collapse the table borders into a single border */
+  }

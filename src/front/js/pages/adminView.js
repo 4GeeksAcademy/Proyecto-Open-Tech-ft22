@@ -140,6 +140,7 @@ const AdminView = () => {
             </div>
             <div>
                 <h4 style={{ marginLeft: '80px', color: 'white', marginTop: '30px' }}>{t('Pending')}:</h4>
+                <div className="table-container">
                 <table className="table-bordered">
                     <thead>
                         <tr>
@@ -176,6 +177,7 @@ const AdminView = () => {
                             ))}
                     </tbody>
                 </table>
+                </div>
             </div>
 
 
