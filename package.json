@@ -79,6 +79,8 @@
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"bcryptjs": "^2.4.3",
 		"chart.js": "^2.9.4",
+		"emailjs-com": "^3.2.0",
+		"http-server": "^14.1.1",
 		"i18next": "^23.7.8",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
