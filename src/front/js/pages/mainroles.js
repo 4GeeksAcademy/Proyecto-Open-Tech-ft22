@@ -108,7 +108,7 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
             </div>
             <p />
             <p style={{ color: 'white' }}> {t('Your category selection')}: {active} </p>
-            <div className="mx-auto w-75" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
+            <div className="mx-auto w-75 d-flex flex-wrap justify-content-start card-parent-container">
                 {roleCards.map((roleCard, index) => {
                     // Find the salary data for this role
                     const salaryDataArray = store.salaries.filter(salary => salary.role === roleCard);
@@ -121,7 +121,7 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
                     const average = salaryDataArray.length > 0 ? Math.floor(sum / salaryDataArray.length) : 0;
 
                     return (
-                        <div key={index} style={{ width: '17%', margin: '10px' }}>
+                        <div key={index} className="custom-col">
                             <RoleCard
                                 roleName={roleCard}
                                 average={average}
@@ -139,7 +139,7 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
                 </div>
             </div>
             <div className='divdivdiv'>
-                          <h1 style={{ color: 'white' }}>{t('Entries by country')}</h1>
+                <h1 style={{ color: 'white' }}>{t('Entries by country')}</h1>
             </div>
             <Map />
             {/*<div>
