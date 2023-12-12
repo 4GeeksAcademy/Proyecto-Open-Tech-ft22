@@ -138,7 +138,9 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
                     </div>
                 </div>
             </div>
-            <h1 style={{ color: 'white' }}>{t('Entries by country')}</h1>
+            <div className='divdivdiv'>
+                          <h1 style={{ color: 'white' }}>{t('Entries by country')}</h1>
+            </div>
             <Map />
             {/*<div>
                 Role Amount:
