@@ -11,6 +11,12 @@ export const ChartLine = ({ data }) => {
 
     // Your component logic here
     const options = {
+        responsive: true,
+        onResize: function (chart, size) {
+            chart.options.legend.display = size.width > 500; // Adjust this value as needed
+            chart.options.scales.xAxes[0].ticks.display = size.width > 500; // Adjust this value as needed
+            chart.options.scales.yAxes[0].ticks.display = size.width > 500; // Adjust this value as needed
+        },
         scales: {
             yAxes: [{
                 ticks: {

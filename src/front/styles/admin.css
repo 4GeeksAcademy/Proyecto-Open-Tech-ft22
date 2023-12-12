@@ -109,14 +109,14 @@ body {
     /* Adjust as needed */
 }
 
-.button-container {
+.button-container-pdf {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media (max-width: 600px) {
-    .button-container {
+    .button-container-pdf {
         flex-direction: column;
     }
 }
