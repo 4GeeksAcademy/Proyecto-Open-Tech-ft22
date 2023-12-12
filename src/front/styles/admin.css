@@ -111,7 +111,14 @@ body {
 
 .button-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column;
+    }
 }
 
 .previous-next {
@@ -150,12 +157,17 @@ body {
     margin-right: auto;
     margin-bottom: 50px;
 }
+
 .table-container .table-bordered {
-    width: 100%; /* Make the table take up the full width of its container */
-    border-spacing: 0; /* Remove the default spacing around the table */
-    border-collapse: collapse; /* Collapse the table borders into a single border */
-  }
-  .table-container::-webkit-scrollbar {
+    width: 100%;
+    /* Make the table take up the full width of its container */
+    border-spacing: 0;
+    /* Remove the default spacing around the table */
+    border-collapse: collapse;
+    /* Collapse the table borders into a single border */
+}
+
+.table-container::-webkit-scrollbar {
     width: 10px;
 }
 
@@ -170,7 +182,30 @@ body {
 .table-container::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
 .centered-content {
     display: flex;
     justify-content: center;
-  }
+}
+
+.second-table {
+    max-height: 1200px;
+}
+
+.pdf-container-inside {
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%;
+    /* This value might need to be adjusted */
+    position: relative;
+}
+
+.pdf-container-inside iframe,
+.pdf-containe-inside object {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    transform: translate(5%);
+}

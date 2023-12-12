@@ -204,7 +204,7 @@ const AdminView = () => {
                         </div>
                     </div>
                 }
-                {selectedItem ? <iframe className="myPDF" src={selectedItem.pdf_optimized}></iframe> : <p>{t('Please select a PDF from the table by clicking on the')} <FontAwesomeIcon icon={faEye} /> icon.</p>}
+                {selectedItem ? <div className="pdf-container-inside"><iframe className="myPDF" src={selectedItem.pdf_optimized}></iframe></div> : <p>{t('Please select a PDF from the table by clicking on the')} <FontAwesomeIcon icon={faEye} /> icon.</p>}
             </div>
 
             <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -254,6 +254,7 @@ const AdminView = () => {
 
             <div>
                 <h4 style={{ marginLeft: '80px', color: 'white' }}>{t('History')}:</h4>
+                <div className="table-container second-table">
                 <table className="table-bordered">
                     <thead>
                         <tr>
@@ -291,6 +292,7 @@ const AdminView = () => {
                             ))}
                     </tbody>
                 </table>
+                </div>
                 <div className='previous-next'>
                     <button className='pagination' onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}><div className="button-content">
                         <i className="fa-solid fa-angles-left"></i>
