@@ -51,7 +51,7 @@ const AdminView = () => {
     };
 
     const handleVerify = async () => {
-        const updatedItem = { ...selectedItem, is_verified: true };
+        const updatedItem = { ...selectedItem, is_verified: true, pdf: 'PDF deleted' };
         setSelectedItem(updatedItem);
 
         // Send a request to the API to update the item
@@ -70,6 +70,9 @@ const AdminView = () => {
 
             const updatedData = data.map(item => item.id === selectedItem.id ? updatedItem : item);
 
+
+
+
             const templateParams = {
                 to_name: store.user.name, // Replace with the user's name
                 to_email: store.user.email, // Replace with the useremail
@@ -77,6 +80,8 @@ const AdminView = () => {
             };
             // Send the email
             emailjs.send('service_9es8ikt', 'template_f3tsjwc', templateParams, 'Zjop8ResQtm_ssC2J')
+
+
 
 
             setShowModal(false);
@@ -141,42 +146,42 @@ const AdminView = () => {
             <div>
                 <h4 style={{ marginLeft: '80px', color: 'white', marginTop: '30px' }}>{t('Pending')}:</h4>
                 <div className="table-container">
-                <table className="table-bordered">
-                    <thead>
-                        <tr>
-                            <th>{t('ID')}</th>
-                            <th>{t('Years of experience')}</th>
-                            <th>{t('Role')}</th>
-                            <th>{t('City')}</th>
-                            <th>{t('Country')}</th>
-                            <th>{t('Amount')}</th>
-                            <th>{t('To be Verified')}</th>
-                            <th>{t('view PDF')}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data && data
-                            .filter(item => item.pdf && !item.is_in_history)
-                            .sort((a, b) => a.id - b.id)
-                            .map((item, index) => (
-                                <tr key={index}>
-                                    <td className="id-column">{t(item.id)}</td>
-                                    <td>{item.years_of_experience}</td>
-                                    <td>{t(item.role)}</td>
-                                    <td>{item.city}</td>
-                                    <td>{item.country}</td>
-                                    <td>{item.amount}</td>
-                                    <td>
-                                        {item.is_verified
-                                            ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green', marginLeft: '20px' }} />
-                                            : <FontAwesomeIcon icon={faFileCircleExclamation} style={{ color: '#F29339', marginLeft: '20px' }} />
-                                        }
-                                    </td>
-                                    <td>{item.pdf ? <FontAwesomeIcon icon={faEye} className="eye-icon" onClick={() => setSelectedItem(item)} /> : null}</td>
-                                </tr>
-                            ))}
-                    </tbody>
-                </table>
+                    <table className="table-bordered">
+                        <thead>
+                            <tr>
+                                <th>{t('ID')}</th>
+                                <th>{t('Years of experience')}</th>
+                                <th>{t('Role')}</th>
+                                <th>{t('City')}</th>
+                                <th>{t('Country')}</th>
+                                <th>{t('Amount')}</th>
+                                <th>{t('To be Verified')}</th>
+                                <th>{t('view PDF')}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data && data
+                                .filter(item => item.pdf && !item.is_in_history)
+                                .sort((a, b) => a.id - b.id)
+                                .map((item, index) => (
+                                    <tr key={index}>
+                                        <td className="id-column">{t(item.id)}</td>
+                                        <td>{item.years_of_experience}</td>
+                                        <td>{t(item.role)}</td>
+                                        <td>{item.city}</td>
+                                        <td>{item.country}</td>
+                                        <td>{item.amount}</td>
+                                        <td>
+                                            {item.is_verified
+                                                ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green', marginLeft: '20px' }} />
+                                                : <FontAwesomeIcon icon={faFileCircleExclamation} style={{ color: '#F29339', marginLeft: '20px' }} />
+                                            }
+                                        </td>
+                                        <td>{item.pdf ? <FontAwesomeIcon icon={faEye} className="eye-icon" onClick={() => setSelectedItem(item)} /> : null}</td>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

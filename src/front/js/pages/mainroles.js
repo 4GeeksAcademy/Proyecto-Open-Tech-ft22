@@ -85,7 +85,7 @@ function TabGroup({ selectedCategory, setSelectedCategory }) {
     return (
         <>
             <div className="d-none d-lg-block mx-auto w-75">
-                <ButtonGroup>
+                <ButtonGroup className="centered-content">
                     {types.map(type => (
                         <Tab
                             key={type}

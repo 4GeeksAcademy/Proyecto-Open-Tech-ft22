@@ -10,7 +10,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 import cloudinary
-from cloudinary.uploader import upload
+from cloudinary.uploader import upload, destroy
 
 # from flask_mail import Mail, Message
 
@@ -265,4 +265,6 @@ def add_history():
 def get_history():
     history = History.query.all()
     return jsonify([item.serialize() for item in history]), 200
+
+
 

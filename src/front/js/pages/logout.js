@@ -18,7 +18,7 @@ const Logout = () => {
         <div>
             {store?.user && (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <span className="username" style={{ color: '#ccc', marginLeft: '5px' }}>{store.user.email}</span>
+                    <span className="username email-navbar" style={{ color: '#ccc', marginLeft: '5px' }}>{store.user.email}</span>
                     <Dropdown>
                         <Dropdown.Toggle className="dropdown-toggle" as="div" id="dropdown-basic" style={{ backgroundColor: 'transparent', borderColor: 'transparent' }}>
                             <div className="ms-2 avatar-circle" style={{ borderRadius: '50%', overflow: 'hidden', width: '50px', height: '50px' }}>
