@@ -1,0 +1,11 @@
+/* Default font size for large screens */
+.responsive-header {
+    font-size: 2em;
+}
+
+/* Smaller font size for screens less than 576px wide */
+@media (max-width: 575.98px) {
+    .responsive-header {
+        font-size: 1em;
+    }
+}
