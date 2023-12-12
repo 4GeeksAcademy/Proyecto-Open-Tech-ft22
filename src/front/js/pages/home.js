@@ -9,10 +9,15 @@ import card3 from "../../img/card3.png";
 import card4 from "../../img/card4.png";
 import { Welcome } from "./welcome";
 import { useTranslation } from "react-i18next";
+import { useEffect } from 'react';
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	const { t } = useTranslation();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<div className="text-center">

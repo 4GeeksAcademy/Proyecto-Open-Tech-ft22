@@ -18,6 +18,7 @@ export const SpectPages = () => {
 
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         fetch(`${store.apiURL}/api/salary`)
             .then(response => response.json())
             .then(data => setData(data));

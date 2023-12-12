@@ -11,3 +11,10 @@
         width: 40%;
     }
 }
+
+@media (min-width: 1180px) {
+    .trololo {
+
+        width: 25%;
+    }
+}
