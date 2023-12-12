@@ -204,7 +204,7 @@ const AdminView = () => {
                         </div>
                     </div>
                 }
-                {selectedItem ? <iframe className="myPDF" src={selectedItem.pdf_optimized}></iframe> : <p>{t('Please select a PDF from the table by clicking on the')} <FontAwesomeIcon icon={faEye} /> icon.</p>}
+                {selectedItem ? <div className="pdf-container-inside"><iframe className="myPDF" src={selectedItem.pdf_optimized}></iframe></div> : <p>{t('Please select a PDF from the table by clicking on the')} <FontAwesomeIcon icon={faEye} /> icon.</p>}
             </div>
 
             <Modal show={showModal} onHide={() => setShowModal(false)}>
