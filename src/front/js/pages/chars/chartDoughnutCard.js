@@ -19,6 +19,12 @@ export const ChartDoughnutCard = ({ data }) => {
     });
 
     // Your component logic here
+    const options = {
+        responsive: true,
+        onResize: function (chart, size) {
+            chart.options.legend.display = size.width > 500; // Adjust this value as needed
+        }
+    }
 
     const chartData = {
         labels: labels,
@@ -58,7 +64,7 @@ export const ChartDoughnutCard = ({ data }) => {
             <div>
                 <h1 className='mb-3' style={{ color: 'white' }}>{t('Country VS Average')}</h1>
                 <Doughnut
-                    data={chartData} />
+                    data={chartData} options={options} />
             </div>
         </div>
     );
