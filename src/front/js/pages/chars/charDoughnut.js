@@ -16,6 +16,12 @@ export const ChartDoughnut = ({ category, roles, salaries }) => {
     });
 
     // Your component logic here
+    const options = {
+        responsive: true,
+        onResize: function (chart, size) {
+            chart.options.legend.display = size.width > 500; // Adjust this value as needed
+        }
+    }
 
     const data = {
         labels: labels,
@@ -55,7 +61,7 @@ export const ChartDoughnut = ({ category, roles, salaries }) => {
             <div style={{ backgroundColor: '#2c2c2c', padding: '25px', margin: '25px', borderRadius: '20px' }}>
                 <h1 style={{ color: '#eaeaea', marginBottom: '20px' }}>{t('Role VS Entries')}</h1>
                 <Doughnut
-                    data={data} />
+                    data={data} options={options}/>
             </div>
         </div>
     );
