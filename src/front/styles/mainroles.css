@@ -6,3 +6,9 @@
     background-color: #131313 !important;
     margin-bottom: 30px;
 }
+
+@media (max-width: 750px) {
+    .map-styles {
+        display: none;
+    }
+}
