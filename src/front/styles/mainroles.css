@@ -1,12 +1,19 @@
 .map-styles svg {
     background-color: #131313;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.map-container {
+    margin: 0 auto;
 }
 
 .worldmap__figure-container {
     background-color: #131313 !important;
     margin-bottom: 30px;
-    width: 60%;
-
+    width: 100%;
+    max-width: 100%; /* Adjust the max-width as needed */
+    box-sizing: border-box;
 }
 
 @media (max-width: 600px) {
@@ -18,6 +25,12 @@
 @media (max-width: 600px) {
     .divdivdiv {
         display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .worldmap__figure-container {
+        max-width: 100%;
     }
 }
 

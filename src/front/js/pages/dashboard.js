@@ -27,12 +27,12 @@ export const Dashboard = () => {
                 <div className="button-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '25px' }}>
                     <Link to="/" className="buttonStyle" style={{ padding: '20px', fontSize: '25px', borderRadius: '20px', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginRight: '20px' }}>
                         <i className="fa-solid fa-house" alt="Home Icon" style={{ marginBottom: '15px', width: '65px', color: '#853BB0', fontSize: '40px' }}></i>
-                        {t('Go back home')}
+                        <span className="button-text">{t('Go back home')}</span>
                     </Link>
                     {role === 'ADMIN' && (
                         <Link to="/dashboard/admin" className="buttonStyle" style={{ padding: '20px', fontSize: '25px', borderRadius: '20px', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                             <i className="fa-solid fa-lock" alt="Admin Icon" style={{ marginBottom: '15px', width: '65px', color: '#853BB0', fontSize: '40px' }}></i>
-                            {t('Admin Button')}
+                            <span className="button-text">{t('Admin Button')}</span>
                         </Link>
                     )}
                 </div>

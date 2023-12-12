@@ -37,3 +37,8 @@
     }
     
 }
+@media (max-width: 311px) {
+    .button-text {
+        font-size: 12px; /* adjust as needed */
+    }
+}
