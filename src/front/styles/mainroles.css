@@ -5,10 +5,18 @@
 .worldmap__figure-container {
     background-color: #131313 !important;
     margin-bottom: 30px;
+    width: 60%;
+
 }
 
-@media (max-width: 750px) {
+@media (max-width: 600px) {
     .map-styles {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .divdivdiv {
         display: none;
     }
 }
