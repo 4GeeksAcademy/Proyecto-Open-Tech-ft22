@@ -1,0 +1,27 @@
+@media (max-width: 850px) {
+    .trolola {
+
+        width: 100%;
+    }
+}
+
+@media (min-width: 851px) {
+    .trolola {
+
+        width: 100%;
+    }
+}
+
+@media (max-width: 850px) {
+    .trolole {
+
+        width: 50%;
+    }
+}
+
+@media (min-width: 851px) {
+    .trolole {
+
+        width: 50%;
+    }
+}
