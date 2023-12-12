@@ -182,11 +182,11 @@ const AdminView = () => {
 
 
 
-            <div className="pdf-container">
+            <div className="container-fluid pdf-container">
                 <h3>{t('Selected PDF')}:</h3>
                 {selectedItem && <h4 style={{ color: 'white' }}>ID {selectedItem.id}</h4>}
                 {selectedItem &&
-                    <div className='button-container'>
+                    <div className='container-fluid button-container'>
                         <div className='justify-content-center verify-div'>
                             <button className='verify-button' onClick={handleVerifyClick}>
                                 {t('Verify PDF')} <FontAwesomeIcon icon={faCheckCircle} style={{ marginLeft: '20px' }} />
