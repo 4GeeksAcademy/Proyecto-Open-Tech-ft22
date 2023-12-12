@@ -1,27 +1,49 @@
 @media (max-width: 850px) {
     .trolola {
-
         width: 100%;
     }
 }
 
 @media (min-width: 851px) {
     .trolola {
-
         width: 100%;
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 999px) {
     .trolole {
 
         width: 50%;
     }
 }
 
-@media (min-width: 851px) {
+@media (min-width: 1000px) {
     .trolole {
 
-        width: 50%;
+        width: 30%;
+    }
+}
+
+/*small*/
+@media (max-width: 600px) {
+    .trolole {
+
+        width: 70%;
+    }
+}
+
+/*small*/
+@media (max-width: 600px) {
+    .trolole {
+
+        width: 70%;
+    }
+}
+
+/*small*/
+@media (max-width: 400px) {
+    .trolole {
+
+        width: 80%;
     }
 }

@@ -33,7 +33,7 @@ export const Login = () => {
             </form>
             <p className='mt-3' style={{ fontSize: '14px', color: 'white' }}>
                 {t('Don\'t have an account yet?')}{' '}
-                <Link to="/regitster" syle={{ color: '#4f89ee', textDecoration: 'underline' }}>
+                <Link to="/register" syle={{ color: '#4f89ee', textDecoration: 'underline' }}>
                     {t('Sign up')}
                 </Link>
             </p>
