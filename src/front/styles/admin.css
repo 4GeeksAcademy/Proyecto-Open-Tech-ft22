@@ -155,3 +155,22 @@ body {
     border-spacing: 0; /* Remove the default spacing around the table */
     border-collapse: collapse; /* Collapse the table borders into a single border */
   }
+  .table-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.centered-content {
+    display: flex;
+    justify-content: center;
+  }
