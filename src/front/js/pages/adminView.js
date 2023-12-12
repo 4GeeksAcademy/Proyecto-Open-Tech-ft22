@@ -254,6 +254,7 @@ const AdminView = () => {
 
             <div>
                 <h4 style={{ marginLeft: '80px', color: 'white' }}>{t('History')}:</h4>
+                <div className="table-container second-table">
                 <table className="table-bordered">
                     <thead>
                         <tr>
@@ -291,6 +292,7 @@ const AdminView = () => {
                             ))}
                     </tbody>
                 </table>
+                </div>
                 <div className='previous-next'>
                     <button className='pagination' onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}><div className="button-content">
                         <i className="fa-solid fa-angles-left"></i>

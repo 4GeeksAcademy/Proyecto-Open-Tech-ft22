@@ -150,12 +150,17 @@ body {
     margin-right: auto;
     margin-bottom: 50px;
 }
+
 .table-container .table-bordered {
-    width: 100%; /* Make the table take up the full width of its container */
-    border-spacing: 0; /* Remove the default spacing around the table */
-    border-collapse: collapse; /* Collapse the table borders into a single border */
-  }
-  .table-container::-webkit-scrollbar {
+    width: 100%;
+    /* Make the table take up the full width of its container */
+    border-spacing: 0;
+    /* Remove the default spacing around the table */
+    border-collapse: collapse;
+    /* Collapse the table borders into a single border */
+}
+
+.table-container::-webkit-scrollbar {
     width: 10px;
 }
 
@@ -170,7 +175,12 @@ body {
 .table-container::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
 .centered-content {
     display: flex;
     justify-content: center;
-  }
+}
+
+.second-table {
+    max-height: 1200px;
+}
