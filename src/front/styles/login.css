@@ -1,0 +1,13 @@
+@media (max-width: 850px) {
+    .trololo {
+
+        width: 75%;
+    }
+}
+
+@media (min-width: 851px) {
+    .trololo {
+
+        width: 40%;
+    }
+}
