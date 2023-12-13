@@ -208,7 +208,9 @@ def verify_salary(salary_id):
         salary.is_in_history = True
 
         # Delete the salary record
-        # db.session.delete(salary)
+        # Clear the pdf field in the Salary model
+        salary.pdf = "PDF deleted after verified"
+        salary.pdf_optimized = ""
         db.session.commit()
 
     return jsonify(salary.serialize()), 200
@@ -237,6 +239,10 @@ def reject_salary(salary_id):
 
     # Update is_in_history to True
     salary.is_in_history = True
+
+    # Clear the pdf field in the Salary model
+    salary.pdf = "PDF deleted after rejection"
+    salary.pdf_optimized = ""
     db.session.commit()
 
     return jsonify(salary.serialize()), 200
