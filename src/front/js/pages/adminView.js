@@ -76,7 +76,7 @@ const AdminView = () => {
             const templateParams = {
                 to_name: store.user.name, // Replace with the user's name
                 to_email: store.user.email, // Replace with the useremail
-                message: 'Your PDF has been verified, thank you for contributing to salary transparency.', // Replace with your message
+                message: 'We are delighted to inform you that your submitted PDF has been successfully verified. Thank you for contributing to salary transparency and being part of our community committed to openness and fairness in the workplace.\n\nAs part of our commitment to your privacy, we would like to inform you that your PDF has been securely deleted from our system. Your trust in our platform is highly appreciated.\n\nThank you for choosing OpenTech Insights and for being a key player in fostering a culture of trust and transparency.', // Replace with your message
             };
             // Send the email
             emailjs.send('service_9es8ikt', 'template_f3tsjwc', templateParams, 'Zjop8ResQtm_ssC2J')
@@ -121,7 +121,7 @@ const AdminView = () => {
             const templateParams = {
                 to_name: store.user.name, // Replace with the user's name
                 to_email: store.user.email, // Replace with the useremail
-                message: 'Your PDF has been rejected, please make sure to select the right file.', // Replace with your message
+                message: 'We regret to inform you that your submitted PDF has been rejected. Please ensure that you have selected the correct file before resubmitting.\n\nWe appreciate your understanding and diligence in ensuring the accuracy of your submissions.\n\nAs part of our commitment to your privacy, we would like to inform you that your PDF has been securely deleted from our system.\n\nThank you for your cooperation and for choosing OpenTech Insights.', // Replace with your message
             };
             // Send the email
             emailjs.send('service_9es8ikt', 'template_f3tsjwc', templateParams, 'Zjop8ResQtm_ssC2J')
@@ -255,43 +255,43 @@ const AdminView = () => {
             <div>
                 <h4 style={{ marginLeft: '80px', color: 'white' }}>{t('History')}:</h4>
                 <div className="table-container second-table">
-                <table className="table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>{t('Years of experience')}</th>
-                            <th>{t('Role')}</th>
-                            <th>{t('City')}</th>
-                            <th>{t('Country')}</th>
-                            <th>{t('Amount')}</th>
-                            <th>{t('Verification date')}</th>
-                            <th>{t('Verified')}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {historyData && historyData
-                            .sort((a, b) => a.salary_id - b.salary_id)
-                            .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-                            .map((item, index) => (
-                                <tr key={index}>
-                                    <td className="id-column">{item.salary_id}</td>
-                                    <td>{item.years_of_experience}</td>
-                                    <td>{t(item.role)}</td>
-                                    <td>{item.city}</td>
-                                    <td>{item.country}</td>
-                                    <td>{item.amount}</td>
-                                    <td>{item.updated_at}</td>
-                                    <td>
-                                        {item.is_verified
-                                            ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green', marginLeft: '20px' }} />
-                                            : <FontAwesomeIcon icon={faTimesCircle} style={{ color: '#e2142d', marginLeft: '20px' }} />
-                                        }
-                                    </td>
+                    <table className="table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>{t('Years of experience')}</th>
+                                <th>{t('Role')}</th>
+                                <th>{t('City')}</th>
+                                <th>{t('Country')}</th>
+                                <th>{t('Amount')}</th>
+                                <th>{t('Verification date')}</th>
+                                <th>{t('Verified')}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {historyData && historyData
+                                .sort((a, b) => a.salary_id - b.salary_id)
+                                .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+                                .map((item, index) => (
+                                    <tr key={index}>
+                                        <td className="id-column">{item.salary_id}</td>
+                                        <td>{item.years_of_experience}</td>
+                                        <td>{t(item.role)}</td>
+                                        <td>{item.city}</td>
+                                        <td>{item.country}</td>
+                                        <td>{item.amount}</td>
+                                        <td>{item.updated_at}</td>
+                                        <td>
+                                            {item.is_verified
+                                                ? <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green', marginLeft: '20px' }} />
+                                                : <FontAwesomeIcon icon={faTimesCircle} style={{ color: '#e2142d', marginLeft: '20px' }} />
+                                            }
+                                        </td>
 
-                                </tr>
-                            ))}
-                    </tbody>
-                </table>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
                 </div>
                 <div className='previous-next'>
                     <button className='pagination' onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}><div className="button-content">
