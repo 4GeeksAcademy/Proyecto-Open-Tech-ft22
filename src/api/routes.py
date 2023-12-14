@@ -176,6 +176,8 @@ def get_salary_by_id(id):
     salary = Salary.query.get(id)
     if salary is None:
         raise APIException('Salary not found', status_code=404)
+    
+    # Now you can access the user's email with user.email
     return jsonify(salary.serialize()), 200
 
 

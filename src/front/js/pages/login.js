@@ -23,7 +23,7 @@ export const Login = () => {
             <form onSubmit={handleSubmit} className='trololo montañes mx-auto my-5 p-3 ' style={{ boxShadow: '0 5px 9px rgba(0, 0, 0, 0.5)' }}>
                 <div className="form-group mb-3">
                     <label htmlFor="username" className="form-label" style={{ color: 'white' }}>{t('Username')}:</label>
-                    <input type="text" className="form-control" id="username" name="username" onChange={actions.handleChange} value={store.username} autocomplete="off" />
+                    <input type="text" className="form-control" id="username" name="username" onChange={actions.handleChange} value={store.username} autoComplete="off" />
                 </div>
                 <div className="form-group mb-3">
                     <label htmlFor="password" className="form-label" style={{ color: 'white' }}>{t('Password')}:</label>

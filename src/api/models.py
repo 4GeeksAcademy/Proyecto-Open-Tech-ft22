@@ -59,6 +59,7 @@ class Salary(db.Model):
     pdf_optimized = db.Column(db.String(200), default="")  # New field to store the optimized PDF URL
     is_verified = db.Column(db.Boolean(), default=False)
     is_in_history = db.Column(db.Boolean(), default=False)
+    user = db.relationship('User', backref=db.backref('salaries', lazy=True))
 
     def __repr__(self):
         return f'<Salary {self.id} {self.amount}>'
@@ -75,7 +76,12 @@ class Salary(db.Model):
             "pdf": self.pdf,
             "pdf_optimized": self.pdf_optimized,  # Return the saved optimized URL
             "is_verified": self.is_verified,
-            "is_in_history": self.is_in_history
+            "is_in_history": self.is_in_history,
+            "user_id": self.user_id,
+            "user": {
+                "name": self.user.name,
+                "email": self.user.email
+            }
         }
     
     def get_optimized_url(self, public_id, format="auto", quality="auto"):

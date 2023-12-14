@@ -69,13 +69,14 @@ const AdminView = () => {
             }
 
             const updatedData = data.map(item => item.id === selectedItem.id ? updatedItem : item);
+            console.log(selectedItem)
 
 
 
 
             const templateParams = {
-                to_name: store.user.name, // Replace with the user's name
-                to_email: store.user.email, // Replace with the useremail
+                to_name: selectedItem.user.name, // Replace with the user's name
+                to_email: selectedItem.user.email, // Replace with the useremail
                 message: 'We are delighted to inform you that your submitted PDF has been successfully verified. Thank you for contributing to salary transparency and being part of our community committed to openness and fairness in the workplace.\n\nAs part of our commitment to your privacy, we would like to inform you that your PDF has been securely deleted from our system. Your trust in our platform is highly appreciated.\n\nThank you for choosing OpenTech Insights and for being a key player in fostering a culture of trust and transparency.', // Replace with your message
             };
             // Send the email
@@ -118,9 +119,10 @@ const AdminView = () => {
 
 
             const updatedData = data.map(item => item.id === selectedItem.id ? updatedItem : item);
+            console.log(selectedItem)
             const templateParams = {
-                to_name: store.user.name, // Replace with the user's name
-                to_email: store.user.email, // Replace with the useremail
+                to_name: selectedItem.user.name, // Replace with the user's name
+                to_email: selectedItem.user.email, // Replace with the useremail
                 message: 'We regret to inform you that your submitted PDF has been rejected. Please ensure that you have selected the correct file before resubmitting.\n\nWe appreciate your understanding and diligence in ensuring the accuracy of your submissions.\n\nAs part of our commitment to your privacy, we would like to inform you that your PDF has been securely deleted from our system.\n\nThank you for your cooperation and for choosing OpenTech Insights.', // Replace with your message
             };
             // Send the email
