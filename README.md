@@ -1,4 +1,5 @@
 # Tablero kanban [CLICK AQUI](https://github.com/users/liliaqvq/projects/1/views/2)
+# Diagrama Entidad-Relación [CLICK AQUI](https://app.quickdatabasediagrams.com/#/d/ydPxrW)
 
 Build web applications using React.js for the front end and python/flask for your backend API.
 
