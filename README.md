@@ -1,82 +1,38 @@
-# Tablero kanban [CLICK AQUI](https://github.com/users/liliaqvq/projects/1/views/2)
-# Diagrama Entidad-Relación [CLICK AQUI](https://app.quickdatabasediagrams.com/#/d/ydPxrW)
+# Live Link: [Click here](https://proyecto-open-tech-ft22.vercel.app/) 🔗
+- Kanban board [CLICK HERE](https://github.com/users/liliaqvq/projects/1/views/2)
+- Entity Relationship Diagram (ERD) [CLICK HERE](https://app.quickdatabasediagrams.com/#/d/ydPxrW)
 
-Build web applications using React.js for the front end and python/flask for your backend API.
 
-- Documentation can be found here: https://start.4geeksacademy.com/starters/react-flask
-- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)
-- Integrated with Pipenv for package managing.
-- Fast deployment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
 
-### 1) Installation:
 
-> If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node 
+### Run the application:
 
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
+1. Run the backend `$ pipenv run start`
+2. Copy the backend url provided and paste it in DATABASE_URL variable, in file .env
+3. Open new terminal and start the webpack dev server `$ npm run start`
 
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure you replace the valudes with your database information:
 
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
+### Open Tech Insights:
+<img alt="openTech_logo" src="https://github.com/liliaqvq/Open-Tech-Insights/assets/130264861/b2eb07e5-6837-4feb-9710-da1251cf11df" width="200" />
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
+1. Website's home page has a login form. A sign up link is also present. If the user click on Submit Salary, they get a message "You have to login to submit salary".
+   
+<img alt="openTech_Login" src="https://github.com/liliaqvq/Open-Tech-Insights/assets/130264861/698462cb-0246-4131-b124-8fe4d5ee0d50" width="500" />
 
-> Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
+<img alt="alert_message" src="https://github.com/liliaqvq/Open-Tech-Insights/assets/130264861/29c3b6b4-b7f1-46bc-bf93-16769618673f" width="300" />
 
-### Undo a migration
+2. Registration has register form, and user can go back to login with link.
 
-You are also able to undo a migration by running
+<img alt="registration" src="https://github.com/liliaqvq/Open-Tech-Insights/assets/130264861/94c89876-1960-4ab1-aeb2-e47184adcf9c" width="400" />
 
-```sh
-$ pipenv run downgrade
-```
+3. If the user successfully logs in with their account, they will be able to see the dashboard that contains information about different roles and their salaries. Also the user can see their email on the navbar with a random avatar picture.
 
-### Backend Populate Table Users
+<img alt="dashboard" src="https://github.com/liliaqvq/Open-Tech-Insights/assets/130264861/28515fbf-6e98-4915-80d9-e9349f3feddc" width="500" />
 
-To insert test users in the database execute the following command:
+4. Once the user click on Submit Salary, they can fill the form with the information they want to provide.
 
-```sh
-$ flask insert-test-users 5
-```
+<img alt="submitSalary_form" src="https://github.com/liliaqvq/Open-Tech-Insights/assets/130264861/00a42b27-06be-4345-a9c0-c88e4d30a4af" width="500" />
 
-And you will see the following message:
 
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
 
-### **Important note for the database and the data inside it**
 
-Every Github codespace environment will have **its own database**, so if you're working with more people eveyone will have a different database and different records inside it. This data **will be lost**, so don't spend too much time manually creating records for testing, instead, you can automate adding records to your database by editing ```commands.py``` file inside ```/src/api``` folder. Edit line 32 function ```insert_test_data``` to insert the data according to your model (use the function ```insert_test_users``` above as an example). Then, all you need to do is run ```pipenv run insert-test-data```.
-
-### Front-End Manual Installation:
-
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
-
-### Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
