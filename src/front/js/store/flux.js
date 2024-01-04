@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: [],
 			password: [],
 			name: [],
-			apiURL: 'https://orange-space-garbanzo-qw9gwj7rgqp264r9-3001.app.github.dev',
+			apiURL: process.env.BACKEND_URL || 'https://cuddly-engine-gg5wgj49vvq396gp-3001.app.github.dev',
 			roles: [],
 			categories: [],
 			salaries: [],

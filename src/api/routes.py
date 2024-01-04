@@ -142,7 +142,7 @@ def create_salaries():
 
     respA = None
     if pdf is not None:
-        respA = upload(pdf, folder="salaries")
+        respA = upload(pdf, folder="salaries", allowed_formats=["pdf"])
         if respA:
             pdf = respA['secure_url']
             public_id = respA['public_id'].replace('salaries/', '')  # Remove the 'salaries/' prefix
