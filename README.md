@@ -19,7 +19,7 @@
    
 <img alt="openTech_Login" src="https://github.com/liliaqvq/Open-Tech-Insights/assets/130264861/b0b69cef-58c5-43df-92cd-5c4c822b86ac" width="500" />
 
-2. If the user click on Submit Salary, they get a message "You have to login to submit salary".
+2. If the user clicks on Submit Salary, they get a message "You have to login to submit salary".
 
 <img alt="alert_message" src="https://github.com/liliaqvq/Open-Tech-Insights/assets/130264861/a032fb3c-b09b-4858-9653-caee0b50f480" width="500" />
 
